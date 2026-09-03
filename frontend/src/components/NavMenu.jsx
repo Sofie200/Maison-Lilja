@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./NavMenu.css";
 
-export default function NavMenu() {
+const NavMenu = () => {
     const [open, setOpen] = useState(false);
 
     return (
-        <nav className="nav">
+        <nav>
             {/* Hamburger button */}
             <button
                 className={`hamburger ${open ? "open" : ""}`}
@@ -18,7 +18,7 @@ export default function NavMenu() {
             </button>
 
             {/* Menu */}
-            <ol className={`menu ${open ? "show" : ""}`}>
+            <ul className={`menu ${open ? "show" : ""}`}>
                 <li><a href="/shop">Handla nu</a></li>
                 <li><a href="/seasonal">Säsong</a></li>
                 <li><a href="/gifts">Företagsgåvor</a></li>
@@ -27,7 +27,9 @@ export default function NavMenu() {
                 <li><a href="/tastings">Chokladprovningar</a></li>
                 <li><a href="/about">Om oss</a></li>
                 <li><a href="/contact">Kontakt</a></li>
-            </ol>
+            </ul>
         </nav>
     );
 }
+
+export default NavMenu
