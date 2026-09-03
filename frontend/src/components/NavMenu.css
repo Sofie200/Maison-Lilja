@@ -1,0 +1,84 @@
+.nav {
+    position: relative;
+}
+
+/* Hamburger button */
+.hamburger {
+    width: 32px;
+    height: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.hamburger span {
+    height: 4px;
+    background: #333;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+/* Hamburger animation */
+.hamburger.open span:nth-child(1) {
+    transform: translateY(10px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+    transform: translateY(-10px) rotate(-45deg);
+}
+
+/* Mobile menu */
+.menu {
+    list-style: decimal;
+    padding-left: 20px;
+    margin-top: 16px;
+    display: none;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.menu.show {
+    display: flex;
+}
+
+.menu a {
+    text-decoration: none;
+    font-size: 1.1rem;
+    color: #333;
+}
+
+/* ⭐ DESKTOP VERSION ⭐ */
+@media (min-width: 900px) {
+    .hamburger {
+        display: none;
+        /* Dölj hamburgaren */
+    }
+
+    .menu {
+        display: flex !important;
+        /* Visa menyn alltid */
+        flex-direction: row;
+        /* Horisontell meny */
+        gap: 32px;
+        /* Avstånd mellan länkar */
+        padding-left: 0;
+        margin: 0;
+    }
+
+    .menu li {
+        list-style: none;
+        /* Ta bort numrering på desktop */
+    }
+
+    .menu a {
+        font-size: 1rem;
+    }
+}
