@@ -17,7 +17,8 @@
 
 .hamburger span {
     height: 4px;
-    background: #333;
+    background: var(--color-text);
+    /* chokladbrun */
     border-radius: 2px;
     transition: 0.3s;
 }
@@ -38,11 +39,11 @@
 /* Mobile menu */
 .menu {
     list-style: none;
-    padding-left: 20px;
-    margin-top: 16px;
+    padding-left: var(--spacing-md);
+    margin-top: var(--spacing-sm);
     display: none;
     flex-direction: column;
-    gap: 12px;
+    gap: var(--spacing-sm);
 }
 
 .menu.show {
@@ -52,14 +53,16 @@
 .menu a {
     text-decoration: none;
     font-size: 1.1rem;
-    color: #333;
+    color: var(--color-text);
+    /* chokladbrun */
+    font-family: var(--font-serif);
+    /* Bodoni */
 }
 
 /* ⭐ DESKTOP VERSION ⭐ */
 @media (min-width: 900px) {
     .hamburger {
         display: none;
-        /* Dölj hamburgaren */
     }
 
     .menu {
@@ -67,7 +70,7 @@
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 32px;
+        gap: var(--spacing-lg);
         padding-left: 0;
         margin: 0;
     }
