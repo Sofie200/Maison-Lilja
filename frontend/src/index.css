@@ -58,6 +58,12 @@ body {
     font-size: 16px;
 }
 
+#wrapper{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
 /* ====== Navigation ====== */
 nav {
     font-family: var(--font-sans);
@@ -71,6 +77,7 @@ main {
     max-width: 1200px;
     margin: auto;
     padding: var(--spacing-lg);
+    flex: 1;
 }
 
 /* ====== Produktgrid ====== */
