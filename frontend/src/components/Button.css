@@ -1,0 +1,82 @@
+.btn {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: auto;
+    display: inline-block;
+}
+
+/* Sizes */
+.btn-lg {
+    padding: 12px 30px;
+    font-size: 1.1rem;
+}
+
+.btn-md {
+    padding: 10px 22px;
+    font-size: 1rem;
+}
+
+.btn-sm {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+}
+
+/* Colors */
+.btn-default {
+    background: var(--color-text);
+    color: var(--color-bg);
+}
+
+.btn-default:hover {
+    background: var(--color-text-light);
+}
+
+/* Pink */
+.btn-pink {
+    background: var(--pastel-pink);
+}
+
+.btn-pink:hover {
+    background: var(--accent-pink);
+}
+
+/* Green */
+.btn-green {
+    background: var(--pastel-green);
+}
+
+.btn-green:hover {
+    background: var(--accent-green);
+}
+
+/* Purple */
+.btn-purple {
+    background: var(--pastel-purple);
+}
+
+.btn-purple:hover {
+    background: var(--accent-purple);
+}
+
+/* Blue */
+.btn-blue {
+    background: var(--pastel-blue);
+}
+
+.btn-blue:hover {
+    background: var(--accent-blue);
+}
+
+/* Inverted */
+.btn-inverted {
+    background: var(--color-bg);
+    border: 2px solid var(--color-text-light);
+}
+
+.btn-inverted:hover {
+    background: var(--color-bg-alt);
+}
