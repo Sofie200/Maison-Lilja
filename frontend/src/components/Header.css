@@ -1,7 +1,7 @@
 header{
     background-color: var(--color-bg);
     text-align: center;
-    padding: 20px;
+    padding: 30px 0 10px;
     box-shadow: var(--shadow-soft);
     position: sticky;
     top:0;
@@ -10,6 +10,6 @@ header{
 
 header img{
     width: 100%;
-    max-width: 300px;
+    max-width: 250px;
     margin-bottom: 20px;
 }
