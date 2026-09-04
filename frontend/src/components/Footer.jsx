@@ -18,17 +18,24 @@ const Footer = () => {
                     <p>+46 (0) 70 123 45 67</p>
                 </div>
 
+                {/* Info / Policies */}
+                <div className="footer-info">
+                    <h3>Information</h3>
+                    <a href="/faq">Vanliga frågor</a>
+                    <a href="/integritetspolicy">Integritetspolicy</a>
+                    <a href="/kopvillkor">Köpvillkor</a>
+                    <a href="/returer">Returer & reklamation</a>
+                </div>
+
                 {/* Social */}
                 <div className="footer-social">
                     <h3>Följ oss</h3>
-
                     <a
                         href="https://instagram.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="instagram-icon"
                     >
-                        {/* Instagram SVG */}
                         <svg
                             width="28"
                             height="28"
@@ -55,4 +62,4 @@ const Footer = () => {
     );
 }
 
-export default Footer
+export default Footer;
