@@ -19,6 +19,7 @@ const NavMenu = () => {
 
             {/* Menu */}
             <ul className={`menu ${open ? "show" : ""}`}>
+                <li><a href="/">Hem</a></li>
                 <li><a href="/shop">Handla nu</a></li>
                 <li><a href="/seasonal">Säsong</a></li>
                 <li><a href="/gifts">Företagsgåvor</a></li>

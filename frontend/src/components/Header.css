@@ -1,7 +1,11 @@
 header{
+    background-color: var(--color-bg);
     text-align: center;
     padding: 20px;
     box-shadow: var(--shadow-soft);
+    position: sticky;
+    top:0;
+    z-index: 1000;
 }
 
 header img{

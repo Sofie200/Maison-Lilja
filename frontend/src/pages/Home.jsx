@@ -1,3 +1,9 @@
+import Hero from "../components/Hero";
+import USPSection from "../components/USPSection";
+
 export default function Home() {
-    return <h1>Home</h1>;
+    return <>
+        <Hero />
+        <USPSection />
+    </>;
 }

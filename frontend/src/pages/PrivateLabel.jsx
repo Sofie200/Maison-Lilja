@@ -1,3 +1,3 @@
 export default function PrivateLabel() {
-    return <h1>Private Label</h1>;
+    return <section><h1>Private Label</h1></section>;
 }

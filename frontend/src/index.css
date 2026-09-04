@@ -74,10 +74,14 @@ nav {
 
 /* ====== Main layout ====== */
 main {
+    width: 100%;
+    flex: 1;
+}
+
+section {
     max-width: 1200px;
     margin: auto;
     padding: var(--spacing-lg);
-    flex: 1;
 }
 
 /* ====== Produktgrid ====== */

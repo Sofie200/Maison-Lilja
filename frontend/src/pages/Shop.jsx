@@ -85,7 +85,7 @@ export default function Shop() {
         }
     ];
 
-    return <>
+    return <section>
         <h1>Handla nu</h1>
         <div className="product-grid">
             <ProductCard product={products[0]} />
@@ -99,5 +99,5 @@ export default function Shop() {
             <ProductCard product={products[8]} />
             <ProductCard product={products[9]} />
         </div>
-    </>;
+    </section>;
 }

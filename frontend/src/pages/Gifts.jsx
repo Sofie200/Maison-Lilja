@@ -1,3 +1,3 @@
 export default function Gifts() {
-    return <h1>Företagsgåvor</h1>;
+    return <section><h1>Företagsgåvor</h1></section>;
 }
