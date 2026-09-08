@@ -11,37 +11,6 @@ export default function Product() {
     const { id } = useParams(); // clean ID från URL
     const [product, setProduct] = useState(null);
 
-    useEffect(() => {
-        async function load() {
-            const gid = `gid://shopify/Product/${id}`;
-            const response = await fetch(client.getStorefrontApiUrl(), {
-                method: "POST",
-                headers: client.getPublicTokenHeaders(),
-                body: JSON.stringify({
-                    query: `
-            query ProductQuery($id: ID!) {
-              product(id: $id) {
-                id
-                title
-                description
-                images(first: 5) { nodes { url } }
-                variants(first: 5) { nodes { price { amount } } }
-              }
-            }
-          `,
-                    variables: { id: gid }
-                }),
-            });
-
-            const data = await response.json();
-            setProduct(data.data.product);
-        }
-
-        load();
-    }, [id]);
-
-    if (!product) return <p>Loading...</p>;
-
     async function addToCart(variantId, quantity = 1) {
         // 1. Hämta befintlig checkout eller skapa ny
         let checkoutId = localStorage.getItem("checkoutId");
@@ -98,6 +67,38 @@ export default function Product() {
         return data.data.checkoutLineItemsAdd.checkout;
     }
 
+    useEffect(() => {
+        async function load() {
+            const gid = `gid://shopify/Product/${id}`;
+            const response = await fetch(client.getStorefrontApiUrl(), {
+                method: "POST",
+                headers: client.getPublicTokenHeaders(),
+                body: JSON.stringify({
+                    query: `
+            query ProductQuery($id: ID!) {
+              product(id: $id) {
+                id
+                title
+                descriptionHtml
+                images(first: 5) { nodes { url } }
+                variants(first: 5) { nodes { price { amount } } }
+              }
+            }
+          `,
+                    variables: { id: gid }
+                }),
+            });
+
+            const data = await response.json();
+            console.log(data);
+            setProduct(data.data.product);
+        }
+
+        load();
+    }, [id]);
+
+    if (!product) return <p>Loading...</p>;
+
     return (
 
         <section className="product-page">
@@ -107,13 +108,13 @@ export default function Product() {
 
             <div className="product-info">
                 <h1>{product.title}</h1>
-                <div className="description">{product.description}</div>
+                <div className="description" dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}></div>
                 <div className="price">{Number(product.variants.nodes[0].price.amount)} kr</div>
 
                 <Button children={"Lägg i varukorg"} onClick={() => addToCart(product.variants.nodes[0].id)} />
 
             </div>
-            
+
         </section>
     );
 
