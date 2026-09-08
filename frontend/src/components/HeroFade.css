@@ -1,51 +1,59 @@
-.hero {
+.hero-fade {
     width: 100%;
     display: flex;
+    flex-direction: row-reverse;
     align-items: stretch;
-    background: var(--color-bg);
+    background: var(--color-bg-secondary);
     color: var(--color-text);
-    height: 600px;
+    height: 800px;
     overflow: hidden;
 }
 
-.hero .image-wrapper {
-    width: 50%;
+.hero-fade .image-wrapper {
+    width: 40%;
     height: 100%;
     overflow: hidden;
     position: relative;
 }
 
-.hero .image {
+.hero-fade .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     transform-origin: center;
     animation: heroZoom 12s ease-in-out infinite;
+
+    /* Fade från vänster */
+    -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
+    mask-image: linear-gradient(to right, transparent 0%, black 40%);
 }
 
-.hero .content {
-    width: 50%;
+.hero-fade .content {
+    width: 60%;
     padding: var(--spacing-xl);
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: var(--color-bg-secondary);
+}
+.hero-fade .content div {
+    width: 100%;
+    padding: var(--spacing-xl);
     text-align: left;
 }
 
-.hero .content h1{
+.hero-fade .content h1{
     font-size: 3.5rem;
     font-style: italic;
     margin: 0 0 30px;
 }
 
-.hero .content p {
+.hero-fade .content p {
     font-size: 1.2rem;
     line-height: 1.8rem;
     margin: 0 0 40px;
 }
 
-.hero .content .cta {
+.hero-fade .content .cta {
     display: inline-block;
     background: var(--color-text);
     color: var(--color-bg);
@@ -59,7 +67,7 @@
     /* viktigt: gör den tydligt placerad */
 }
 
-.hero .content .cta:hover {
+.hero-fade .content .cta:hover {
     background: var(--color-text-light);
     transform: translateY(-2px);
 }
@@ -83,23 +91,23 @@
 }
 
 @media (max-width: 800px) {
-    .hero {
+    .hero-fade {
         display: block;
         height: auto;
     }
 
-    .hero .image-wrapper {
+    .hero-fade .image-wrapper {
         width: 100%;
         height: 320px;
     }
 
-    .hero .content {
+    .hero-fade .content {
         width: 100%;
         text-align: center;
         padding: var(--spacing-lg);
     }
 
-    .hero .content h1{
+    .hero-fade .content h1{
         font-size: 2.5rem;
     }
 }
