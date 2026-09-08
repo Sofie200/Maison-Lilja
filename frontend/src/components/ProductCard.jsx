@@ -1,33 +1,29 @@
 import "./ProductCard.css";
 
 const ProductCard = ({ product }) => {
+
+    const price = Number(product.variants.nodes[0].price.amount);
+
     return (
-        <div className="product-card">
+
+        <a href={`/shop/product/${product.id.split("/").pop()}`} key={product.id} className="product-card">
+
             <div className="image-wrapper">
-                <img src={product.image} alt={product.name} />
+                <img src={product.images.nodes[0].url} alt={product.title} />
             </div>
 
             <div className="info">
-                <h3 className="name">{product.name}</h3>
+                <h3 className="name">{product.title}</h3>
 
                 <div className="price-block">
-                    {product.discount > 0 ? (
-                        <>
-                            <span className="price-discounted">
-                                {product.price - product.discount} kr
-                            </span>
-                            <span className="price-original">
-                                {product.price} kr
-                            </span>
-                        </>
-                    ) : (
-                        <span className="price-normal">{product.price} kr</span>
-                    )}
+                    <span className="price-normal">
+                        {Number.isInteger(price) ? price : price.toFixed(2)} kr
+                    </span>
                 </div>
-
-                <button className="add-btn">Lägg i varukorg</button>
             </div>
-        </div>
+
+        </a>
+
     );
 }
 

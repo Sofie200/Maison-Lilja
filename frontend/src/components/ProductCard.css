@@ -1,12 +1,12 @@
 .product-card {
     background: var(--color-bg);
-    /* creme */
     border-radius: var(--radius-lg);
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     max-width: 320px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .product-card:hover {
@@ -40,11 +40,10 @@
 
 .name {
     font-family: var(--font-serif);
-    /* Bodoni */
     font-size: 1.4rem;
+    margin-top: 0;
     margin-bottom: var(--spacing-sm);
     color: var(--color-text);
-    /* choklad */
 }
 
 .price-block {
@@ -65,7 +64,6 @@
     font-size: 1.2rem;
     font-weight: 600;
     color: var(--accent-pink);
-    /* lyxig rosa accent */
 }
 
 .price-original {

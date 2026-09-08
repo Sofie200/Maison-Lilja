@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
+import Product from "./pages/Product";
 import Seasonal from "./pages/Seasonal";
 import Gifts from "./pages/Gifts";
 import PrivateLabel from "./pages/PrivateLabel";
@@ -22,6 +23,7 @@ export default function App() {
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/shop" element={<Shop />} />
+						<Route path="/shop/product/:id" element={<Product />} />
 						<Route path="/seasonal" element={<Seasonal />} />
 						<Route path="/gifts" element={<Gifts />} />
 						<Route path="/private-label" element={<PrivateLabel />} />
