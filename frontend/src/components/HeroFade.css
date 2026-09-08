@@ -21,7 +21,6 @@
     height: 100%;
     object-fit: cover;
     transform-origin: center;
-    animation: heroZoom 12s ease-in-out infinite;
 
     /* Fade från vänster */
     -webkit-mask-image: linear-gradient(to right, transparent 0%, black 40%);
@@ -37,8 +36,9 @@
 }
 .hero-fade .content div {
     width: 100%;
-    padding: var(--spacing-xl);
+    max-width: 750px;
     text-align: left;
+    margin: auto;
 }
 
 .hero-fade .content h1{
@@ -71,25 +71,6 @@
     background: var(--color-text-light);
     transform: translateY(-2px);
 }
-
-@keyframes heroZoom {
-    0% {
-        transform: scale(1) rotate(0deg);
-    }
-
-    40% {
-        transform: scale(1.06) rotate(0.6deg);
-    }
-
-    70% {
-        transform: scale(1.03) rotate(-0.4deg);
-    }
-
-    100% {
-        transform: scale(1) rotate(0deg);
-    }
-}
-
 @media (max-width: 800px) {
     .hero-fade {
         display: block;
