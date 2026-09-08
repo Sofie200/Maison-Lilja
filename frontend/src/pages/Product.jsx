@@ -5,7 +5,7 @@ import { addToCart } from "../shopify/cart";
 import "./Product.css";
 import Button from "../components/ui/Button";
 import Loader from "../components/ui/Loader";
-import Error from "../components/ui/Error";
+import ErrorMessage from "../components/ui/ErrorMessage";
 
 export default function Product() {
 
@@ -13,7 +13,7 @@ export default function Product() {
     const { product, loading, error } = useProduct(id);
 
     if (loading) return <section><Loader /></section>;
-    if (error == false) return <section><Error message={error} /></section>;
+    if (error == false) return <section><ErrorMessage message={error} /></section>;
 
     return (
         <section className="product-page">
