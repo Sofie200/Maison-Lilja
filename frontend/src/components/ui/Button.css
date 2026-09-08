@@ -81,3 +81,9 @@
 .btn-inverted:hover {
     background: var(--color-bg-alt);
 }
+
+/* Loading */
+.btn-loading {
+    opacity: 0.7;
+    pointer-events: none;
+}

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useProduct } from "../hooks/useProduct";
-import { addToCart } from "../shopify/cart";
+import { useCart } from "../contexts/CartContext";
 
 import "./Product.css";
 import Button from "../components/ui/Button";
@@ -11,9 +11,10 @@ export default function Product() {
 
     const { id } = useParams();
     const { product, loading, error } = useProduct(id);
+    const { addToCart, loading: cartLoading } = useCart();
 
     if (loading) return <section><Loader /></section>;
-    if (error == false) return <section><ErrorMessage message={error} /></section>;
+    if (error) return <section><ErrorMessage message={error} /></section>;
 
     return (
         <section className="product-page">
@@ -24,18 +25,25 @@ export default function Product() {
             <div className="product-info">
                 <h1>{product.title}</h1>
 
-                <div
-                    className="description"
-                    dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-                />
+                <div>
+                    <div
+                        className="description"
+                        dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                    />
 
-                <div className="price">
-                    {Number(product.variants.nodes[0].price.amount)} kr
+                    <div className="price">
+                        {Number(product.variants.nodes[0].price.amount)} kr
+                    </div>
+                    
                 </div>
 
-                <Button onClick={() => addToCart(product.variants.nodes[0].id)}>
+                <Button
+                    loading={cartLoading}
+                    onClick={() => addToCart(product.variants.nodes[0].id)}
+                >
                     Lägg i varukorg
                 </Button>
+
             </div>
         </section>
     );

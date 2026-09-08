@@ -1,23 +1,28 @@
 import "./Button.css";
 
 const Button = ({
-    children,        // texten i knappen
+    children,
     size = "md",
     color = "default",
-    onClick,         // funktion
-    to,              // destination (URL)
+    loading = false,
+    onClick,
+    to,
     ...rest
 }) => {
+
+    const content = loading ? "Loading..." : children;
+
     // Om knappen har en destination → rendera en <a>
     if (to) {
         return (
             <div>
                 <a
                     href={to}
-                    className={`btn btn-${size} btn-${color}`}
+                    className={`btn btn-${size} btn-${color} ${loading ? "btn-loading" : ""}`}
+                    aria-disabled={loading}
                     {...rest}
                 >
-                    {children}
+                    {content}
                 </a>
             </div>
         );
@@ -27,11 +32,12 @@ const Button = ({
     return (
         <div>
             <button
-                className={`btn btn-${size} btn-${color}`}
-                onClick={onClick}
+                className={`btn btn-${size} btn-${color} ${loading ? "btn-loading" : ""}`}
+                onClick={loading ? undefined : onClick}
+                disabled={loading}
                 {...rest}
             >
-                {children}
+                {content}
             </button>
         </div>
     );

@@ -27,7 +27,14 @@ export function useProduct(id) {
                   title
                   descriptionHtml
                   images(first: 5) { nodes { url } }
-                  variants(first: 5) { nodes { price { amount } } }
+                  variants(first: 5) {
+                    nodes {
+                        id
+                        price { amount }
+                        image { url }
+                    }
+                  }
+
                 }
               }
             `,

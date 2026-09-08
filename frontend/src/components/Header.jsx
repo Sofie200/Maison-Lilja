@@ -18,7 +18,7 @@ const Header = () => {
                     <a href="/profile">
                         <span className="material-symbols-rounded">person</span>
                     </a>
-                    <a href="/cart">
+                    <a href="/shop/cart">
                         <span className="material-symbols-rounded">shopping_bag</span>
                     </a>
                 </div>
