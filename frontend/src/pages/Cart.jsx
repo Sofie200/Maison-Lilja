@@ -1,31 +1,38 @@
 import { useCart } from "../contexts/CartContext";
+import "./Cart.css";
 
 const Cart = () => {
     const { cart } = useCart();
-    console.log("Cart contents:", cart);
 
     return (
-        <section>
-            <h1>Varukorg</h1>
-            {cart.map(item => {
-                const merch = item.merchandise;
+        <section className="cart-section">
+            <h1 className="cart-title">Varukorg</h1>
 
-                return (
-                    <div key={item.id}>
-                        <img
-                            src={merch.image?.url || "/placeholder.png"}
-                            alt={merch.product?.title || merch.title}
-                        />
+            <div className="cart-items">
+                {cart.map(item => {
+                    const merch = item.merchandise;
 
-                        <h3>{merch.product?.title || merch.title}</h3>
+                    return (
+                        <div key={item.id} className="cart-item">
+                            <img
+                                className="cart-item-image"
+                                src={merch.image?.url || "/placeholder.png"}
+                                alt={merch.product?.title || merch.title}
+                            />
 
-                        <p>{item.quantity} st</p>
+                            <div className="cart-item-info">
+                                <h3 className="cart-item-name">
+                                    {merch.product?.title || merch.title}
+                                </h3>
 
-                        <p>{merch.price.amount} kr</p>
-                    </div>
-                );
-            })}
+                                <p className="cart-item-qty">{item.quantity} st</p>
 
+                                <p className="cart-item-price">{merch.price.amount} kr</p>
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
         </section>
     );
 };

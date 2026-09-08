@@ -141,52 +141,54 @@ export function CartProvider({ children }) {
 
     // Add item to cart
     async function addToCart(variantId, quantity = 1) {
-        console.log("➡️ addToCart called with:", variantId);
+        console.log("➡️ addToCart called with:", variantId, quantity);
 
         try {
             setLoading(true);
 
             let id = cartId;
-
-            if (!id) {
-                id = await createCart();
-            }
+            if (!id) id = await createCart();
 
             const response = await fetch(client.getStorefrontApiUrl(), {
                 method: "POST",
                 headers: client.getPublicTokenHeaders(),
                 body: JSON.stringify({
                     query: `
-                        mutation AddLines($cartId: ID!, $lines: [CartLineInput!]!) {
-                            cartLinesAdd(cartId: $cartId, lines: $lines) {
-                                cart {
-                                    id
-                                    lines(first: 20) {
-                                        nodes {
-                                            id
-                                            quantity
-                                            merchandise {
-                                                ... on ProductVariant {
-                                                    id
-                                                    title
-                                                    image { url }
-                                                    price { amount }
-                                                    product { title }
-                                                }
+                    mutation AddLines($cartId: ID!, $lines: [CartLineInput!]!) {
+                        cartLinesAdd(cartId: $cartId, lines: $lines) {
+                            cart {
+                                id
+                                lines(first: 20) {
+                                    nodes {
+                                        id
+                                        quantity
+                                        merchandise {
+                                            ... on ProductVariant {
+                                                id
+                                                title
+                                                image { url }
+                                                price { amount }
+                                                product { title }
                                             }
                                         }
                                     }
                                 }
-                                userErrors {
-                                    field
-                                    message
-                                }
+                            }
+                            userErrors {
+                                field
+                                message
                             }
                         }
-                    `,
+                    }
+                `,
                     variables: {
                         cartId: id,
-                        lines: [{ merchandiseId: variantId, quantity }]
+                        lines: [
+                            {
+                                merchandiseId: variantId,
+                                quantity: Number(quantity) || 1   // ⭐ FIXEN
+                            }
+                        ]
                     }
                 })
             });
@@ -220,6 +222,7 @@ export function CartProvider({ children }) {
             setLoading(false);
         }
     }
+
 
     return (
         <CartContext.Provider value={{ cart, addToCart, loading, error }}>

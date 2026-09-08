@@ -34,12 +34,12 @@ export default function Product() {
                     <div className="price">
                         {Number(product.variants.nodes[0].price.amount)} kr
                     </div>
-                    
+
                 </div>
 
                 <Button
                     loading={cartLoading}
-                    onClick={() => addToCart(product.variants.nodes[0].id)}
+                    onClick={() => addToCart(product.variants.nodes[0].id, 1)}
                 >
                     Lägg i varukorg
                 </Button>

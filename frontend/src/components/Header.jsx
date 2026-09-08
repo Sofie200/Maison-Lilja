@@ -1,3 +1,4 @@
+import CartIcon from "./CartIcon";
 import "./Header.css";
 import NavMenu from "./NavMenu";
 
@@ -18,9 +19,7 @@ const Header = () => {
                     <a href="/profile">
                         <span className="material-symbols-rounded">person</span>
                     </a>
-                    <a href="/shop/cart">
-                        <span className="material-symbols-rounded">shopping_bag</span>
-                    </a>
+                    <CartIcon />                    
                 </div>
             </div>
 
