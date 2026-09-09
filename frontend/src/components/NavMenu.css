@@ -16,7 +16,7 @@ li {
     cursor: pointer;
     padding: 0;
     position: absolute;
-    top: var(--spacing-md);
+    top: var(--spacing-lg);
     left: var(--spacing-md);
     z-index: 1001;
 }

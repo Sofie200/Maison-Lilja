@@ -94,13 +94,13 @@ section {
     gap: var(--spacing-md);
 }
 
-@media (max-width: 900px) {
+@media screen and (max-width: 900px) {
     .product-grid {
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width: 500px) {
+@media screen and (max-width: 500px) {
     .product-grid {
         grid-template-columns: repeat(1, 1fr);
     }

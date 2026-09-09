@@ -70,7 +70,7 @@
     background: var(--color-text-light);
     transform: translateY(-2px);
 }
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
     .hero-fade {
         display: block;
         height: auto;

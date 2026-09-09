@@ -84,7 +84,7 @@
 }
 
 /* Mobile */
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
     .footer-inner {
         grid-template-columns: 1fr;
         text-align: center;
