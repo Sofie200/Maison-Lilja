@@ -81,6 +81,17 @@
     }
 }
 
+@media (max-width: 1200px) {
+
+    .hero .content h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero {
+        height: 500px;
+    }
+}
+
 @media (max-width: 900px) {
     .hero {
         display: block;
