@@ -81,7 +81,7 @@
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
     .hero {
         display: block;
         height: auto;
@@ -89,7 +89,7 @@
 
     .hero .image-wrapper {
         width: 100%;
-        height: 320px;
+        height: 500px;
     }
 
     .hero .content {
@@ -100,5 +100,20 @@
 
     .hero .content h1{
         font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .hero .image-wrapper {
+        width: 100%;
+        height: 300px;
+    }
+
+    .hero .content h1 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+    }
+    .hero .content p {
+        margin-bottom: 30px;
     }
 }
