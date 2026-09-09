@@ -3,33 +3,31 @@ import "./Footer.css";
 const Footer = () => {
     return (
         <footer className="footer">
-            <div className="footer-inner">
+            <section className="footer-inner">
 
                 {/* Brand */}
                 <div className="footer-brand">
-                    <h2>Maison Lilja</h2>
-                    <p>Mariedalsvägen 66<br />Malmö, Sverige</p>
+                    <h3>Maison Lilja</h3>
+                    <br />
+                    <a href="/about">Om oss</a><br />
+                    <a href="/contact">Kontakt</a>
                 </div>
 
-                {/* Contact */}
-                <div className="footer-contact">
-                    <h3>Kontakt</h3>
-                    <p>kontakt@maisonlilja.se</p>
-                    <p>+46 (0) 70 123 45 67</p>
-                </div>
 
                 {/* Info / Policies */}
                 <div className="footer-info">
                     <h3>Information</h3>
-                    <a href="/faq">Vanliga frågor</a>
-                    <a href="/integritetspolicy">Integritetspolicy</a>
-                    <a href="/kopvillkor">Köpvillkor</a>
+                    <br />
+                    <a href="/faq">Vanliga frågor</a><br />
+                    <a href="/integritetspolicy">Integritetspolicy</a><br />
+                    <a href="/kopvillkor">Köpvillkor</a><br />
                     <a href="/returer">Returer & reklamation</a>
                 </div>
 
                 {/* Social */}
                 <div className="footer-social">
                     <h3>Följ oss</h3>
+                    <br />
                     <a
                         href="https://instagram.com"
                         target="_blank"
@@ -53,7 +51,7 @@ const Footer = () => {
                     </a>
                 </div>
 
-            </div>
+            </section>
 
             <div className="footer-bottom">
                 © {new Date().getFullYear()} Maison Lilja — Alla rättigheter förbehållna.

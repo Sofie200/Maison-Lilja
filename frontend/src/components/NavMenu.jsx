@@ -26,8 +26,6 @@ const NavMenu = () => {
                 <li><a href="/private-label">Private label</a></li>
                 <li><a href="/courses">Kurser</a></li>
                 <li><a href="/tastings">Chokladprovningar</a></li>
-                <li><a href="/about">Om oss</a></li>
-                <li><a href="/contact">Kontakt</a></li>
             </ul>
         </nav>
     );

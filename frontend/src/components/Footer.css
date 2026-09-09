@@ -1,72 +1,47 @@
 .footer {
     background: var(--color-text);
-    /* chokladbrun bakgrund */
     color: var(--color-bg);
-    /* cremefärgad text */
-    padding: var(--spacing-xl) var(--spacing-md) var(--spacing-lg);
     font-family: var(--font-sans);
 }
 
 .footer-inner {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: var(--spacing-lg);
-}
-
-.footer-brand h2 {
-    font-family: var(--font-serif);
-    font-size: 1.8rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-bg);
-    /* creme */
-}
-
-.footer-brand p {
-    color: var(--color-text-light);
-    /* ljus choklad */
-}
-
-.footer-contact h3,
-.footer-social h3 {
-    font-size: 1.1rem;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-bg);
-    /* creme */
-}
-
-.footer-contact p {
-    margin: 4px 0;
-    color: var(--color-text-light);
-}
-
-.footer-info {
     display: flex;
-    flex-direction: column;
-    gap: var(--spacing-xs);
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: space-between;
+    gap: var(--spacing-xl);
+    padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl);
 }
 
-.footer-info h3 {
+.footer-info, .footer-brand {
+    display: block;
+}
+
+footer h3 {
+    display: inline-block;
     font-size: 1.1rem;
-    margin-bottom: var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
     color: var(--color-bg);
-    /* creme */
+    border-bottom: 1px solid var(--color-bg-secondary);
+    padding-bottom: 8px;
+
 }
 
-.footer-info a {
-    color: var(--color-text-light);
+.footer a {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: var(--color-bg-secondary);
+    opacity: 0.8;
     text-decoration: none;
     transition: opacity 0.3s ease;
 }
 
-.footer-info a:hover {
-    opacity: 0.7;
+.footer a:hover {
+    color: var(--color-bg-secondary);
+    opacity: 0.5;
 }
 
 .instagram-icon {
-    display: inline-block;
-    margin-top: var(--spacing-xs);
+    display: block;
     transition: opacity 0.3s ease;
 }
 
@@ -76,8 +51,7 @@
 
 .footer-bottom {
     text-align: center;
-    margin-top: var(--spacing-lg);
-    padding-top: var(--spacing-md);
+    padding: var(--spacing-md);
     border-top: 1px solid rgba(255, 255, 255, 0.2);
     font-size: 0.9rem;
     color: var(--color-bg);
