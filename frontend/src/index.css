@@ -25,6 +25,7 @@
     --accent-green: #9ccfa3;
     --accent-purple: #b9a3e6;
     --accent-blue: #8fbce8;
+    --warning: #AA0000;
 
     /* ====== Typografi ====== */
     --font-serif: "Source Serif 4", serif;
@@ -112,7 +113,7 @@ h1, h2, h3, h4, h5{
 }
 
 p{
-    line-height: 1.8rem;
+    line-height: 150%;
     margin: 15px 0;
 }
 
