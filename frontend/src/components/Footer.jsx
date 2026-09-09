@@ -29,7 +29,7 @@ const Footer = () => {
                     <h3>Följ oss</h3>
                     <br />
                     <a
-                        href="https://instagram.com"
+                        href="https://instagram.com/maisonlilja"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="instagram-icon"

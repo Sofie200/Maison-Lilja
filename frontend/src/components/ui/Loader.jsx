@@ -1,9 +1,17 @@
-import "./Loader.css"; 
+import "./Loader.css";
 
 const Loader = () => {
-  return (
-      <div className="loader"></div>
-  )
+	return (
+		<div class="loader-wrapper">
+			<div class="lds-ellipsis">
+				<div></div>
+				<div></div>
+				<div></div>
+				<div></div>
+			</div>
+		</div>
+
+	)
 }
 
 export default Loader

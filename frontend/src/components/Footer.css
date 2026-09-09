@@ -6,7 +6,6 @@
 
 .footer-inner {
     display: flex;
-    grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
     gap: var(--spacing-xl);
     padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl);
@@ -58,9 +57,10 @@ footer h3 {
 }
 
 /* Mobile */
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
     .footer-inner {
-        grid-template-columns: 1fr;
+        flex-direction: column;
+        gap: 20px;
         text-align: center;
     }
 }
