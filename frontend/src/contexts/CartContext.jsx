@@ -48,7 +48,7 @@ export function CartProvider({ children }) {
                                                 title
                                                 image { url }
                                                 price { amount }
-                                                product { title }
+                                                product { id title }
                                             }
                                         }
                                     }
@@ -216,7 +216,7 @@ export function CartProvider({ children }) {
                                                 title
                                                 image { url }
                                                 price { amount }
-                                                product { title }
+                                                product { id title }
                                             }
                                         }
                                     }
@@ -274,9 +274,204 @@ export function CartProvider({ children }) {
         }
     }
 
+    // Remove a line from the cart
+    async function removeFromCart(lineId) {
+        console.log("➡️ removeFromCart called with:", lineId);
+
+        if (!cartId) {
+            console.error("❌ Ingen cartId satt");
+            return;
+        }
+
+        try {
+            setLoading(true);
+            setError(null);
+
+            const response = await fetch(client.getStorefrontApiUrl(), {
+                method: "POST",
+                headers: client.getPublicTokenHeaders(),
+                body: JSON.stringify({
+                    query: `
+                    mutation RemoveLines($cartId: ID!, $lineIds: [ID!]!) {
+                        cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
+                            cart {
+                                id
+                                lines(first: 20) {
+                                    nodes {
+                                        id
+                                        quantity
+                                        merchandise {
+                                            ... on ProductVariant {
+                                                id
+                                                title
+                                                image { url }
+                                                price { amount }
+                                                product { id title }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            userErrors {
+                                field
+                                message
+                            }
+                        }
+                    }
+                `,
+                    variables: {
+                        cartId,
+                        lineIds: [lineId]
+                    }
+                })
+            });
+
+            const data = await response.json();
+            console.log("📦 cartLinesRemove response:", data);
+
+            if (data.errors) {
+                console.error("❌ GraphQL errors:", data.errors);
+                setError("Kunde inte ta bort varan.");
+                return;
+            }
+
+            const result = data?.data?.cartLinesRemove;
+
+            if (!result) {
+                console.error("❌ cartLinesRemove returned null");
+                setError("Kunde inte ta bort varan.");
+                return;
+            }
+
+            if (result.userErrors?.length > 0) {
+                console.error("❌ Shopify userErrors:", result.userErrors);
+                setError(result.userErrors[0].message);
+                return;
+            }
+
+            setCart(result.cart.lines.nodes);
+
+        } catch (err) {
+            console.error("❌ removeFromCart crashed:", err);
+            setError(err.message || "Ett oväntat fel inträffade.");
+        } finally {
+            setLoading(false);
+        }
+    }
+
+    // Update the quantity of a line in the cart
+    async function updateQuantity(lineId, quantity) {
+        console.log("➡️ updateQuantity called with:", lineId, quantity);
+
+        if (!cartId) {
+            console.error("❌ Ingen cartId satt");
+            return;
+        }
+
+        // Om kvantiteten blir 0 (eller mindre), ta bort raden helt istället
+        if (Number(quantity) <= 0) {
+            return removeFromCart(lineId);
+        }
+
+        try {
+            setLoading(true);
+            setError(null);
+
+            // Hämta variant-id för raden så vi kan lagerkolla innan vi uppdaterar
+            const line = cart.find((l) => l.id === lineId);
+
+            if (line) {
+                const variant = await checkVariantAvailability(line.merchandise.id);
+
+                if (
+                    variant.quantityAvailable !== null &&
+                    variant.quantityAvailable < Number(quantity)
+                ) {
+                    setError(`Endast ${variant.quantityAvailable} st finns i lager.`);
+                    return;
+                }
+            }
+
+            const response = await fetch(client.getStorefrontApiUrl(), {
+                method: "POST",
+                headers: client.getPublicTokenHeaders(),
+                body: JSON.stringify({
+                    query: `
+                    mutation UpdateLines($cartId: ID!, $lines: [CartLineUpdateInput!]!) {
+                        cartLinesUpdate(cartId: $cartId, lines: $lines) {
+                            cart {
+                                id
+                                lines(first: 20) {
+                                    nodes {
+                                        id
+                                        quantity
+                                        merchandise {
+                                            ... on ProductVariant {
+                                                id
+                                                title
+                                                image { url }
+                                                price { amount }
+                                                product { id title }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            userErrors {
+                                field
+                                message
+                            }
+                        }
+                    }
+                `,
+                    variables: {
+                        cartId,
+                        lines: [
+                            {
+                                id: lineId,
+                                quantity: Number(quantity)
+                            }
+                        ]
+                    }
+                })
+            });
+
+            const data = await response.json();
+            console.log("📦 cartLinesUpdate response:", data);
+
+            if (data.errors) {
+                console.error("❌ GraphQL errors:", data.errors);
+                setError("Kunde inte uppdatera antalet.");
+                return;
+            }
+
+            const result = data?.data?.cartLinesUpdate;
+
+            if (!result) {
+                console.error("❌ cartLinesUpdate returned null");
+                setError("Kunde inte uppdatera antalet.");
+                return;
+            }
+
+            if (result.userErrors?.length > 0) {
+                console.error("❌ Shopify userErrors:", result.userErrors);
+                setError(result.userErrors[0].message);
+                return;
+            }
+
+            setCart(result.cart.lines.nodes);
+
+        } catch (err) {
+            console.error("❌ updateQuantity crashed:", err);
+            setError(err.message || "Ett oväntat fel inträffade.");
+        } finally {
+            setLoading(false);
+        }
+    }
+
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, loading, error }}>
+        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, loading, error }}>
             {children}
         </CartContext.Provider>
     );
