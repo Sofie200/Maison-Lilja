@@ -15,9 +15,10 @@ export default function Shop() {
             <h1>Handla nu</h1>
 
             <div className="product-grid">
-                {products.map(p => (
-                    <ProductCard key={p.id} product={p} />
-                ))}
+                {products.map(p => {
+                    console.log(p);
+                    return <ProductCard key={p.id} product={p} />;
+                })}
             </div>
             
         </section>

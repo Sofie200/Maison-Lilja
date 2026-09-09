@@ -8,6 +8,7 @@
     --color-text: #4a2f27;
     /* Chokladbrun – djup, lyxig */
     --color-text-light: #6b4a3f;
+    --color-border: #6b4a3f;
     /* Ljusare chokladton för sekundär text */
 
     /* ====== Pastellkontraster ====== */
@@ -60,7 +61,7 @@ body {
     font-size: 16px;
 }
 
-#wrapper{
+#wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -83,8 +84,7 @@ main {
 section {
     max-width: 1200px;
     margin: auto;
-    padding: var(--spacing-lg);
-    padding-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl) var(--spacing-lg);
 }
 
 /* ====== Produktgrid ====== */
@@ -107,16 +107,35 @@ section {
 }
 
 /* ====== Globals ====== */
-h1, h2, h3, h4, h5{
+h1,
+h2,
+h3,
+h4,
+h5 {
     font-family: var(--font-serif);
     font-weight: 400;
+    margin-top: 0;
 }
 
-p{
+h2 {
+    font-size: 2rem;
+}
+
+@media screen and (max-width: 900px) {
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    h2 {
+        font-size: 1.4rem;
+    }
+}
+
+p {
     line-height: 150%;
     margin: 15px 0;
 }
 
-img{
+img {
     max-width: 100%;
 }

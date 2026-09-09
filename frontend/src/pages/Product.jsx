@@ -18,7 +18,6 @@ export default function Product() {
 
     const variant = product.variants.nodes[0];
     const inStock = variant.availableForSale;
-    const quantity = variant.quantityAvailable;
 
     return (
         <section className="product-page">
@@ -39,13 +38,11 @@ export default function Product() {
                         {Number(variant.price.amount)} kr
                     </div>
 
-                    <div className={`stock-status ${inStock ? "in-stock" : "out-of-stock"}`}>
-                        {inStock
-                            ? (quantity !== null && quantity <= 5
-                                ? `Endast ${quantity} kvar i lager`
-                                : "I lager")
-                            : "Slut i lager"}
-                    </div>
+                    {!inStock && (
+                        <div className="stock-status out-of-stock">
+                            Slut i lager
+                        </div>
+                    )}
 
                 </div>
 

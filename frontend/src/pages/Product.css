@@ -11,6 +11,8 @@
 .product-image img {
     width: 100%;
     height: auto;
+    min-height: 400px;
+    max-height: 800px;
     border-radius: 12px;
     object-fit: cover;
 }
@@ -23,6 +25,7 @@
     font-size: 1.4rem;
     font-weight: 600;
     margin-top: 10px;
+    margin-bottom: 20px;
 }
 
 .stock-status {
@@ -42,7 +45,14 @@
 @media screen and (max-width: 900px) {
     .product-page {
         display: block;
-        gap: 40px;
-        align-items: flex-start;
+    }
+
+    .product-image {
+        margin-bottom: 20px;
+    }
+
+    .product-image img {
+        min-height: 150px;
+        max-height: 250px;
     }
 }

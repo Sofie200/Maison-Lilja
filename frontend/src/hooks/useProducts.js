@@ -38,7 +38,17 @@ export function useProducts(limit = 10) {
                     throw new Error("Produkter kunde inte hämtas.");
                 }
 
-                setProducts(data.data.products.nodes);
+                // Platta ut lagerinfo per produkt så ProductCard kan läsa den
+                const productsWithStock = data.data.products.nodes.map((product) => {
+                    const variant = product.variants.nodes[0];
+                    return {
+                        ...product,
+                        inStock: variant?.availableForSale ?? false,
+                        quantityAvailable: variant?.quantityAvailable ?? null,
+                    };
+                });
+
+                setProducts(productsWithStock);
 
             } catch (err) {
                 setError(err.message || "Ett oväntat fel inträffade.");
