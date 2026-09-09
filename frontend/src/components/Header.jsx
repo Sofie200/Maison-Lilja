@@ -6,7 +6,6 @@ const Header = () => {
     return (
         <header>
 
-            {/* Top row: logo centered + icons right */}
             <div className="header-top">
                 <div className="header-logo">
                     <a href="/"><img src="../../logo.png" alt="Logo" /></a>
@@ -16,10 +15,10 @@ const Header = () => {
                     <a href="/search">
                         <span className="material-symbols-rounded">search</span>
                     </a>
-                    <a href="/profile">
+                    {/*<a href="/profile">
                         <span className="material-symbols-rounded">person</span>
-                    </a>
-                    <CartIcon />                    
+                    </a>*/}
+                    <CartIcon />
                 </div>
             </div>
 

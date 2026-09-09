@@ -12,28 +12,22 @@ header {
     gap: 10px;
 }
 
-/* Top row */
 .header-top {
     position: relative;
     display: flex;
     justify-content: center;
-    /* logo centrerad */
     align-items: center;
     padding-bottom: 10px;
 }
 
-/* Logo */
 .header-logo img {
-    width: 100%;
     max-width: 250px;
     margin-bottom: 0;
-    /* du hade 20px, men nu ligger nav under */
 }
 
-/* Ikoner till höger */
 .header-icons {
     position: absolute;
-    right: 20px;
+    right: var(--spacing-xl);
     top: 50%;
     transform: translateY(-50%);
     display: flex;
@@ -45,11 +39,30 @@ header {
     cursor: pointer;
 }
 
-header a{
+header a {
     color: var(--color-text-light);
+}
+
+header a:hover {
+    color: var(--color-text);
 }
 
 /* NavMenu under logon */
 header nav {
     width: 100%;
+}
+
+@media (max-width: 500px) {
+    header {
+        padding: 20px 0 0;
+    }
+    .header-logo img {
+        width: 150px !important;
+        max-width: 150px!important;
+    }
+
+    .header-icons {
+        gap: 0.8rem;
+        right: var(--spacing-md);
+    }
 }

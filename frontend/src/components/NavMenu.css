@@ -1,3 +1,9 @@
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
 /* Hamburger button */
 .hamburger {
     width: 32px;
@@ -10,8 +16,9 @@
     cursor: pointer;
     padding: 0;
     position: absolute;
-    top: 20px;
-    left: 20px;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    z-index: 1001;
 }
 
 .hamburger span {
@@ -37,19 +44,26 @@
 
 /* Mobile menu */
 .menu {
+    background-color: var(--color-bg-secondary);
+    box-shadow: var(--shadow-soft);
     list-style: none;
-    padding-left: var(--spacing-md);
-    margin-top: var(--spacing-sm);
-    display: none;
+    padding: var(--spacing-lg) var(--spacing-xl);
+    display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
     position: absolute;
-    top: 44px;
-    left: 20px;
+    top: -10px;
+    left: 0;
+
+    /* Startläge: dold utanför skärmen till vänster */
+    transform: translateX(-100%);
+    visibility: hidden;
+    transition: transform 0.35s ease, visibility 0.35s ease;
 }
 
 .menu.show {
-    display: flex;
+    transform: translateX(0);
+    visibility: visible;
 }
 
 .menu a {
@@ -62,7 +76,7 @@
 }
 
 .menu a {
-    
+
     display: inline-block;
     transition: transform 0.25s ease, opacity 0.25s ease;
 }
@@ -94,6 +108,7 @@
     }
 
     .menu {
+        background-color: transparent;
         display: flex !important;
         flex-direction: row;
         justify-content: center;
@@ -102,6 +117,12 @@
         padding-left: 0;
         margin: 0;
         position: static;
+        padding: 0px var(--spacing-xl);
+        /* Ingen slide-effekt på desktop, alltid synlig */
+        transform: none;
+        visibility: visible;
+        transition: none;
+        box-shadow: none;
     }
 
     .menu a {
