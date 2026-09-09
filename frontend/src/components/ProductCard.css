@@ -49,18 +49,16 @@
     justify-content: center;
     gap: var(--spacing-sm);
     align-items: baseline;
-    margin-bottom: var(--spacing-md);
+    font-weight: 600;
 }
 
 .price-normal {
     font-size: 1.1rem;
-    font-weight: 500;
     color: var(--color-text);
 }
 
 .price-discounted {
     font-size: 1.2rem;
-    font-weight: 600;
     color: var(--accent-pink);
 }
 

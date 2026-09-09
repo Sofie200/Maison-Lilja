@@ -79,10 +79,11 @@ main {
     flex: 1;
 }
 
-section, .section-center {
+section {
     max-width: 1200px;
     margin: auto;
     padding: var(--spacing-lg);
+    padding-bottom: var(--spacing-xl);
 }
 
 /* ====== Produktgrid ====== */
@@ -90,6 +91,18 @@ section, .section-center {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-md);
+}
+
+@media (max-width: 900px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 500px) {
+    .product-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 /* ====== Globals ====== */

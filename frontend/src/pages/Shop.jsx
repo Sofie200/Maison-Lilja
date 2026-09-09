@@ -11,6 +11,7 @@ export default function Shop() {
 
     return (
         <section>
+
             <h1>Handla nu</h1>
 
             <div className="product-grid">
@@ -18,6 +19,7 @@ export default function Shop() {
                     <ProductCard key={p.id} product={p} />
                 ))}
             </div>
+            
         </section>
         
     );
