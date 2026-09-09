@@ -16,6 +16,10 @@ export default function Product() {
     if (loading) return <section><Loader /></section>;
     if (error) return <section><ErrorMessage message={error} /></section>;
 
+    const variant = product.variants.nodes[0];
+    const inStock = variant.availableForSale;
+    const quantity = variant.quantityAvailable;
+
     return (
         <section className="product-page">
             <div className="product-image">
@@ -32,17 +36,28 @@ export default function Product() {
                     />
 
                     <div className="price">
-                        {Number(product.variants.nodes[0].price.amount)} kr
+                        {Number(variant.price.amount)} kr
+                    </div>
+
+                    <div className={`stock-status ${inStock ? "in-stock" : "out-of-stock"}`}>
+                        {inStock
+                            ? (quantity !== null && quantity <= 5
+                                ? `Endast ${quantity} kvar i lager`
+                                : "I lager")
+                            : "Slut i lager"}
                     </div>
 
                 </div>
 
-                <Button
-                    loading={cartLoading}
-                    onClick={() => addToCart(product.variants.nodes[0].id, 1)}
-                >
-                    Lägg i varukorg
-                </Button>
+                {inStock && (
+                    <Button
+                        loading={cartLoading}
+                        disabled={cartLoading}
+                        onClick={() => addToCart(variant.id, 1)}
+                    >
+                        Lägg i varukorg
+                    </Button>
+                )}
 
             </div>
         </section>

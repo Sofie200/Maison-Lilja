@@ -26,12 +26,20 @@ export function useProduct(id) {
                   id
                   title
                   descriptionHtml
+                  availableForSale
                   images(first: 5) { nodes { url } }
                   variants(first: 5) {
                     nodes {
                         id
                         price { amount }
                         image { url }
+                        availableForSale
+                        quantityAvailable
+                        currentlyNotInStock
+                        selectedOptions {
+                            name
+                            value
+                        }
                     }
                   }
 

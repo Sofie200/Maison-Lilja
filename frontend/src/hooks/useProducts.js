@@ -23,7 +23,7 @@ export function useProducts(limit = 10) {
                     id
                     title
                     images(first: 1) { nodes { url } }
-                    variants(first: 1) { nodes { price { amount } } }
+                    variants(first: 1) { nodes { price { amount } availableForSale quantityAvailable currentlyNotInStock} }
                   }
                 }
               }

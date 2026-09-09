@@ -139,12 +139,60 @@ export function CartProvider({ children }) {
         return id;
     }
 
+    // Kollar om en variant faktiskt går att köpa just nu
+    async function checkVariantAvailability(variantId) {
+        const response = await fetch(client.getStorefrontApiUrl(), {
+            method: "POST",
+            headers: client.getPublicTokenHeaders(),
+            body: JSON.stringify({
+                query: `
+                    query CheckVariant($id: ID!) {
+                        node(id: $id) {
+                            ... on ProductVariant {
+                                id
+                                availableForSale
+                                quantityAvailable
+                            }
+                        }
+                    }
+                `,
+                variables: { id: variantId }
+            })
+        });
+
+        const data = await response.json();
+        const variant = data?.data?.node;
+
+        if (!variant) {
+            throw new Error("Varianten kunde inte hittas.");
+        }
+
+        return variant;
+    }
+
     // Add item to cart
     async function addToCart(variantId, quantity = 1) {
         console.log("➡️ addToCart called with:", variantId, quantity);
 
         try {
             setLoading(true);
+            setError(null);
+
+            // 🔒 Serverside-koll (så långt det går från klienten) innan vi lägger till
+            const variant = await checkVariantAvailability(variantId);
+
+            if (!variant.availableForSale) {
+                setError("Varan finns tyvärr inte i lager längre.");
+                return;
+            }
+
+            if (
+                variant.quantityAvailable !== null &&
+                variant.quantityAvailable < Number(quantity)
+            ) {
+                setError(`Endast ${variant.quantityAvailable} st finns i lager.`);
+                return;
+            }
 
             let id = cartId;
             if (!id) id = await createCart();
@@ -186,7 +234,7 @@ export function CartProvider({ children }) {
                         lines: [
                             {
                                 merchandiseId: variantId,
-                                quantity: Number(quantity) || 1   // ⭐ FIXEN
+                                quantity: Number(quantity) || 1
                             }
                         ]
                     }
@@ -198,6 +246,7 @@ export function CartProvider({ children }) {
 
             if (data.errors) {
                 console.error("❌ GraphQL errors:", data.errors);
+                setError("Kunde inte lägga till varan i varukorgen.");
                 return;
             }
 
@@ -205,11 +254,13 @@ export function CartProvider({ children }) {
 
             if (!result) {
                 console.error("❌ cartLinesAdd returned null");
+                setError("Kunde inte lägga till varan i varukorgen.");
                 return;
             }
 
             if (result.userErrors?.length > 0) {
                 console.error("❌ Shopify userErrors:", result.userErrors);
+                setError(result.userErrors[0].message);
                 return;
             }
 
@@ -217,7 +268,7 @@ export function CartProvider({ children }) {
 
         } catch (err) {
             console.error("❌ addToCart crashed:", err);
-            setError(err.message);
+            setError(err.message || "Ett oväntat fel inträffade.");
         } finally {
             setLoading(false);
         }

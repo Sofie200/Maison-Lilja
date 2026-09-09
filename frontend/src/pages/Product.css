@@ -24,3 +24,17 @@
     font-weight: 600;
     margin-top: 10px;
 }
+
+.stock-status {
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.stock-status.in-stock {
+    color: #1a7f37;
+}
+
+.stock-status.out-of-stock {
+    color: #c0392b;
+}
