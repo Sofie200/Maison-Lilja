@@ -88,6 +88,10 @@ section {
     padding: var(--spacing-xl) var(--spacing-lg);
 }
 
+.section-center {
+    text-align: center;
+}
+
 /* ====== Produktgrid ====== */
 .product-grid {
     display: grid;

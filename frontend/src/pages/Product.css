@@ -28,18 +28,14 @@
     margin-bottom: 20px;
 }
 
-.stock-status {
+.product-info .error, .out-of-stock {
     font-size: 0.9rem;
-    font-weight: 600;
-    margin-top: 8px;
+    margin-top: 15px;
 }
 
-.stock-status.in-stock {
-    color: var(--accent-green);
-}
-
-.stock-status.out-of-stock {
-    color: var(--warning);
+.out-of-stock {
+    color: var(--warning) !important;
+    font-style: italic;
 }
 
 @media screen and (max-width: 900px) {

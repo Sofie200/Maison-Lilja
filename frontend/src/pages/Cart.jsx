@@ -22,13 +22,15 @@ const Cart = () => {
         <section className="cart-section">
             <h1 className="cart-title">Varukorg</h1>
 
-            {error && <p className="cart-error">{error}</p>}
+            {/* Generella fel (utan koppling till en specifik rad) visas överst */}
+            {error && !error.id && <p className="cart-error">{error.message}</p>}
 
             <div className="cart-items">
                 {cart.map(item => {
                     const merch = item.merchandise;
                     const lineTotal = Number(merch.price.amount) * item.quantity;
                     const productUrl = `/shop/product/${merch.product.id.split("/").pop()}`;
+                    const itemError = error?.id === item.id ? error.message : null;
 
                     return (
                         <div key={item.id} className="cart-item">
@@ -53,28 +55,37 @@ const Cart = () => {
                                 </p>
 
                                 <div>
-                                    <div className="cart-item-qty-controls">
-                                        <button
-                                            className="qty-btn"
-                                            disabled={loading}
-                                            onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                            aria-label="Minska antal"
-                                        >
-                                            <span className="material-symbols-rounded">remove</span>
-                                        </button>
+                                    <div className="cart-item-qty-error">
 
-                                        <span className="cart-item-qty">{item.quantity} st</span>
+                                        <div className="cart-item-qty-controls">
+                                            <button
+                                                className="qty-btn"
+                                                disabled={loading}
+                                                onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                                aria-label="Minska antal"
+                                            >
+                                                <span className="material-symbols-rounded">remove</span>
+                                            </button>
 
-                                        <button
-                                            className="qty-btn"
-                                            disabled={loading}
-                                            onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                            aria-label="Öka antal"
-                                        >
-                                            <span className="material-symbols-rounded">add</span>
-                                        </button>
+                                            <span className="cart-item-qty">{item.quantity} st</span>
+
+                                            <button
+                                                className="qty-btn"
+                                                disabled={loading}
+                                                onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                                aria-label="Öka antal"
+                                            >
+                                                <span className="material-symbols-rounded">add</span>
+                                            </button>
+
+                                        </div>
+
+                                        {itemError && (
+                                            <p className="cart-item-error">{itemError}</p>
+                                        )}
 
                                     </div>
+
                                 </div>
 
                             </div>
@@ -101,7 +112,7 @@ const Cart = () => {
                 <span className="cart-summary-label">Totalt</span>
                 <span className="cart-summary-total">{cartTotal.toFixed(2)} kr</span>
             </div>
-        </section>
+        </section >
     );
 };
 

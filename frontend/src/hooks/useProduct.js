@@ -52,14 +52,20 @@ export function useProduct(id) {
 
                 const data = await response.json();
 
-                if (!data.data || !data.data.product) {
+                if (data.errors) {
+                    console.error("❌ GraphQL errors:", data.errors);
                     throw new Error("Produkten kunde inte hämtas.");
+                }
+
+                if (!data.data || !data.data.product) {
+                    throw new Error("Produkten kunde inte hittas.");
                 }
 
                 setProduct(data.data.product);
 
             } catch (err) {
-                setError(err.message || "Ett oväntat fel inträffade.");
+                console.error("❌ useProduct crashed:", err);
+                setError("Produkten kunde inte hämtas. Försök igen om en liten stund.");
             } finally {
                 setLoading(false);
             }

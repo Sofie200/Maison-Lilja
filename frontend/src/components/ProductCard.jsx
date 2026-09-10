@@ -3,8 +3,7 @@ import "./ProductCard.css";
 const ProductCard = ({ product }) => {
 
     const price = Number(product.variants.nodes[0].price.amount);
-    const inStock = product.inStock; // från useProducts-hooken
-    const quantity = product.quantityAvailable;
+    const inStock = product.inStock;
 
     return (
 
@@ -18,10 +17,6 @@ const ProductCard = ({ product }) => {
 
                 {!inStock && (
                     <span className="stock-badge out">Slut i lager</span>
-                )}
-
-                {inStock && quantity !== null && quantity <= 5 && (
-                    <span className="stock-badge low">Endast {quantity} kvar</span>
                 )}
             </div>
 

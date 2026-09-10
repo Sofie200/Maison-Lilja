@@ -6,8 +6,8 @@ import { useProducts } from "../hooks/useProducts";
 export default function Shop() {
     const { products, loading, error } = useProducts(10);
 
-    if (loading) return <section><Loader /></section>;
-    if (error == false) return <section><ErrorMessage message={error} /></section>;
+    if (loading) return <section className="section-center"><Loader /></section>;
+    if (error == false) return <section className="section-center"><ErrorMessage message={error} /></section>;
 
     return (
         <section>

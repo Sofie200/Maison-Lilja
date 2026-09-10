@@ -61,6 +61,19 @@
     margin: 0
 }
 
+.cart-item-qty-error{
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.cart-item-error {
+    margin: 0;
+    color: var(--warning);
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
 .cart-item-qty-controls {
     display: inline-flex;
     align-items: center;

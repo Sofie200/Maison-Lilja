@@ -9,6 +9,12 @@ export function CartProvider({ children }) {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
+    // Sätter ett fel, ev. kopplat till en specifik rad/variant (id).
+    // id = null betyder ett generellt fel som inte gäller en specifik vara.
+    function showError(message, id = null) {
+        setError({ message, id });
+    }
+
     // Load cartId from localStorage
     useEffect(() => {
         const saved = localStorage.getItem("cartId");
@@ -28,6 +34,7 @@ export function CartProvider({ children }) {
     async function fetchCart(id) {
         try {
             setLoading(true);
+            setError(null);
 
             const response = await fetch(client.getStorefrontApiUrl(), {
                 method: "POST",
@@ -65,13 +72,19 @@ export function CartProvider({ children }) {
 
             if (data.errors) {
                 console.error("❌ GraphQL errors:", data.errors);
+                showError("Kunde inte hämta din varukorg. Försök igen om en liten stund.");
                 return;
             }
 
             const cartData = data?.data?.cart;
 
             if (!cartData) {
-                console.error("❌ No cart returned");
+                // Varukorgen finns inte längre (t.ex. genomförd eller utgången) –
+                // rensa den sparade referensen så en ny kan skapas vid behov.
+                console.warn("⚠️ Ingen cart hittades för sparad cartId, rensar lokal referens");
+                localStorage.removeItem("cartId");
+                setCartId(null);
+                setCart([]);
                 return;
             }
 
@@ -79,7 +92,7 @@ export function CartProvider({ children }) {
 
         } catch (err) {
             console.error("❌ fetchCart crashed:", err);
-            setError(err.message);
+            showError("Kunde inte hämta din varukorg. Försök igen om en liten stund.");
         } finally {
             setLoading(false);
         }
@@ -182,7 +195,7 @@ export function CartProvider({ children }) {
             const variant = await checkVariantAvailability(variantId);
 
             if (!variant.availableForSale) {
-                setError("Varan finns tyvärr inte i lager längre.");
+                showError("Varan finns tyvärr inte i lager längre.", variantId);
                 return;
             }
 
@@ -190,7 +203,7 @@ export function CartProvider({ children }) {
                 variant.quantityAvailable !== null &&
                 variant.quantityAvailable < Number(quantity)
             ) {
-                setError(`Endast ${variant.quantityAvailable} st finns i lager.`);
+                showError(`Endast ${variant.quantityAvailable} st finns i lager.`, variantId);
                 return;
             }
 
@@ -246,7 +259,7 @@ export function CartProvider({ children }) {
 
             if (data.errors) {
                 console.error("❌ GraphQL errors:", data.errors);
-                setError("Kunde inte lägga till varan i varukorgen.");
+                showError("Kunde inte lägga till varan i varukorgen.", variantId);
                 return;
             }
 
@@ -254,13 +267,13 @@ export function CartProvider({ children }) {
 
             if (!result) {
                 console.error("❌ cartLinesAdd returned null");
-                setError("Kunde inte lägga till varan i varukorgen.");
+                showError("Kunde inte lägga till varan i varukorgen.", variantId);
                 return;
             }
 
             if (result.userErrors?.length > 0) {
                 console.error("❌ Shopify userErrors:", result.userErrors);
-                setError(result.userErrors[0].message);
+                showError("Kunde inte lägga till varan i varukorgen. Kontrollera antalet och försök igen.", variantId);
                 return;
             }
 
@@ -268,7 +281,7 @@ export function CartProvider({ children }) {
 
         } catch (err) {
             console.error("❌ addToCart crashed:", err);
-            setError(err.message || "Ett oväntat fel inträffade.");
+            showError("Kunde inte lägga till varan i varukorgen. Försök igen om en liten stund.", variantId);
         } finally {
             setLoading(false);
         }
@@ -280,6 +293,7 @@ export function CartProvider({ children }) {
 
         if (!cartId) {
             console.error("❌ Ingen cartId satt");
+            showError("Din varukorg kunde inte hittas. Ladda om sidan och försök igen.", lineId);
             return;
         }
 
@@ -331,7 +345,7 @@ export function CartProvider({ children }) {
 
             if (data.errors) {
                 console.error("❌ GraphQL errors:", data.errors);
-                setError("Kunde inte ta bort varan.");
+                showError("Kunde inte ta bort varan.", lineId);
                 return;
             }
 
@@ -339,13 +353,13 @@ export function CartProvider({ children }) {
 
             if (!result) {
                 console.error("❌ cartLinesRemove returned null");
-                setError("Kunde inte ta bort varan.");
+                showError("Kunde inte ta bort varan.", lineId);
                 return;
             }
 
             if (result.userErrors?.length > 0) {
                 console.error("❌ Shopify userErrors:", result.userErrors);
-                setError(result.userErrors[0].message);
+                showError("Kunde inte ta bort varan. Försök igen om en liten stund.", lineId);
                 return;
             }
 
@@ -353,7 +367,7 @@ export function CartProvider({ children }) {
 
         } catch (err) {
             console.error("❌ removeFromCart crashed:", err);
-            setError(err.message || "Ett oväntat fel inträffade.");
+            showError("Kunde inte ta bort varan. Försök igen om en liten stund.", lineId);
         } finally {
             setLoading(false);
         }
@@ -365,6 +379,7 @@ export function CartProvider({ children }) {
 
         if (!cartId) {
             console.error("❌ Ingen cartId satt");
+            showError("Din varukorg kunde inte hittas. Ladda om sidan och försök igen.", lineId);
             return;
         }
 
@@ -387,7 +402,7 @@ export function CartProvider({ children }) {
                     variant.quantityAvailable !== null &&
                     variant.quantityAvailable < Number(quantity)
                 ) {
-                    setError(`Endast ${variant.quantityAvailable} st finns i lager.`);
+                    showError(`Endast ${variant.quantityAvailable} st finns i lager.`, lineId);
                     return;
                 }
             }
@@ -441,7 +456,7 @@ export function CartProvider({ children }) {
 
             if (data.errors) {
                 console.error("❌ GraphQL errors:", data.errors);
-                setError("Kunde inte uppdatera antalet.");
+                showError("Kunde inte uppdatera antalet.", lineId);
                 return;
             }
 
@@ -449,13 +464,13 @@ export function CartProvider({ children }) {
 
             if (!result) {
                 console.error("❌ cartLinesUpdate returned null");
-                setError("Kunde inte uppdatera antalet.");
+                showError("Kunde inte uppdatera antalet.", lineId);
                 return;
             }
 
             if (result.userErrors?.length > 0) {
                 console.error("❌ Shopify userErrors:", result.userErrors);
-                setError(result.userErrors[0].message);
+                showError("Kunde inte uppdatera antalet. Försök igen om en liten stund.", lineId);
                 return;
             }
 
@@ -463,7 +478,7 @@ export function CartProvider({ children }) {
 
         } catch (err) {
             console.error("❌ updateQuantity crashed:", err);
-            setError(err.message || "Ett oväntat fel inträffade.");
+            showError("Kunde inte uppdatera antalet. Försök igen om en liten stund.", lineId);
         } finally {
             setLoading(false);
         }
