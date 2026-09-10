@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./contexts/CartContext";
 
+import CookieConsent from "./components/CookieConsent";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
 import Product from "./pages/Product";
@@ -19,6 +20,8 @@ export default function App() {
 	return (
 		<BrowserRouter>
 			<CartProvider>
+
+				<CookieConsent />
 
 				<div id="wrapper">
 					<Header />
