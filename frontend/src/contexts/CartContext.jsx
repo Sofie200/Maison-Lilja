@@ -6,6 +6,7 @@ const CartContext = createContext(null);
 export function CartProvider({ children }) {
     const [cartId, setCartId] = useState(null);
     const [cart, setCart] = useState([]);
+    const [checkoutUrl, setCheckoutUrl] = useState(null);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
 
@@ -85,10 +86,12 @@ export function CartProvider({ children }) {
                 localStorage.removeItem("cartId");
                 setCartId(null);
                 setCart([]);
+                setCheckoutUrl(null);
                 return;
             }
 
             setCart(cartData.lines.nodes);
+            setCheckoutUrl(cartData.checkoutUrl);
 
         } catch (err) {
             console.error("❌ fetchCart crashed:", err);
@@ -486,7 +489,7 @@ export function CartProvider({ children }) {
 
 
     return (
-        <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, loading, error }}>
+        <CartContext.Provider value={{ cart, checkoutUrl, addToCart, removeFromCart, updateQuantity, loading, error }}>
             {children}
         </CartContext.Provider>
     );

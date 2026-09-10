@@ -1,7 +1,6 @@
 .cart-section {
     max-width: 850px;
-    margin: 40px auto;
-    padding: 0 20px;
+    margin: 0 auto;
 }
 
 .cart-title {
@@ -64,7 +63,7 @@
 .cart-item-qty-error{
     display: flex;
     gap: 15px;
-    align-items: c;
+    align-items: center;
 }
 
 .cart-item-error {
