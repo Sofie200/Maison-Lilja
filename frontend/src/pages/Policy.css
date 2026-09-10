@@ -1,3 +1,13 @@
 .section-policy{
     max-width: 800px;
 }
+
+ul,
+ol {
+    line-height: 150%;
+    margin: 0 0 1.5rem 2rem !important;
+}
+
+li{
+    margin-bottom: 0.5rem !important;
+}
