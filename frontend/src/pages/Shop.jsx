@@ -10,7 +10,7 @@ export default function Shop() {
     if (error == false) return <section className="section-center"><ErrorMessage message={error} /></section>;
 
     return (
-        <section>
+        <section className="section-standard">
 
             <h1>Handla nu</h1>
 

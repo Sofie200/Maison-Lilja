@@ -82,7 +82,7 @@ main {
     flex: 1;
 }
 
-section {
+.section-standard {
     max-width: 1200px;
     margin: auto;
     padding: var(--spacing-xl) var(--spacing-lg);

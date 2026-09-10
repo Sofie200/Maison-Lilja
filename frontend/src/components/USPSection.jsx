@@ -3,7 +3,7 @@ import "./USPSection.css";
 const USPSection = () => {
 
     return (
-        <section className="usp">
+        <section className="section-standard usp">
             <h2>Handgjort i vår chokladateljé i Malmö</h2>
 
             <div className="usp-grid">

@@ -1,5 +1,5 @@
 export default function Seasonal() {
-    return <section>
+    return <section className="section-standard">
 
         <h1>Säsong</h1>
         

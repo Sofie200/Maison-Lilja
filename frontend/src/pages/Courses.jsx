@@ -1,3 +1,3 @@
 export default function Courses() {
-    return <section><h1>Kurser</h1></section>;
+    return <section className="section-standard"><h1>Kurser</h1></section>;
 }

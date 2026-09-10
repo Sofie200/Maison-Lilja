@@ -20,7 +20,7 @@ const Cart = () => {
     }, 0);
 
     return (
-        <section>
+        <section className="section-standard">
             <div className="cart-section">
                 <h1 className="cart-title">Varukorg</h1>
 

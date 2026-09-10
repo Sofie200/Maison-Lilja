@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
 const STOREFRONT_ACCESS_TOKEN = import.meta.env.VITE_STOREFRONT_API_TOKEN;
-const STOREFRONT_ROOT_DOMAIN = import.meta.env.VITE_STORE_DOMAIN; // t.ex. "dindomän.se"
+const STOREFRONT_ROOT_DOMAIN = import.meta.env.VITE_STORE_DOMAIN;
+const CHECKOUT_ROOT_DOMAIN = import.meta.env.VITE_STORE_CHECKOUT_DOMAIN; // lägg tillbaka
 const scriptPromises = {};
 
 function loadScript(src) {
@@ -43,10 +44,26 @@ export default function CookieConsent() {
 
         async function init() {
             try {
-                // 1. Ladda Customer Privacy API:et (litet, ingen egen UI)
                 await loadScript(
                     "https://cdn.shopify.com/shopifycloud/consent-tracking-api/v0.1/consent-tracking-api.js"
                 );
+
+                if (cancelled) return;
+
+                // Sätt butikskontext INNAN vi frågar om bannern behövs
+                const current = window.Shopify.customerPrivacy.currentVisitorConsent();
+                await new Promise((resolve) => {
+                    window.Shopify.customerPrivacy.setTrackingConsent(
+                        {
+                            ...current,
+                            headlessStorefront: true,
+                            checkoutRootDomain: STOREFRONT_ROOT_DOMAIN,
+                            storefrontRootDomain: CHECKOUT_ROOT_DOMAIN,
+                            storefrontAccessToken: STOREFRONT_ACCESS_TOKEN,
+                        },
+                        () => resolve()
+                    );
+                });
 
                 if (cancelled) return;
 
@@ -66,7 +83,7 @@ export default function CookieConsent() {
 
                 await window.privacyBanner.loadBanner({
                     storefrontAccessToken: STOREFRONT_ACCESS_TOKEN,
-                    checkoutRootDomain: STOREFRONT_ROOT_DOMAIN,
+                    checkoutRootDomain: CHECKOUT_ROOT_DOMAIN,
                     storefrontRootDomain: STOREFRONT_ROOT_DOMAIN
                 });
 
