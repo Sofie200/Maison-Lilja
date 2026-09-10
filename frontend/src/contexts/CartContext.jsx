@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { client } from "../../client";
+import { client } from "../shopify/client";
 
 const CartContext = createContext(null);
 

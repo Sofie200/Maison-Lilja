@@ -1,4 +1,4 @@
-import { client } from "../../client";
+import { client } from ".client";
 
 export async function addToCart(variantId, quantity = 1) {
     let checkoutId = localStorage.getItem("checkoutId");

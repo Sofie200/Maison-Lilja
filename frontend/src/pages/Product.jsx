@@ -34,7 +34,7 @@ export default function Product() {
 
     return (
 
-        <section className="product-page">
+        <section className="section-standard product-page">
             <div className="product-image">
                 <img src={product.images.nodes[0].url} alt={product.title} />
             </div>

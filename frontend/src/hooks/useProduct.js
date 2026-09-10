@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { client } from "../../client";
+import { client } from "../shopify/client";
 
 export function useProduct(id) {
 
