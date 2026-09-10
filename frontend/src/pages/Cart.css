@@ -64,7 +64,7 @@
 .cart-item-qty-error{
     display: flex;
     gap: 15px;
-    align-items: center;
+    align-items: c;
 }
 
 .cart-item-error {

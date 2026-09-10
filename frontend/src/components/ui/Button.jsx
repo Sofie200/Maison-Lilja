@@ -10,8 +10,6 @@ const Button = ({
     ...rest
 }) => {
 
-    const content = loading ? "Loading..." : children;
-
     // Om knappen har en destination → rendera en <a>
     if (to) {
         return (
@@ -22,7 +20,7 @@ const Button = ({
                     aria-disabled={loading}
                     {...rest}
                 >
-                    {content}
+                    {children}
                 </a>
             </div>
         );
@@ -37,7 +35,7 @@ const Button = ({
                 disabled={loading}
                 {...rest}
             >
-                {content}
+                {children}
             </button>
         </div>
     );
