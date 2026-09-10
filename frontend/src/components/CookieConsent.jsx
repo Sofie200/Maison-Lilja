@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 
 const STOREFRONT_ACCESS_TOKEN = import.meta.env.VITE_STOREFRONT_API_TOKEN;
 const STOREFRONT_ROOT_DOMAIN = import.meta.env.VITE_STORE_DOMAIN; // t.ex. "dindomän.se"
-const CHECKOUT_ROOT_DOMAIN = import.meta.env.VITE_STORE_CHECKOUT_DOMAIN;     // t.ex. "checkout.dindomän.se"
 const scriptPromises = {};
 
 function loadScript(src) {
@@ -67,7 +66,7 @@ export default function CookieConsent() {
 
                 await window.privacyBanner.loadBanner({
                     storefrontAccessToken: STOREFRONT_ACCESS_TOKEN,
-                    checkoutRootDomain: CHECKOUT_ROOT_DOMAIN,
+                    checkoutRootDomain: STOREFRONT_ROOT_DOMAIN,
                     storefrontRootDomain: STOREFRONT_ROOT_DOMAIN
                 });
 
