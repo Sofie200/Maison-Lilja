@@ -1,6 +1,6 @@
 export const client = {
     getStorefrontApiUrl() {
-        return `https://${import.meta.env.VITE_STORE_DOMAIN}/api/2026-04/graphql.json`;
+        return `https://${import.meta.env.VITE_SHOP_DOMAIN}/api/2026-04/graphql.json`;
     },
     getPublicTokenHeaders() {
         return {
