@@ -57,8 +57,8 @@ export default function CookieConsent() {
                         {
                             ...current,
                             headlessStorefront: true,
-                            checkoutRootDomain: STOREFRONT_ROOT_DOMAIN,
-                            storefrontRootDomain: CHECKOUT_ROOT_DOMAIN,
+                            checkoutRootDomain: CHECKOUT_ROOT_DOMAIN,
+                            storefrontRootDomain: STOREFRONT_ROOT_DOMAIN,
                             storefrontAccessToken: STOREFRONT_ACCESS_TOKEN,
                         },
                         () => resolve()
