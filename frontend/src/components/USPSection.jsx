@@ -4,7 +4,7 @@ const USPSection = () => {
 
     return (
         <section className="section-standard usp">
-            <h2>Handgjort i vår chokladateljé i Malmö</h2>
+            <h1>Handgjort i vår chokladateljé i Malmö</h1>
 
             <div className="usp-grid">
 

@@ -124,6 +124,7 @@ h5 {
 
 h2 {
     font-size: 2rem;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 900px) {
@@ -138,7 +139,7 @@ h2 {
 
 p {
     line-height: 150%;
-    margin: 15px 0;
+    margin: 0 0 1.5rem;
 }
 
 img {

@@ -1,3 +1,7 @@
+import CoursesSection from "../components/CoursesSection";
+
 export default function Courses() {
-    return <section className="section-standard"><h1>Kurser</h1></section>;
+    return <>
+    <CoursesSection />
+    </>;
 }
