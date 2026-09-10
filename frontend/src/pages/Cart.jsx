@@ -1,16 +1,28 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import Button from "../components/ui/Button";
+import Loader from "../components/ui/Loader";
+import ErrorMessage from "../components/ui/ErrorMessage";
 import "./Cart.css";
 
 const Cart = () => {
     const { cart, checkoutUrl, updateQuantity, removeFromCart, loading, error } = useCart();
 
+    if (loading && cart.length === 0) {
+        return (
+            <section className="section-center">
+                <Loader />
+            </section>
+        );
+    }
+
     if (cart.length === 0) {
         return (
-            <section className="cart-section">
-                <h1 className="cart-title">Varukorg</h1>
-                <p className="cart-empty">Din varukorg är tom.</p>
+            <section className="section-standard">
+                <div className="cart-section">
+                    <h1 className="cart-title">Varukorg</h1>
+                    <p className="cart-empty">Din varukorg är tom.</p>
+                </div>
             </section>
         );
     }
