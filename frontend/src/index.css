@@ -137,7 +137,7 @@ h2 {
     }
 }
 
-p, ul, ol {
+p{
     line-height: 150%;
     margin: 0 0 1.5rem;
 }

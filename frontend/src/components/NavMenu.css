@@ -1,8 +1,4 @@
-ul,
-li {
-    margin: 0;
-    padding: 0;
-}
+
 
 /* Hamburger button */
 .hamburger {
@@ -44,6 +40,7 @@ li {
 
 /* Mobile menu */
 .menu {
+    margin: 0 !important;
     background-color: var(--color-bg-secondary);
     box-shadow: var(--shadow-soft);
     list-style: none;
@@ -76,7 +73,6 @@ li {
 }
 
 .menu a {
-
     display: inline-block;
     transition: transform 0.25s ease, opacity 0.25s ease;
 }

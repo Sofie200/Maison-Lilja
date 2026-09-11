@@ -2,12 +2,12 @@
     max-width: 800px;
 }
 
-ul,
-ol {
+.section-policy ul,
+.section-policy ol {
     line-height: 150%;
-    margin: 0 0 1.5rem 2rem !important;
+    margin: 0 0 1.5rem 0;
 }
 
-li{
-    margin-bottom: 0.5rem !important;
+.section-policy li{
+    margin-bottom: 0.5rem;
 }
