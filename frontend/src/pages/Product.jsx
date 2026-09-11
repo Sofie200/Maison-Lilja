@@ -40,11 +40,10 @@ export default function Product() {
             </div>
 
             <div className="product-info">
-                <h1>{product.title}</h1>
+                <h2>{product.title}</h2>
 
-                <div>
+                <p>
                     <div
-                        className="description"
                         dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
                     />
 
@@ -52,7 +51,7 @@ export default function Product() {
                         {Number(variant.price.amount)} kr
                     </div>
 
-                </div>
+                </p>
 
                 {inStock && (
                     <Button
