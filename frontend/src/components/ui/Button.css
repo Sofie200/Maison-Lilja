@@ -28,7 +28,7 @@
     -webkit-transform: scaleX(0);
     transform: scaleX(0);
     -webkit-transform-origin: 100%;
-    transform-origin:100%;
+    transform-origin: 100%;
     -webkit-transition-property: transform;
     transition-property: transform;
     -webkit-transition-duration: 0.2s;
@@ -37,19 +37,30 @@
     transition-timing-function: ease-out;
 }
 
-.btn:hover,
 .btn:focus,
 .btn:active {
     color: white;
 }
 
-.btn:hover:before,
 .btn:focus:before,
 .btn:active:before {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
     -webkit-transition-duration: 0.4s;
     transition-duration: 0.4s;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn:hover {
+        color: white;
+    }
+
+    .btn:hover:before {
+        -webkit-transform: scaleX(1);
+        transform: scaleX(1);
+        -webkit-transition-duration: 0.4s;
+        transition-duration: 0.4s;
+    }
 }
 
 /* Sizes */
@@ -79,10 +90,15 @@
     color: var(--color-bg);
 }
 
-.btn-default:hover,
 .btn-default:focus,
 .btn-default:active {
     color: var(--color-bg-highlight);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-default:hover {
+        color: var(--color-bg-highlight);
+    }
 }
 
 /* Pink */
@@ -96,10 +112,15 @@
     color: var(--color-text);
 }
 
-.btn-pink:hover,
 .btn-pink:focus,
 .btn-pink:active {
     color: var(--color-text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-pink:hover {
+        color: var(--color-text);
+    }
 }
 
 /* Green */
@@ -113,10 +134,15 @@
     color: var(--color-text);
 }
 
-.btn-green:hover,
 .btn-green:focus,
 .btn-green:active {
     color: var(--color-text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-green:hover {
+        color: var(--color-text);
+    }
 }
 
 /* Purple */
@@ -130,10 +156,15 @@
     color: var(--color-text);
 }
 
-.btn-purple:hover,
 .btn-purple:focus,
 .btn-purple:active {
     color: var(--color-text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-purple:hover {
+        color: var(--color-text);
+    }
 }
 
 /* Blue */
@@ -147,10 +178,15 @@
     color: var(--color-text);
 }
 
-.btn-blue:hover,
 .btn-blue:focus,
 .btn-blue:active {
     color: var(--color-text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-blue:hover {
+        color: var(--color-text);
+    }
 }
 
 /* Inverted */
@@ -161,14 +197,19 @@
 }
 
 .btn-inverted:before {
-    background: var(---color-bg-alt);
+    background: var(--color-bg-alt);
     color: var(--color-text);
 }
 
-.btn-inverted:hover,
 .btn-inverted:focus,
 .btn-inverted:active {
     color: var(--color-text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-inverted:hover {
+        color: var(--color-text);
+    }
 }
 
 /* Loading */
