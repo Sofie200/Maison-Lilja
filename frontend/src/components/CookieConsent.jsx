@@ -1,3 +1,4 @@
+import "./CookieConsent.css";
 import { useEffect, useState } from "react";
 
 const STOREFRONT_ACCESS_TOKEN = import.meta.env.VITE_STOREFRONT_API_TOKEN;

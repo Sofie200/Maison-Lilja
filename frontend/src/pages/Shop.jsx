@@ -1,3 +1,4 @@
+import "./Shop.css";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/ui/Loader";
 import ErrorMessage from "../components/ui/ErrorMessage";

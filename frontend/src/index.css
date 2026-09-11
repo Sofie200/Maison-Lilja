@@ -3,24 +3,17 @@
 :root {
     /* ====== Basfärger ====== */
     --color-bg: #f7f3e9;
-    /* Creme – varm, elegant */
     --color-bg-secondary: #e8e0d2;
     --color-bg-highlight: #f9f7f0;
     --color-text: #4a2f27;
-    /* Chokladbrun – djup, lyxig */
     --color-text-light: #6b4a3f;
     --color-border: #6b4a3f;
-    /* Ljusare chokladton för sekundär text */
 
     /* ====== Pastellkontraster ====== */
     --pastel-pink: #f4c6d7;
-    /* Rosa – mjuk, romantisk */
     --pastel-green: #c8e6c9;
-    /* Grön – fräsch, botanisk */
     --pastel-purple: #d8c8f0;
-    /* Lila – elegant, drömsk */
     --pastel-blue: #c7ddf7;
-    /* Blå – lugn, ren */
 
     /* ====== Accentfärger (mer mättade) ====== */
     --accent-pink: #e89ab5;
@@ -31,7 +24,7 @@
 
     /* ====== Typografi ====== */
     --font-serif: "Source Serif 4", serif;
-    --font-sans: "Inter", sans-serif;
+    --font-sans: "Lato", sans-serif;
 
     /* ====== UI ====== */
     --radius-sm: 6px;
@@ -49,7 +42,7 @@
     --spacing-xl: 48px;
 }
 
-/* ====== Globala inställningar ====== */
+/* ====== Layout ====== */
 * {
     box-sizing: border-box;
 }
@@ -68,15 +61,6 @@ body {
     min-height: 100vh;
 }
 
-/* ====== Navigation ====== */
-nav {
-    font-family: var(--font-sans);
-    font-size: 2rem;
-    font-weight: 400;
-    color: var(--color-text);
-}
-
-/* ====== Main layout ====== */
 main {
     width: 100%;
     flex: 1;
@@ -92,25 +76,6 @@ main {
     text-align: center;
 }
 
-/* ====== Produktgrid ====== */
-.product-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-md);
-}
-
-@media screen and (max-width: 900px) {
-    .product-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media screen and (max-width: 500px) {
-    .product-grid {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-
 /* ====== Globals ====== */
 h1,
 h2,
@@ -122,9 +87,28 @@ h5 {
     margin-top: 0;
 }
 
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+}
+
 h2 {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+p {
+    line-height: 150%;
+    margin: 0 0 1.5rem;
+}
+
+img {
+    max-width: 100%;
 }
 
 @media screen and (max-width: 900px) {
@@ -135,13 +119,4 @@ h2 {
     h2 {
         font-size: 1.4rem;
     }
-}
-
-p{
-    line-height: 150%;
-    margin: 0 0 1.5rem;
-}
-
-img {
-    max-width: 100%;
 }
