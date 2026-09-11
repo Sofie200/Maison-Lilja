@@ -17,7 +17,7 @@ header {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 10px;
+    padding-bottom: var(--spacing-md);
 }
 
 .header-logo img {
@@ -56,6 +56,11 @@ header nav {
     header {
         padding: 20px 0 0;
     }
+
+    .header-top {
+        padding-bottom: var(--spacing-sm);
+    }
+
     .header-logo a img {
         max-width: 180px;
     }
