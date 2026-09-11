@@ -10,7 +10,6 @@ const Button = ({
     ...rest
 }) => {
 
-    // Om knappen har en destination → rendera en <a>
     if (to) {
         return (
             <div>
@@ -26,7 +25,6 @@ const Button = ({
         );
     }
 
-    // Annars → vanlig <button>
     return (
         <div>
             <button

@@ -1,13 +1,55 @@
 .btn {
+
     font-family: var(--font-serif);
     font-weight: 500;
     border: none;
     border-radius: var(--radius-lg);
     cursor: pointer;
-    transition: all 0.7s ease;
     width: auto;
     display: inline-block;
     text-decoration: none;
+
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    position: relative;
+    -webkit-transition-property: color;
+    transition-property: color;
+    overflow: hidden;
+}
+
+.btn:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transform-origin: 100%;
+    transform-origin:100%;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+
+.btn:hover,
+.btn:focus,
+.btn:active {
+    color: white;
+}
+
+.btn:hover:before,
+.btn:focus:before,
+.btn:active:before {
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
 }
 
 /* Sizes */
@@ -32,55 +74,101 @@
     color: var(--color-bg);
 }
 
-.btn-default:hover {
+.btn-default:before {
     background: var(--color-text-light);
     color: var(--color-bg);
+}
+
+.btn-default:hover,
+.btn-default:focus,
+.btn-default:active {
+    color: var(--color-bg-highlight);
 }
 
 /* Pink */
 .btn-pink {
     background: var(--pastel-pink);
+    color: var(--color-text);
 }
 
-.btn-pink:hover {
+.btn-pink:before {
     background: var(--accent-pink);
+    color: var(--color-text);
+}
+
+.btn-pink:hover,
+.btn-pink:focus,
+.btn-pink:active {
+    color: var(--color-text);
 }
 
 /* Green */
 .btn-green {
     background: var(--pastel-green);
+    color: var(--color-text);
 }
 
-.btn-green:hover {
+.btn-green:before {
     background: var(--accent-green);
+    color: var(--color-text);
+}
+
+.btn-green:hover,
+.btn-green:focus,
+.btn-green:active {
+    color: var(--color-text);
 }
 
 /* Purple */
 .btn-purple {
     background: var(--pastel-purple);
+    color: var(--color-text);
 }
 
-.btn-purple:hover {
+.btn-purple:before {
     background: var(--accent-purple);
+    color: var(--color-text);
+}
+
+.btn-purple:hover,
+.btn-purple:focus,
+.btn-purple:active {
+    color: var(--color-text);
 }
 
 /* Blue */
 .btn-blue {
     background: var(--pastel-blue);
+    color: var(--color-text);
 }
 
-.btn-blue:hover {
+.btn-blue:before {
     background: var(--accent-blue);
+    color: var(--color-text);
+}
+
+.btn-blue:hover,
+.btn-blue:focus,
+.btn-blue:active {
+    color: var(--color-text);
 }
 
 /* Inverted */
 .btn-inverted {
     background: var(--color-bg);
+    color: var(--color-text);
     border: 2px solid var(--color-text-light);
 }
 
-.btn-inverted:hover {
-    background: var(--color-bg-alt);
+.btn-inverted:before {
+    background: var(---color-bg-alt);
+    color: var(--color-text);
+}
+
+.btn-inverted:hover,
+.btn-inverted:focus,
+.btn-inverted:active {
+    color: var(--color-text);
 }
 
 /* Loading */
