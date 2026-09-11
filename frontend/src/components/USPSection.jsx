@@ -3,8 +3,11 @@ import "./USPSection.css";
 const USPSection = () => {
 
     return (
-        <section className="section-standard usp">
-            <h1>Handgjort i vår chokladateljé i Malmö</h1>
+
+        <section className="section-standard">
+            <center>
+                <h1>Handgjort i vår chokladateljé i Malmö</h1>
+            </center>
 
             <div className="usp-grid">
 
@@ -14,7 +17,7 @@ const USPSection = () => {
                     </div>
                     <div className="usp-text">
                         <h3>Tillverkat i Malmö</h3>
-                        <p>All choklad skapas lokalt i vår egen ateljé på Mariedalsvägen.</p>
+                        <div className="fineprint">All choklad skapas lokalt i vår egen ateljé på Mariedalsvägen.</div>
                     </div>
                 </div>
 
@@ -24,7 +27,7 @@ const USPSection = () => {
                     </div>
                     <div className="usp-text">
                         <h3>Noga utvalda råvaror</h3>
-                        <p>Vi använder endast premiumchoklad och naturliga ingredienser.</p>
+                        <div className="fineprint">Vi använder endast premiumchoklad och naturliga ingredienser.</div>
                     </div>
                 </div>
 
@@ -34,7 +37,7 @@ const USPSection = () => {
                     </div>
                     <div className="usp-text">
                         <h3>Äkta hantverk</h3>
-                        <p>Varje bit choklad är resultatet av passion, precision och tradition.</p>
+                        <div className="fineprint">Varje bit choklad är resultatet av passion, precision och tradition.</div>
                     </div>
                 </div>
 
