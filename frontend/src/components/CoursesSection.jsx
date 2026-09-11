@@ -36,35 +36,38 @@ const COURSES = [
 
 export default function CoursesSection() {
     return (
-        <section className="courses-section">
-            <div className="courses-intro">
-                <h1>Kom in i vårt kök</h1>
-                <p>
-                    Tre kurser, tre hantverk — lär dig grunderna av oss som gör det varje dag.
-                </p>
-            </div>
+        <div className="bg-slate-dark">
+            <section className="section-standard">
+                
+                <center>
+                    <h1>Kom in i vårt kök</h1>
+                    <p>
+                        Tre kurser, tre hantverk — lär dig grunderna av oss som gör det varje dag.
+                    </p>
+                </center>
 
-            <div className="courses-grid">
-                {COURSES.map((course) => (
-                    <article key={course.id} className={`course course-${course.accent}`}>
-                        <div className="course-image-wrap">
-                            <img
-                                className="course-image"
-                                src={course.image}
-                                alt={course.imageAlt}
-                                loading="lazy"
-                            />
-                        </div>
+                <div className="courses-grid">
+                    {COURSES.map((course) => (
+                        <article key={course.id} className={`course course-${course.accent}`}>
+                            <div className="course-image-wrap">
+                                <img
+                                    className="course-image"
+                                    src={course.image}
+                                    alt={course.imageAlt}
+                                    loading="lazy"
+                                />
+                            </div>
 
-                        <div className="course-info">
-                            <p className="course-meta">{course.meta}</p>
-                            <h2>{course.title}</h2>
-                            <p>{course.description}</p>
-                            <Button to={`/kurser/${course.id}`} color={`${course.accent}`}>Boka kursen</Button>
-                        </div>
-                    </article>
-                ))}
-            </div>
-        </section>
+                            <div className="course-info">
+                                <p className="meta">{course.meta}</p>
+                                <h2>{course.title}</h2>
+                                <p>{course.description}</p>
+                                <Button to={`/kurser/${course.id}`} color={`${course.accent}`}>Boka kursen</Button>
+                            </div>
+                        </article>
+                    ))}
+                </div>
+            </section>
+        </div>
     );
 }
