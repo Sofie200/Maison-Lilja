@@ -225,6 +225,8 @@
     pointer-events: none;
 }
 
-.btn:disabled:hover {
-    background: inherit;
+@media (hover: hover) and (pointer: fine) {
+    .btn:disabled:hover {
+        background: inherit;
+    }
 }
