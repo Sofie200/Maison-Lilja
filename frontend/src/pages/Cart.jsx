@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
 import Button from "../components/ui/Button";
 import Loader from "../components/ui/Loader";
-import ErrorMessage from "../components/ui/ErrorMessage";
 import "./Cart.css";
 
 const Cart = () => {
@@ -18,11 +17,9 @@ const Cart = () => {
 
     if (cart.length === 0) {
         return (
-            <section className="section-standard">
-                <div className="cart-section">
-                    <h1 className="cart-title">Varukorg</h1>
-                    <p className="cart-empty">Din varukorg är tom.</p>
-                </div>
+            <section className="section-center">
+                <h1>Varukorg</h1>
+                <p className="cart-empty">Din varukorg är tom.</p>
             </section>
         );
     }
@@ -32,10 +29,12 @@ const Cart = () => {
     }, 0);
 
     return (
-        <section className="section-standard">
-            <div className="cart-section">
-                <h1 className="cart-title">Varukorg</h1>
+        <section className="section-center">
 
+            <h1>Varukorg</h1>
+
+            <div className="section-cart">
+            
                 {/* Generella fel (utan koppling till en specifik rad) visas överst */}
                 {error && !error.id && <p className="cart-error">{error.message}</p>}
 
@@ -94,7 +93,7 @@ const Cart = () => {
                                             </div>
 
                                             {itemError && (
-                                                <p className="cart-item-error">{itemError}</p>
+                                                <p className="cart-item-error fineprint">{itemError}</p>
                                             )}
                                         </div>
                                     </div>
@@ -120,11 +119,11 @@ const Cart = () => {
                 </div>
 
                 <div className="cart-summary">
-                    <span className="cart-summary-label">Totalt</span>
-                    <span className="cart-summary-total">{cartTotal.toFixed(2)} kr</span>
+                    <span className="cart-summary-label"></span>
+                    <span className="cart-summary-total">Totalt {cartTotal.toFixed(2)} kr</span>
                 </div>
 
-                <div className="section-center">
+                <center>
                     <Button
                         to={checkoutUrl}
                         size="lg"
@@ -132,7 +131,7 @@ const Cart = () => {
                     >
                         Till kassan
                     </Button>
-                </div>
+                </center>
             </div>
         </section>
     );

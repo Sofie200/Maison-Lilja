@@ -71,7 +71,7 @@ main {
     flex: 1;
 }
 
-.section-standard {
+.section-standard, .section-center {
     max-width: 1200px;
     margin: auto;
     padding: var(--spacing-xl) var(--spacing-lg);
@@ -122,6 +122,16 @@ p {
 .fineprint {
     line-height: 140%;
     font-size: 0.8rem;
+}
+
+a {
+    color: var(--color-text);
+    text-decoration: none;
+    border: 0;
+}
+
+a:hover {
+    color: var(--color-text-light);
 }
 
 img {
