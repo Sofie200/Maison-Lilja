@@ -39,7 +39,7 @@
 .product-card .price-block {
     display: flex;
     justify-content: center;
-    gap: var(--spacing-sm);
+    gap: 5px;
     align-items: baseline;
     font-weight: 600;
     padding: 8px 0 ;

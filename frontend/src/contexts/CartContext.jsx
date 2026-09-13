@@ -3,6 +3,43 @@ import { client } from "../shopify/client";
 
 const CartContext = createContext(null);
 
+// Delad shape för en cart-rad, återanvänd i alla queries/mutations nedan
+// så vi aldrig råkar glömma ett fält på ett av de fyra ställena.
+const CART_LINE_FIELDS = `
+    id
+    quantity
+    merchandise {
+        ... on ProductVariant {
+            id
+            title
+            image { url }
+            price { amount }
+            compareAtPrice { amount }
+            product { id title }
+        }
+    }
+`;
+
+// Berikar varje cart-rad med en beräknad onSale-flagga,
+// samma mönster som useProducts/useProduct redan använder.
+function mapCartLines(lines) {
+    return lines.map((line) => {
+        const merch = line.merchandise;
+        const price = merch.price?.amount ? Number(merch.price.amount) : null;
+        const compareAtPrice = merch.compareAtPrice?.amount
+            ? Number(merch.compareAtPrice.amount)
+            : null;
+
+        return {
+            ...line,
+            merchandise: {
+                ...merch,
+                onSale: compareAtPrice !== null && compareAtPrice > price,
+            },
+        };
+    });
+}
+
 export function CartProvider({ children }) {
     const [cartId, setCartId] = useState(null);
     const [cart, setCart] = useState([]);
@@ -48,17 +85,7 @@ export function CartProvider({ children }) {
                                 checkoutUrl
                                 lines(first: 20) {
                                     nodes {
-                                        id
-                                        quantity
-                                        merchandise {
-                                            ... on ProductVariant {
-                                                id
-                                                title
-                                                image { url }
-                                                price { amount }
-                                                product { id title }
-                                            }
-                                        }
+                                        ${CART_LINE_FIELDS}
                                     }
                                 }
                             }
@@ -90,7 +117,7 @@ export function CartProvider({ children }) {
                 return;
             }
 
-            setCart(cartData.lines.nodes);
+            setCart(mapCartLines(cartData.lines.nodes));
             setCheckoutUrl(cartData.checkoutUrl);
 
         } catch (err) {
@@ -224,17 +251,7 @@ export function CartProvider({ children }) {
                                 id
                                 lines(first: 20) {
                                     nodes {
-                                        id
-                                        quantity
-                                        merchandise {
-                                            ... on ProductVariant {
-                                                id
-                                                title
-                                                image { url }
-                                                price { amount }
-                                                product { id title }
-                                            }
-                                        }
+                                        ${CART_LINE_FIELDS}
                                     }
                                 }
                             }
@@ -280,7 +297,7 @@ export function CartProvider({ children }) {
                 return;
             }
 
-            setCart(result.cart.lines.nodes);
+            setCart(mapCartLines(result.cart.lines.nodes));
 
         } catch (err) {
             console.error("❌ addToCart crashed:", err);
@@ -315,17 +332,7 @@ export function CartProvider({ children }) {
                                 id
                                 lines(first: 20) {
                                     nodes {
-                                        id
-                                        quantity
-                                        merchandise {
-                                            ... on ProductVariant {
-                                                id
-                                                title
-                                                image { url }
-                                                price { amount }
-                                                product { id title }
-                                            }
-                                        }
+                                        ${CART_LINE_FIELDS}
                                     }
                                 }
                             }
@@ -366,7 +373,7 @@ export function CartProvider({ children }) {
                 return;
             }
 
-            setCart(result.cart.lines.nodes);
+            setCart(mapCartLines(result.cart.lines.nodes));
 
         } catch (err) {
             console.error("❌ removeFromCart crashed:", err);
@@ -421,17 +428,7 @@ export function CartProvider({ children }) {
                                 id
                                 lines(first: 20) {
                                     nodes {
-                                        id
-                                        quantity
-                                        merchandise {
-                                            ... on ProductVariant {
-                                                id
-                                                title
-                                                image { url }
-                                                price { amount }
-                                                product { id title }
-                                            }
-                                        }
+                                        ${CART_LINE_FIELDS}
                                     }
                                 }
                             }
@@ -477,7 +474,7 @@ export function CartProvider({ children }) {
                 return;
             }
 
-            setCart(result.cart.lines.nodes);
+            setCart(mapCartLines(result.cart.lines.nodes));
 
         } catch (err) {
             console.error("❌ updateQuantity crashed:", err);

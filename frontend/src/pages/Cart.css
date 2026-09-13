@@ -51,7 +51,10 @@
 
 .cart-item-price {
     font-weight: 600;
-    margin: 0
+    margin: 0;
+    display: flex;
+    gap:5px;
+    align-items: baseline;
 }
 
 .cart-item-qty-error{

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../contexts/CartContext";
+import Price from "../components/ui/Price";
 import Button from "../components/ui/Button";
 import Loader from "../components/ui/Loader";
 import "./Cart.css";
@@ -64,7 +65,11 @@ const Cart = () => {
                                     </Link>
 
                                     <p className="cart-item-price">
-                                        {Number(merch.price.amount)} kr/st
+                                        <Price
+                                            price={Number(merch.price.amount)}
+                                            compareAtPrice={merch.onSale ? Number(merch.compareAtPrice.amount) : null}
+                                            onSale={merch.onSale}
+                                        />
                                     </p>
 
                                     <div>

@@ -6,7 +6,7 @@ import "./Product.css";
 import Button from "../components/ui/Button";
 import Loader from "../components/ui/Loader";
 import ErrorMessage from "../components/ui/ErrorMessage";
-
+import Price from "../components/ui/Price";
 export default function Product() {
 
     const { id } = useParams();
@@ -47,13 +47,7 @@ export default function Product() {
                 />
 
                 <div className="price">
-                    <span className={`price-current ${variant.onSale ? "price-discounted" : ""}`}>
-                        {Number.isInteger(variant.price) ? variant.price : variant.price.toFixed(2)} kr 
-                    </span>
-
-                    {variant.onSale && (
-                        <span className="price-original">{Number.isInteger(variant.compareAtPrice) ? variant.compareAtPrice : variant.compareAtPrice.toFixed(2)} kr</span>
-                    )}
+                    <Price price={variant.price} compareAtPrice={variant.compareAtPrice} onSale={variant.onSale} />
                 </div>
 
 

@@ -1,7 +1,8 @@
 import "./ProductCard.css";
+import Price from "./ui/Price";
 
 const ProductCard = ({ product }) => {
-    
+
     const inStock = product.inStock;
 
     return (
@@ -24,13 +25,7 @@ const ProductCard = ({ product }) => {
                 
                 <div className="price-block">
 
-                    <span className={`price-current ${product.onSale ? "price-discounted" : ""}`}>
-                        {Number.isInteger(product.price) ? product.price : product.price.toFixed(2)} kr
-                    </span>
-
-                    {product.onSale && (
-                        <span className="price-original">{Number.isInteger(product.compareAtPrice) ? product.compareAtPrice : product.compareAtPrice.toFixed(2)} kr</span>
-                    )}
+                    <Price price={product.price} compareAtPrice={product.compareAtPrice} onSale={product.onSale} />
 
                 </div>
             </div>
