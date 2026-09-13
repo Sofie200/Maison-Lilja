@@ -1,6 +1,6 @@
 .product-card {
-    background: var(--color-bg);
-    border-radius: var(--radius-lg);
+    background: var(--color-bg-highlight);
+    border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -15,7 +15,7 @@
 
 .product-card .image-wrapper {
     width: 100%;
-    height: 260px;
+    height: 240px;
     position: relative;
     overflow: hidden;
 }
@@ -36,55 +36,14 @@
     text-align: center;
 }
 
-.product-card .name {
-    font-family: var(--font-serif);
-    font-size: 1.2rem;
-    margin-top: 0;
-    margin-bottom: var(--spacing-sm);
-    color: var(--color-text);
-}
-
 .product-card .price-block {
     display: flex;
     justify-content: center;
     gap: var(--spacing-sm);
     align-items: baseline;
     font-weight: 600;
-}
-
-.product-card .price-normal {
+    padding: 8px 0 ;
     font-size: 1.1rem;
-    color: var(--color-text);
-}
-
-.product-card .price-discounted {
-    font-size: 1.2rem;
-    color: var(--accent-pink);
-}
-
-.product-card .price-original {
-    font-size: 0.95rem;
-    color: var(--color-text-light);
-    text-decoration: line-through;
-}
-
-.product-card .add-btn {
-    background: var(--color-text);
-    /* chokladbrun */
-    color: var(--color-bg);
-    /* creme */
-    border: none;
-    padding: var(--spacing-sm) var(--spacing-md);
-    border-radius: var(--radius-lg);
-    font-size: 0.95rem;
-    letter-spacing: 0.5px;
-    transition: background 0.3s ease;
-    font-family: var(--font-sans);
-}
-
-.product-card .add-btn:hover {
-    background: var(--color-text-light);
-    /* ljusare choklad */
 }
 
 .out-of-stock .image-wrapper img {
@@ -92,25 +51,43 @@
     filter: grayscale(70%);
 }
 
-.out-of-stock .name,
-.out-of-stock .price-normal {
-    opacity: 0.8;
+.out-of-stock h3,
+.out-of-stock .price-current,
+.out-of-stock .price-discounted,
+.out-of-stock .price-original {
+    opacity: 0.7;
 }
 
 .product-card .stock-badge {
-    position: absolute;
-    bottom: 40px;
+    position: relative;
+    bottom: 0px;
     left: 0;
     padding: 10px 10px;
     font-size: 0.9rem;
     font-weight: 600;
     z-index: 100;
     width: 100%;
-    text-align: center;
+    height: 100%;
 }
 
 .product-card .stock-badge.out {
-    background:var(--color-bg-secondary);
+    position: absolute;
+    top:-5%;
+    left: -5%;
     box-shadow: var(--shadow-medium);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    height: 110%;
+    width: 110%;
+    display: flex;
+    align-items:flex-end;
+    
+}
+
+.product-card .stock-badge.out div {
+    background: var(--color-bg-secondary);
+    width: 100%;
     color: var(--color-text);
+    text-align: center;
+    padding: 6px;
 }

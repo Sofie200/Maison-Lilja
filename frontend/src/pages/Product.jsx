@@ -42,16 +42,20 @@ export default function Product() {
             <div className="product-info">
                 <h2>{product.title}</h2>
 
-                <p>
-                    <div
-                        dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
-                    />
+                <div
+                    dangerouslySetInnerHTML={{ __html: product.descriptionHtml }}
+                />
 
-                    <div className="price">
-                        {Number(variant.price.amount)} kr
-                    </div>
+                <div className="price">
+                    <span className={`price-current ${variant.onSale ? "price-discounted" : ""}`}>
+                        {Number.isInteger(variant.price) ? variant.price : variant.price.toFixed(2)} kr 
+                    </span>
 
-                </p>
+                    {variant.onSale && (
+                        <span className="price-original">{Number.isInteger(variant.compareAtPrice) ? variant.compareAtPrice : variant.compareAtPrice.toFixed(2)} kr</span>
+                    )}
+                </div>
+
 
                 {inStock && (
                     <Button

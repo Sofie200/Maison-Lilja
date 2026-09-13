@@ -32,6 +32,7 @@ export function useProduct(id) {
                     nodes {
                         id
                         price { amount }
+                        compareAtPrice { amount }
                         image { url }
                         availableForSale
                         quantityAvailable
@@ -61,7 +62,26 @@ export function useProduct(id) {
                     throw new Error("Produkten kunde inte hittas.");
                 }
 
-                setProduct(data.data.product);
+                // Platta ut pris/rea-info per variant, samma mönster som useProducts
+                const rawProduct = data.data.product;
+                const variantsWithPricing = rawProduct.variants.nodes.map((variant) => {
+                    const price = variant.price?.amount ? Number(variant.price.amount) : null;
+                    const compareAtPrice = variant.compareAtPrice?.amount
+                        ? Number(variant.compareAtPrice.amount)
+                        : null;
+
+                    return {
+                        ...variant,
+                        price,
+                        compareAtPrice,
+                        onSale: compareAtPrice !== null && compareAtPrice > price,
+                    };
+                });
+
+                setProduct({
+                    ...rawProduct,
+                    variants: { nodes: variantsWithPricing },
+                });
 
             } catch (err) {
                 console.error("❌ useProduct crashed:", err);

@@ -138,6 +138,21 @@ img {
     max-width: 100%;
 }
 
+.price-current {
+    color: var(--color-text);
+}
+
+.price-discounted {
+    color: var(--accent-pink);
+}
+
+.price-original {
+    font-size: 90%;
+    color: var(--color-text);
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
 @media screen and (max-width: 900px) {
     h1 {
         font-size: 1.6rem;

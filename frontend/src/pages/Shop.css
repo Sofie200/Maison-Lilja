@@ -1,8 +1,12 @@
 /* ====== Produktgrid ====== */
 .product-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     gap: var(--spacing-md);
+}
+
+.product-grid h3 {
+    font-size: 1rem;
 }
 
 @media screen and (max-width: 900px) {

@@ -23,7 +23,15 @@ export function useProducts(limit = 10) {
                     id
                     title
                     images(first: 1) { nodes { url } }
-                    variants(first: 1) { nodes { price { amount } availableForSale quantityAvailable currentlyNotInStock} }
+                    variants(first: 1) {
+                      nodes {
+                        price { amount }
+                        compareAtPrice { amount }
+                        availableForSale
+                        quantityAvailable
+                        currentlyNotInStock
+                      }
+                    }
                   }
                 }
               }
@@ -38,13 +46,20 @@ export function useProducts(limit = 10) {
                     throw new Error("Produkter kunde inte hämtas.");
                 }
 
-                // Platta ut lagerinfo per produkt så ProductCard kan läsa den
                 const productsWithStock = data.data.products.nodes.map((product) => {
                     const variant = product.variants.nodes[0];
+                    const price = variant?.price?.amount ? Number(variant.price.amount) : null;
+                    const compareAtPrice = variant?.compareAtPrice?.amount
+                        ? Number(variant.compareAtPrice.amount)
+                        : null;
+
                     return {
                         ...product,
                         inStock: variant?.availableForSale ?? false,
                         quantityAvailable: variant?.quantityAvailable ?? null,
+                        price,
+                        compareAtPrice,
+                        onSale: compareAtPrice !== null && compareAtPrice > price,
                     };
                 });
 
