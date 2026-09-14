@@ -3,7 +3,7 @@
 }
 
 .price-discounted {
-    color: var(--accent-pink);
+    color: var(--color-discount);
 }
 
 .price-original {

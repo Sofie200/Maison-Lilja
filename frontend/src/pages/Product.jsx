@@ -4,14 +4,16 @@ import { useCart } from "../contexts/CartContext";
 
 import "./Product.css";
 import Button from "../components/ui/Button";
+import QuantitySelector from "../components/ui/QuantitySelector";
 import Loader from "../components/ui/Loader";
 import ErrorMessage from "../components/ui/ErrorMessage";
 import Price from "../components/ui/Price";
+
 export default function Product() {
 
     const { id } = useParams();
     const { product, loading, error } = useProduct(id);
-    const { cart, addToCart, loading: cartLoading } = useCart();
+    const { cart, addToCart, updateQuantity, loading: cartLoading } = useCart();
 
     if (loading) return <section className="section-center"><Loader /></section>;
     if (error) return <section className="section-center"><ErrorMessage message={error} /></section>;
@@ -19,10 +21,9 @@ export default function Product() {
     const variant = product.variants.nodes[0];
     const inStock = variant.availableForSale;
 
-    // Hur många av den här varianten ligger redan i varukorgen?
-    const quantityInCart = cart
-        .filter((line) => line.merchandise.id === variant.id)
-        .reduce((sum, line) => sum + line.quantity, 0);
+    // Raden i varukorgen för just den här varianten, om den redan ligger där
+    const cartLine = cart.find((line) => line.merchandise.id === variant.id);
+    const quantityInCart = cartLine?.quantity ?? 0;
 
     // Om quantityAvailable är null betyder det att Shopify inte begränsar lagret
     const hasUnlimitedStock = variant.quantityAvailable === null;
@@ -50,15 +51,24 @@ export default function Product() {
                     <Price price={variant.price} compareAtPrice={variant.compareAtPrice} onSale={variant.onSale} />
                 </div>
 
-
                 {inStock && (
-                    <Button
-                        loading={cartLoading}
-                        disabled={cartLoading || !canAddToCart}
-                        onClick={() => addToCart(variant.id, 1)}
-                    >
-                        Lägg i varukorg
-                    </Button>
+                    cartLine ? (
+                        <QuantitySelector
+                            quantity={cartLine.quantity}
+                            onIncrease={() => updateQuantity(cartLine.id, cartLine.quantity + 1)}
+                            onDecrease={() => updateQuantity(cartLine.id, cartLine.quantity - 1)}
+                            disabled={cartLoading}
+                            size="lg"
+                        />
+                    ) : (
+                        <Button
+                            loading={cartLoading}
+                            disabled={cartLoading || !canAddToCart}
+                            onClick={() => addToCart(variant.id, 1)}
+                        >
+                            Lägg i varukorg
+                        </Button>
+                    )
                 )}
 
                 {!inStock && (

@@ -3,6 +3,7 @@ import { useCart } from "../contexts/CartContext";
 import Price from "../components/ui/Price";
 import Button from "../components/ui/Button";
 import Loader from "../components/ui/Loader";
+import QuantitySelector from "../components/ui/QuantitySelector";
 import "./Cart.css";
 
 const Cart = () => {
@@ -35,7 +36,7 @@ const Cart = () => {
             <h1>Varukorg</h1>
 
             <div className="section-cart">
-            
+
                 {/* Generella fel (utan koppling till en specifik rad) visas överst */}
                 {error && !error.id && <p className="cart-error">{error.message}</p>}
 
@@ -73,34 +74,24 @@ const Cart = () => {
                                     </p>
 
                                     <div>
+
                                         <div className="cart-item-qty-error">
-                                            <div className="cart-item-qty-controls">
-                                                <button
-                                                    className="qty-btn"
-                                                    disabled={loading}
-                                                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                                                    aria-label="Minska antal"
-                                                >
-                                                    <span className="material-symbols-rounded">remove</span>
-                                                </button>
-
-                                                <span className="cart-item-qty">{item.quantity} st</span>
-
-                                                <button
-                                                    className="qty-btn"
-                                                    disabled={loading}
-                                                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                                                    aria-label="Öka antal"
-                                                >
-                                                    <span className="material-symbols-rounded">add</span>
-                                                </button>
-
-                                            </div>
+                                            <QuantitySelector
+                                                quantity={item.quantity}
+                                                onIncrease={() => updateQuantity(item.id, item.quantity + 1)}
+                                                onDecrease={() => updateQuantity(item.id, item.quantity - 1)}
+                                                disabled={loading}
+                                                size="sm"
+                                            />
 
                                             {itemError && (
                                                 <p className="cart-item-error fineprint">{itemError}</p>
                                             )}
                                         </div>
+
+                                        {itemError && (
+                                            <p className="cart-item-error fineprint">{itemError}</p>
+                                        )}
                                     </div>
 
                                 </div>
