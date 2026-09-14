@@ -1,7 +1,7 @@
 .usp-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--spacing-sm);
+    gap: var(--spacing-lg);
     padding: var(--spacing-md) 0;
 }
 
@@ -10,7 +10,8 @@
     align-items: center;
     padding: var(--spacing-md);
     background: var(--color-bg-secondary);
-    border-radius: var(--radius-md);
+    border: 2px solid var(--color-text);
+    outline: 10px solid var(--color-bg-secondary);
     box-shadow: var(--shadow-soft);
     transition: transform 0.3s ease;
 }
