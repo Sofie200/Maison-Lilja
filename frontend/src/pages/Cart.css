@@ -7,20 +7,19 @@
 .cart-items {
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    border: var(--box-border);
+    outline: var(--box-outline);
+    background: var(--color-bg-highlight);
+    box-shadow: var(--shadow-soft);
 }
 
 .cart-item {
     display: grid;
     position: relative;
     grid-template-columns: 120px 1fr 100px;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
     padding: var(--spacing-md);
-    background: var(--color-bg-highlight);
-    box-shadow:var(--shadow-soft);
     align-items: center;
-    border: var(--box-border);
-    outline: var(--box-outline);
 }
 
 .cart-item-image {
