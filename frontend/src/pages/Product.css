@@ -4,20 +4,6 @@
     align-items: flex-start;
 }
 
-.product-page .product-image {
-    flex: 1;
-}
-
-.product-page .product-image img {
-    width: 100%;
-    height: auto;
-    min-height: 400px;
-    max-height: 800px;
-    border-radius: var(--radius-md);
-    object-fit: cover;
-    box-shadow: var(--shadow-soft);
-}
-
 .product-page .product-info {
     flex: 1;
 }
@@ -46,14 +32,5 @@
 @media screen and (max-width: 900px) {
     .product-page {
         display: block;
-    }
-
-    .product-page .product-image {
-        margin-bottom: 20px;
-    }
-
-    .product-page .product-image img {
-        min-height: 150px;
-        max-height: 250px;
     }
 }

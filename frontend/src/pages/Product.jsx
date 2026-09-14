@@ -5,6 +5,7 @@ import { useCart } from "../contexts/CartContext";
 import "./Product.css";
 import Button from "../components/ui/Button";
 import QuantitySelector from "../components/ui/QuantitySelector";
+import ImageGallery from "../components/ui/ImageGallery";
 import Loader from "../components/ui/Loader";
 import ErrorMessage from "../components/ui/ErrorMessage";
 import Price from "../components/ui/Price";
@@ -21,11 +22,9 @@ export default function Product() {
     const variant = product.variants.nodes[0];
     const inStock = variant.availableForSale;
 
-    // Raden i varukorgen för just den här varianten, om den redan ligger där
     const cartLine = cart.find((line) => line.merchandise.id === variant.id);
     const quantityInCart = cartLine?.quantity ?? 0;
 
-    // Om quantityAvailable är null betyder det att Shopify inte begränsar lagret
     const hasUnlimitedStock = variant.quantityAvailable === null;
     const remainingStock = hasUnlimitedStock
         ? Infinity
@@ -36,9 +35,7 @@ export default function Product() {
     return (
 
         <section className="section-standard product-page">
-            <div className="product-image">
-                <img src={product.images.nodes[0].url} alt={product.title} />
-            </div>
+            <ImageGallery images={product.images.nodes} fallbackAlt={product.title} />
 
             <div className="product-info">
                 <h2>{product.title}</h2>
