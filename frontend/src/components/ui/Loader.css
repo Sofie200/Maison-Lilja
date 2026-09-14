@@ -3,7 +3,7 @@
     text-align: center;
 }
 .lds-ellipsis {
-    color: var(--accent-dusty-rose);
+    color: var(--accent-sage-green);
 }
 
 .lds-ellipsis,
@@ -25,6 +25,7 @@
     height: 13.33333px;
     border-radius: 50%;
     background: currentColor;
+    border: var(--box-border);
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
