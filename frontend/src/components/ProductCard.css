@@ -1,11 +1,12 @@
 .product-card {
     background: var(--color-bg-highlight);
-    border-radius: var(--radius-md);
     overflow: hidden;
     box-shadow: var(--shadow-soft);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     cursor: pointer;
     text-decoration: none;
+    border: var(--box-border);
+    outline: var(--box-outline);
 }
 
 .product-card:hover {

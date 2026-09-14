@@ -41,6 +41,10 @@
     --spacing-md: 20px;
     --spacing-lg: 32px;
     --spacing-xl: 48px;
+
+    /* ====== Borders ====== */
+    --box-border: 2px solid var(--color-text);
+    --box-outline: 10px solid var(--color-bg-secondary);
 }
 
 /* ====== Layout ====== */

@@ -10,8 +10,8 @@
     align-items: center;
     padding: var(--spacing-md);
     background: var(--color-bg-secondary);
-    border: 2px solid var(--color-text);
-    outline: 10px solid var(--color-bg-secondary);
+    border: var(--box-border);
+    outline: var(--box-outline);
     box-shadow: var(--shadow-soft);
     transition: transform 0.3s ease;
 }
