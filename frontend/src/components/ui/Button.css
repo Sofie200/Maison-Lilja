@@ -1,13 +1,19 @@
-.btn {
+.btn-wrapper {
+    align-self: flex-start;
+}
 
+.btn {
     font-family: var(--font-serif);
     font-weight: 500;
-    border: none;
-    border-radius: var(--radius-lg);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
     cursor: pointer;
     width: auto;
-    display: inline-block;
     text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 5px;
 
     -webkit-transform: perspective(1px) translateZ(0);
     transform: perspective(1px) translateZ(0);
@@ -31,107 +37,112 @@
     transform-origin: 100%;
     -webkit-transition-property: transform;
     transition-property: transform;
-    -webkit-transition-duration: 0.2s;
-    transition-duration: 0.2s;
+    -webkit-transition-duration: 0.15s;
+    transition-duration: 0.15s;
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
-}
-
-.btn:focus,
-.btn:active {
-    color: white;
 }
 
 .btn:focus:before,
 .btn:active:before {
     -webkit-transform: scaleX(1);
     transform: scaleX(1);
-    -webkit-transition-duration: 0.4s;
-    transition-duration: 0.4s;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .btn:hover {
-        color: white;
-    }
 
     .btn:hover:before {
         -webkit-transform: scaleX(1);
         transform: scaleX(1);
-        -webkit-transition-duration: 0.4s;
-        transition-duration: 0.4s;
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
     }
 }
 
 /* Sizes */
 .btn-lg {
-    padding: 12px 30px;
-    font-size: 1.1rem;
-}
-
-.btn-md {
-    padding: 10px 22px;
-    font-size: 1rem;
+    padding: 12px 18px 12px 25px;
+    font-size: 0.75rem;
 }
 
 .btn-sm {
-    padding: 6px 14px;
-    font-size: 0.9rem;
+    padding: 6px 9px 6px 13px;
+    font-size: 0.75rem;
 }
 
 /* Colors */
 .btn-default {
-    background: var(--color-text);
+    background-color: var(--color-text);
+    border: 1px solid var(--color-bg);
+    outline: 5px solid var(--color-text);
     color: var(--color-bg);
 }
 
-.btn-default:before {
-    background: var(--color-text-light);
+.btn-default .btn-icon {
     color: var(--color-bg);
+    font-size: 1rem;
+}
+
+.btn-default:before {
+    background: #373430;
 }
 
 .btn-default:focus,
 .btn-default:active {
-    color: var(--color-bg-highlight);
+    color: var(--color-bg);
 }
 
 @media (hover: hover) and (pointer: fine) {
     .btn-default:hover {
-        color: var(--color-bg-highlight);
+        color: var(--color-bg);
     }
 }
 
-/* Pink */
-.btn-pink {
-    background: var(--pastel-blush-peach);
+/* Caramel */
+.btn-caramel {
+    background-color: var(--pastel-caramel);
+    border: 1px solid var(--color-text);
+    outline: 5px solid var(--pastel-caramel);
     color: var(--color-text);
 }
 
-.btn-pink:before {
-    background: var(--accent-dusty-rose);
+.btn-caramel .btn-icon {
     color: var(--color-text);
+    font-size: 1rem;
 }
 
-.btn-pink:focus,
-.btn-pink:active {
+.btn-caramel:before {
+    background: #E1CBA9;
+}
+
+.btn-caramel:focus,
+.btn-caramel:active {
     color: var(--color-text);
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .btn-pink:hover {
+    .btn-caramel:hover {
         color: var(--color-text);
     }
 }
 
-/* Green */
+/* Sage Green */
 .btn-green {
-    background: var(--pastel-caramel);
+    background-color: var(--accent-sage-green);
+    border: 1px solid var(--color-text);
+    outline: 5px solid var(--accent-sage-green);
     color: var(--color-text);
 }
 
-.btn-green:before {
-    background: var(--accent-sage-green);
+.btn-green .btn-icon {
     color: var(--color-text);
+    font-size: 1rem;
+}
+
+.btn-green:before {
+    background: #A9C4A7;
 }
 
 .btn-green:focus,
@@ -145,69 +156,30 @@
     }
 }
 
-/* Purple */
-.btn-purple {
-    background: var(--pastel-ivory);
+/* Teal */
+.btn-teal {
+    background-color: var(--accent-teal);
+    border: 1px solid var(--color-text);
+    outline: 5px solid var(--accent-teal);
     color: var(--color-text);
 }
 
-.btn-purple:before {
-    background: var(--accent-dusty-rose);
+.btn-teal .btn-icon {
     color: var(--color-text);
+    font-size: 1rem;
 }
 
-.btn-purple:focus,
-.btn-purple:active {
-    color: var(--color-text);
+.btn-teal:before {
+    background: #7EC8CB;
 }
 
-@media (hover: hover) and (pointer: fine) {
-    .btn-purple:hover {
-        color: var(--color-text);
-    }
-}
-
-/* Blue */
-.btn-blue {
-    background: var(--pastel-butter-yellow);
-    color: var(--color-text);
-}
-
-.btn-blue:before {
-    background: var(--accent-teal);
-    color: var(--color-text);
-}
-
-.btn-blue:focus,
-.btn-blue:active {
+.btn-teal:focus,
+.btn-teal:active {
     color: var(--color-text);
 }
 
 @media (hover: hover) and (pointer: fine) {
-    .btn-blue:hover {
-        color: var(--color-text);
-    }
-}
-
-/* Inverted */
-.btn-inverted {
-    background: var(--color-bg);
-    color: var(--color-text);
-    border: 2px solid var(--color-text-light);
-}
-
-.btn-inverted:before {
-    background: var(--color-bg-alt);
-    color: var(--color-text);
-}
-
-.btn-inverted:focus,
-.btn-inverted:active {
-    color: var(--color-text);
-}
-
-@media (hover: hover) and (pointer: fine) {
-    .btn-inverted:hover {
+    .btn-teal:hover {
         color: var(--color-text);
     }
 }
