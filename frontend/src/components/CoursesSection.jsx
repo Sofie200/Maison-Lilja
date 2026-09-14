@@ -10,7 +10,7 @@ const COURSES = [
             "Temperera choklad för blank yta och rätt knäck, fyll formar med ganache och karamell, och ta hem din egen låda pralin. Passar dig som aldrig hållit i en chokladtermometer förut.",
         image: "/774469301_18087705608412902_556362095638142971_n.jpg",
         imageAlt: "Handgjorda pralinger läggs upp på ett marmorbord",
-        accent: "pink",
+        accent: "green",
     },
     {
         id: "marsipan",
@@ -20,7 +20,7 @@ const COURSES = [
             "Färga, kavla och forma marsipan för hand — från enkla djur till mer detaljerade figurer. En kurs för både vuxna och barn som vill jobba med händerna.",
         image: "/793028504_18099047186133710_2004468186776971465_n.jpg",
         imageAlt: "Färgglada handformade marsipanfigurer",
-        accent: "green",
+        accent: "caramel",
     },
     {
         id: "dessert",
@@ -30,7 +30,7 @@ const COURSES = [
             "Bygg upp en flerkomponents chokladdessert från grunden: mousse, kladdig kaka, chokladsås och crunch. För dig som redan känner dig hemma i köket och vill utmana dig själv.",
         image: "/pushpak-dsilva-2UeBOL7UD34-unsplash.jpg",
         imageAlt: "Chokladdessert med mousse och kladdkaka på tallrik",
-        accent: "blue",
+        accent: "teal",
     },
 ];
 
@@ -62,7 +62,7 @@ export default function CoursesSection() {
                                 <p className="meta">{course.meta}</p>
                                 <h2>{course.title}</h2>
                                 <p>{course.description}</p>
-                                <Button to={`/kurser/${course.id}`} color={`${course.accent}`}>Boka kursen</Button>
+                                <Button icon="arrow" size="sm" to={`/kurser/${course.id}`} color={`${course.accent}`}>Boka kursen</Button>
                             </div>
                         </article>
                     ))}

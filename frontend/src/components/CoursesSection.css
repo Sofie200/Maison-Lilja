@@ -18,15 +18,15 @@
     border-left: none;
 }
 
-.course-pink {
-    --course-accent: var(--accent-dusty-rose);
+.course-caramel {
+    --course-accent: var(--pastel-caramel);
 }
 
 .course-green {
     --course-accent:var(--accent-sage-green);
 }
 
-.course-blue {
+.course-teal {
     --course-accent:var(--accent-teal);
 }
 
@@ -35,7 +35,6 @@
     height: 250px;
     overflow: hidden;
     display: block;
-    border-radius: var(--radius-md);
     box-shadow: var(--shadow-medium);
 }
 
@@ -51,6 +50,7 @@
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    padding-bottom: 5px;
 }
 
 .course .meta {
