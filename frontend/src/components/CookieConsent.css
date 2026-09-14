@@ -1,5 +1,104 @@
-#shopify-pc__banner__body-title {
-    font-family: var(--font-serif);
-    font-weight: 400;
+#shopify-pc__banner,
+#shopify-pc__prefs__dialog{
+    background-color: var(--color-bg);
+}
+
+#shopify-pc__banner a,
+#shopify-pc__banner__btn-manage-prefs span {
+    color: var(--color-text);
+    text-decoration: underline;
+}
+
+#shopify-pc__banner a:hover,
+#shopify-pc__banner__btn-manage-prefs span:hover {
+    color: var(--color-text-light);
+}
+
+.shopify-pc__banner__wrapper{
+    max-width: 1400px;
+    margin: auto;
+    font-family: var(--font-sans);
+    color: var(--accent-pink);
+    font-size: 1rem;
+}
+
+#shopify-pc__banner__body-title,
+#shopify-pc__prefs__header-title,
+.shopify-pc__prefs__intro-main h3,
+label {
+    font-family: var(--font-serif) !important;
+    color: var(--color-text) !important;
+    font-weight: 400 !important;
     margin-top: 0;
+}
+
+.shopify-pc__banner__body p,
+.shopify-pc__prefs__intro p,
+.shopify-pc__prefs__option p {
+    font-family: var(--font-sans) !important;
+    color: var(--color-text) !important;
+}
+
+#shopify-pc__banner__btn-accept,
+#shopify-pc__banner__btn-decline,
+#shopify-pc__prefs__header-accept,
+#shopify-pc__prefs__header-decline,
+#shopify-pc__prefs__header-save
+{
+    font-family: var(--font-serif);
+    font-weight: 500;
+    border: none;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    width: auto;
+    display: inline-block;
+    text-decoration: none;
+
+    padding: 12px 30px;
+    font-size: 1.1rem;
+
+    transition: background 0.3s ease, color 0.3s ease;
+    background: var(--color-text);
+    color: var(--color-bg);
+}
+
+#shopify-pc__banner__btn-accept:hover,
+#shopify-pc__banner__btn-accept:focus,
+#shopify-pc__banner__btn-accept:active,
+#shopify-pc__banner__btn-decline:hover,
+#shopify-pc__banner__btn-decline:focus,
+#shopify-pc__banner__btn-decline:active,
+#shopify-pc__prefs__header-accept:hover,
+#shopify-pc__prefs__header-accept:focus,
+#shopify-pc__prefs__header-accept:active,
+#shopify-pc__prefs__header-decline:hover,
+#shopify-pc__prefs__header-decline:focus,
+#shopify-pc__prefs__header-decline:active,
+#shopify-pc__prefs__header-save:hover,
+#shopify-pc__prefs__header-save:focus,
+#shopify-pc__prefs__header-save:active {
+    background: var(--color-text-light);
+    box-shadow: none;
+}
+
+#shopify-pc__banner__btn-manage-prefs{
+    white-space: nowrap;
+}
+
+#shopify-pc__prefs__header-close,
+.shopify-pc__prefs__option label span svg,
+.shopify-pc__prefs__option label span svg:hover,
+.shopify-pc__prefs__option label span svg:focus,
+.shopify-pc__prefs__option label span svg:active
+{
+    box-shadow: none !important;
+    border: 0;
+}
+
+.shopify-pc__prefs__option label span svg {
+    background-color:var(--color-bg) !important;
+}
+
+.shopify-pc__prefs__option label span path {
+    fill: var(--color-text);
 }
