@@ -2,25 +2,25 @@
 
 :root {
     /* ====== Basfärger ====== */
-    --color-bg: #f7f3e9;
-    --color-bg-secondary: #e8e0d2;
-    --color-bg-highlight: #f9f7f0;
-    --color-text: #4a2f27;
-    --color-text-light: #6b4a3f;
-    --color-border: #6b4a3f;
+    --color-bg: #F9E2D5;
+    --color-bg-secondary: #F2C4AB;
+    --color-bg-highlight: #FCF0EA;
+    --color-text: #1C1A18;
+    --color-text-light: #4A3028;
+    --color-border: #4A3028;
 
     /* ====== Pastellkontraster ====== */
-    --pastel-pink: #f4c6d7;
-    --pastel-green: #c8e6c9;
-    --pastel-purple: #d8c8f0;
-    --pastel-blue: #c7ddf7;
+    --pastel-ivory: #EDE4D0;
+    --pastel-blush-peach: #F2C4AB;
+    --pastel-caramel: #C8AB7E;
+    --pastel-butter-yellow: #E2E09A;
 
     /* ====== Accentfärger (mer mättade) ====== */
-    --accent-pink: #e89ab5;
-    --accent-green: #9ccfa3;
-    --accent-purple: #b9a3e6;
-    --accent-blue: #8fbce8;
-    --color-discount: #e89ab5;
+    --accent-dusty-rose: #AD7278;
+    --accent-dark-brown: #4A3028;
+    --accent-sage-green: #8BAF88;
+    --accent-teal: #5AB8BC;
+    --color-discount: #AD7278;
     --warning: #AA0000;
 
     /* ====== Typografi ====== */
@@ -32,8 +32,8 @@
     --radius-md: 12px;
     --radius-lg: 20px;
 
-    --shadow-soft: 0 6px 18px rgba(0, 0, 0, 0.08);
-    --shadow-medium: 0 10px 28px rgba(0, 0, 0, 0.3);
+    --shadow-soft: 0 6px 18px rgba(74, 48, 40, 0.15);
+    --shadow-medium: 0 10px 28px rgba(74, 48, 40, 0.5);
 
     /* ====== Layout ====== */
     --spacing-xs: 6px;

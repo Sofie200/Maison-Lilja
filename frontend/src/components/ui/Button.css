@@ -103,12 +103,12 @@
 
 /* Pink */
 .btn-pink {
-    background: var(--pastel-pink);
+    background: var(--pastel-blush-peach);
     color: var(--color-text);
 }
 
 .btn-pink:before {
-    background: var(--accent-pink);
+    background: var(--accent-dusty-rose);
     color: var(--color-text);
 }
 
@@ -125,12 +125,12 @@
 
 /* Green */
 .btn-green {
-    background: var(--pastel-green);
+    background: var(--pastel-caramel);
     color: var(--color-text);
 }
 
 .btn-green:before {
-    background: var(--accent-green);
+    background: var(--accent-sage-green);
     color: var(--color-text);
 }
 
@@ -147,12 +147,12 @@
 
 /* Purple */
 .btn-purple {
-    background: var(--pastel-purple);
+    background: var(--pastel-ivory);
     color: var(--color-text);
 }
 
 .btn-purple:before {
-    background: var(--accent-purple);
+    background: var(--accent-dusty-rose);
     color: var(--color-text);
 }
 
@@ -169,12 +169,12 @@
 
 /* Blue */
 .btn-blue {
-    background: var(--pastel-blue);
+    background: var(--pastel-butter-yellow);
     color: var(--color-text);
 }
 
 .btn-blue:before {
-    background: var(--accent-blue);
+    background: var(--accent-teal);
     color: var(--color-text);
 }
 

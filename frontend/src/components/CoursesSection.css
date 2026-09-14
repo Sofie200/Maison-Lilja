@@ -19,15 +19,15 @@
 }
 
 .course-pink {
-    --course-accent: var(--accent-pink);
+    --course-accent: var(--accent-dusty-rose);
 }
 
 .course-green {
-    --course-accent:var(--accent-green);
+    --course-accent:var(--accent-sage-green);
 }
 
 .course-blue {
-    --course-accent:var(--accent-blue);
+    --course-accent:var(--accent-teal);
 }
 
 .course-image-wrap {

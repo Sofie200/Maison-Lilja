@@ -89,7 +89,7 @@
     top: 50%;
     width: 100%;
     height: 2px;
-    background: var(--accent-purple);
+    background: var(--accent-dusty-rose);
     z-index: -1;
     opacity: 0;
     transform: translateY(0);

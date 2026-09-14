@@ -106,7 +106,7 @@
 
 .contact-field input:focus,
 .contact-field textarea:focus {
-    outline: 2px solid var(--accent-pink);
+    outline: 2px solid var(--accent-dusty-rose);
     outline-offset: 1px;
     background: var(--color-bg-highlight);
 }
