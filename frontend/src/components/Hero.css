@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: left;
+    align-items:flex-start;
 }
 
 .hero .content h1{
@@ -102,6 +102,7 @@
 
     .hero .content {
         width: 100%;
+        display: block;
         text-align: center;
         padding: var(--spacing-lg);
     }
