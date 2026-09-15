@@ -59,6 +59,11 @@
     position: sticky;
     border: var(--box-border);
     outline: var(--box-outline);
+    background-image: url("../menu_bg.png");
+    background-position: bottom center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+
 }
 
 .menu ul {
@@ -154,5 +159,6 @@
         position: static;
         border:none;
         outline:none;
+        background-image: none;
     }
 }
