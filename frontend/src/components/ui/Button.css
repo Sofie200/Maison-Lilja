@@ -72,6 +72,34 @@
     font-size: 0.75rem;
 }
 
+/* Inverted */
+.btn-inverted {
+    background-color: var(--pastel-blush-peach);
+    border: 1px solid var(--color-text);
+    outline: 5px solid var(--pastel-blush-peach);
+    color: var(--color-text);
+}
+
+.btn-inverted .btn-icon {
+    color: var(--color-text);
+    font-size: 1rem;
+}
+
+.btn-inverted:before {
+    background: var(--color-bg);
+}
+
+.btn-inverted:focus,
+.btn-inverted:active {
+    color: var(--color-text);
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-inverted:hover {
+        color: var(--color-text);
+    }
+}
+
 /* Colors */
 .btn-default {
     background-color: var(--color-text);

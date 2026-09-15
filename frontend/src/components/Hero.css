@@ -1,12 +1,10 @@
 .hero {
-    margin: 0 var(--spacing-lg);
     display: flex;
     align-items: stretch;
-    background: var(--pastel-butter-yellow);
-    color: var(--color-text);
+    background: var(--accent-dark-brown);
+    color: var(--color-bg);
     height: 600px;
     overflow: hidden;
-    box-shadow: var(--shadow-strong);
 }
 
 .hero .image-wrapper {

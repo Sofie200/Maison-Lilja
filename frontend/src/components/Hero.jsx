@@ -15,7 +15,7 @@ const Hero = () => {
                 <p className="text">
                     Unna dig <i>En Magisk December</i>.<br />Handgjord i vår chokladateljé i Malmö - 24 exklusiva praliner.
                 </p>
-                <Button icon="arrow" children="Beställ nu" color="default" size="lg" to="/shop/product/10613076656394" />
+                <Button icon="arrow" children="Beställ nu" color="inverted" size="lg" to="/shop/product/10613076656394" />
             </div>
         </div>
     );
