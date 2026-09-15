@@ -1,12 +1,31 @@
 .footer {
-    background: var(--color-text-light);
-    color: var(--color-bg);
+    color: var(--color-text);
     font-family: var(--font-sans);
+
+    background-image:
+        url("../main_bg_right.png"),
+        url("../main_bg_left.png");
+
+    background-position:
+        bottom right,
+        bottom left;
+
+    background-size:
+        contain,
+        contain;
+
+    background-repeat:
+        no-repeat,
+        no-repeat;
+
+    margin-top: var(--spacing-lg);
 }
 
 .footer-inner {
+    max-width: 600px;
+    margin: auto;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     gap: var(--spacing-xl);
     padding: var(--spacing-lg) var(--spacing-lg) var(--spacing-xl);
 }
@@ -19,7 +38,6 @@ footer h3 {
     display: inline-block;
     font-size: 1.1rem;
     margin-bottom: var(--spacing-md);
-    color: var(--color-bg);
     border-bottom: 1px solid var(--color-bg-secondary);
     padding-bottom: 8px;
 
@@ -28,15 +46,15 @@ footer h3 {
 .footer a {
     display: inline-block;
     margin-bottom: 8px;
-    color: var(--color-bg-secondary);
-    opacity: 0.8;
+    color: var(--accent-dark-brown);
     text-decoration: none;
+    opacity: 1;
     transition: opacity 0.3s ease;
 }
 
 .footer a:hover {
-    color: var(--color-bg-secondary);
-    opacity: 0.5;
+    color: var(--accent-dark-brown);
+    opacity: 0.7;
 }
 
 .instagram-icon {
@@ -50,17 +68,32 @@ footer h3 {
 
 .footer-bottom {
     text-align: center;
-    padding: var(--spacing-md);
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    font-size: 0.9rem;
-    color: var(--color-bg);
+    padding: var(--spacing-sm);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text);
 }
 
 /* Mobile */
 @media screen and (max-width: 600px) {
+
+    .footer {
+        background-image: none;
+    }
+            
     .footer-inner {
         flex-direction: column;
         gap: 20px;
-        text-align: center;
+        text-align: left;
+        padding-bottom: var(--spacing-sm);
+        background-image: url("../main_bg_right.png");
+        background-position: bottom right;
+        background-size: 75%;
+        background-repeat: no-repeat;
     }
+}
+
+.footer-bottom {
+    background-color: var(--accent-dark-brown);
+    color:var(--color-bg-secondary);
 }
