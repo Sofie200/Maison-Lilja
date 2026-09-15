@@ -40,7 +40,7 @@
 .menu {
     margin: 0 !important;
     width: 70%;
-    height: 100vh;
+    height: 100dvh;
     display: flex;
     background-color: var(--color-bg-secondary);
     box-shadow: var(--shadow-soft);
