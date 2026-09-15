@@ -2,8 +2,8 @@
 
 /* Hamburger button */
 .hamburger {
-    width: 32px;
-    height: 24px;
+    width: 24px;
+    height: 19px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -18,7 +18,7 @@
 }
 
 .hamburger span {
-    height: 4px;
+    height: 3px;
     background: var(--color-text);
     /* chokladbrun */
     border-radius: 2px;
@@ -27,7 +27,7 @@
 
 /* Hamburger animation */
 .hamburger.open span:nth-child(1) {
-    transform: translateY(10px) rotate(45deg);
+    transform: translateY(5px) rotate(45deg);
 }
 
 .hamburger.open span:nth-child(2) {
@@ -35,21 +35,25 @@
 }
 
 .hamburger.open span:nth-child(3) {
-    transform: translateY(-10px) rotate(-45deg);
+    transform: translateY(-11px) rotate(-45deg);
 }
 
 /* Mobile menu */
 .menu {
     margin: 0 !important;
+    width: 50%;
+    height: 100vh;
     background-color: var(--color-bg-secondary);
     box-shadow: var(--shadow-soft);
     list-style: none;
-    padding: var(--spacing-lg) var(--spacing-xl);
+    padding: var(--spacing-xl) var(--spacing-md);
     display: flex;
     flex-direction: column;
+    flex-wrap: wrap;
+    justify-content:space-around;
     gap: var(--spacing-sm);
     position: absolute;
-    top: -10px;
+    top: 0px;
     left: 0;
 
     /* Startläge: dold utanför skärmen till vänster */
