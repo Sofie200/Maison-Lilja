@@ -91,10 +91,10 @@ footer h3 {
         background-size: 50%;
         background-repeat: no-repeat;
     }
-}
 
-.footer-bottom {
-    background-color: var(--accent-dark-brown);
-    color:var(--color-bg-secondary);
-    border: 0;
+    .footer-bottom {
+        background-color: var(--accent-dark-brown);
+        color: var(--color-bg-secondary);
+        border: 0;
+    }
 }
