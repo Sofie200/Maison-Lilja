@@ -45,13 +45,6 @@
     height: 100vh;
     background-color: var(--color-bg-secondary);
     box-shadow: var(--shadow-soft);
-    list-style: none;
-    padding: var(--spacing-xl) var(--spacing-md);
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content:space-around;
-    gap: var(--spacing-sm);
     position: absolute;
     top: 0px;
     left: 0;
@@ -60,6 +53,16 @@
     transform: translateX(-100%);
     visibility: hidden;
     transition: transform 0.35s ease, visibility 0.35s ease;
+}
+
+.menu ul {
+    height: 60vh;
+    list-style: none;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: var(--spacing-sm);
 }
 
 .menu.show {
@@ -116,19 +119,27 @@
 
     .menu {
         background-color: transparent;
-        display: flex !important;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        gap: var(--spacing-lg);
         padding-left: 0;
         margin: 0;
         position: static;
-        padding: 0px var(--spacing-xl);
-        /* Ingen slide-effekt på desktop, alltid synlig */
         transform: none;
         visibility: visible;
         transition: none;
         box-shadow: none;
+        width: auto;
+        height: auto;
     }
+
+        .menu ul {
+            height: auto;
+            display: flex !important;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            gap: var(--spacing-lg);
+            padding-left: 0;
+            margin: 0;
+            position: static;
+            padding: 0px var(--spacing-xl);
+        }
 }

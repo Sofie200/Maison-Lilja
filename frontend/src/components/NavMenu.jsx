@@ -18,7 +18,8 @@ const NavMenu = () => {
             </button>
 
             {/* Menu */}
-            <ul className={`menu ${open ? "show" : ""}`}>
+            <div className={`menu ${open ? "show" : ""}`}>
+            <ul>
                 <li><a href="/">Hem</a></li>
                 <li><a href="/shop">Handla nu</a></li>
                 <li><a href="/seasonal">Säsong</a></li>
@@ -27,6 +28,7 @@ const NavMenu = () => {
                 <li><a href="/courses">Kurser</a></li>
                 <li><a href="/tastings">Chokladprovningar</a></li>
             </ul>
+            </div>
         </nav>
     );
 }
