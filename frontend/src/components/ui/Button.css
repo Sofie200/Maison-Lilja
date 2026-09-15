@@ -76,7 +76,7 @@
 /* Inverted */
 .btn-inverted {
     background-color: var(--pastel-blush-peach);
-    border: 1px solid var(--color-text);
+    border: 2px solid var(--color-text);
     outline: 5px solid var(--pastel-blush-peach);
     color: var(--color-text);
 }
@@ -104,7 +104,7 @@
 /* Colors */
 .btn-default {
     background-color: var(--color-text);
-    border: 1px solid var(--color-bg);
+    border: 2px solid var(--color-bg);
     outline: 5px solid var(--color-text);
     color: var(--color-bg);
 }
@@ -132,7 +132,7 @@
 /* Caramel */
 .btn-caramel {
     background-color: var(--pastel-caramel);
-    border: 1px solid var(--color-text);
+    border: 2px solid var(--color-text);
     outline: 5px solid var(--pastel-caramel);
     color: var(--color-text);
 }
@@ -160,7 +160,7 @@
 /* Sage Green */
 .btn-green {
     background-color: var(--accent-sage-green);
-    border: 1px solid var(--color-text);
+    border: 2px solid var(--color-text);
     outline: 5px solid var(--accent-sage-green);
     color: var(--color-text);
 }
@@ -188,7 +188,7 @@
 /* Teal */
 .btn-teal {
     background-color: var(--accent-teal);
-    border: 1px solid var(--color-text);
+    border: 2px solid var(--color-text);
     outline: 5px solid var(--accent-teal);
     color: var(--color-text);
 }
@@ -229,5 +229,11 @@
 @media (hover: hover) and (pointer: fine) {
     .btn:disabled:hover {
         background: inherit;
+    }
+}
+
+@media screen and (max-width:500px) {
+    .btn-lg {
+        font-size: 1rem;
     }
 }
