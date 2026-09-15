@@ -34,6 +34,7 @@
 
     --shadow-soft: 0 6px 18px rgba(74, 48, 40, 0.15);
     --shadow-medium: 0 10px 28px rgba(74, 48, 40, 0.5);
+    --shadow-strong: 10px 10px 0px rgba(74, 48, 40, 1);
 
     /* ====== Layout ====== */
     --spacing-xs: 6px;
