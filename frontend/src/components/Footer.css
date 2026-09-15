@@ -2,7 +2,6 @@
     background: var(--color-text-light);
     color: var(--color-bg);
     font-family: var(--font-sans);
-    z-index: 1000;
 }
 
 .footer-inner {
