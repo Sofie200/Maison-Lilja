@@ -88,7 +88,7 @@ footer h3 {
         padding-bottom: var(--spacing-sm);
         background-image: url("../main_bg_right.png");
         background-position: bottom right;
-        background-size: 75%;
+        background-size: 50%;
         background-repeat: no-repeat;
     }
 }
@@ -96,4 +96,5 @@ footer h3 {
 .footer-bottom {
     background-color: var(--accent-dark-brown);
     color:var(--color-bg-secondary);
+    border: 0;
 }
