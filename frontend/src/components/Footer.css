@@ -96,22 +96,19 @@ footer h3 {
     }
 
     .footer-inner {
+        background-image:
+            url("../main_bg_center.png");
+        background-position:
+            bottom center;
+        background-size:auto 220px;
+        background-repeat: repeat-x;
         position: relative;
-        flex-direction: column;
-        gap: 20px;
-        text-align: left;
-        padding: 0;
-        margin-bottom: 35px;
-        background-size:
-            auto 320px,
-            auto 320px;
     }
 
     .footer-grid {
-        max-width: 550px;
-        padding: var(--spacing-lg) var(--spacing-lg) 0;
+        max-width: 800px;
+        padding: var(--spacing-lg) var(--spacing-lg) 245px;
         gap: 20px;
-        padding-bottom: 150px;
     }
 
     .footer-bottom {
@@ -123,37 +120,7 @@ footer h3 {
         line-height: 35px;
         padding: 0;
         font-weight: normal;
+        left: 0;
         bottom: -35px;
-    }
-}
-
-@media screen and (max-width: 800px) {
-
-    .footer-inner {
-        background-size:
-            auto 280px,
-            auto 280px;
-    }
-
-    .footer-grid {
-        max-width: 420px;
-        padding-bottom: 270px;
-    }
-}
-
-@media screen and (max-width: 480px) {
-
-    .footer-grid {
-        max-width: 100%;
-    }
-
-    .footer-inner {
-        background-size:
-            auto 220px,
-            auto 220px;
-    }
-
-    .footer-grid {
-        padding-bottom: 200px;
     }
 }
