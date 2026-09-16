@@ -3,7 +3,6 @@
     padding-top: var(--spacing-md);
     color: var(--color-text);
     font-family: var(--font-sans);
-    margin-top: var(--spacing-lg);
 }
 
 .footer-inner {
