@@ -39,6 +39,10 @@ label {
     color: var(--color-text) !important;
 }
 
+.shopify-pc__banner__btns{
+    gap:10px
+}
+
 #shopify-pc__banner__btn-accept,
 #shopify-pc__banner__btn-decline,
 #shopify-pc__prefs__header-accept,
@@ -46,15 +50,18 @@ label {
 #shopify-pc__prefs__header-save
 {
     font-family: var(--font-serif);
+    font-size: 1rem;
+    text-transform: capitalize !important;
     font-weight: 500;
-    border: none;
-    border-radius: var(--radius-lg);
+    border-radius: 0;
+    border: 2px solid var(--color-bg);
+    outline: 5px solid var(--color-text);
     cursor: pointer;
     width: auto;
     display: inline-block;
     text-decoration: none;
 
-    padding: 12px 30px;
+    padding: 10px 20px;
     font-size: 1.1rem;
 
     transition: background 0.3s ease, color 0.3s ease;
@@ -77,7 +84,7 @@ label {
 #shopify-pc__prefs__header-save:hover,
 #shopify-pc__prefs__header-save:focus,
 #shopify-pc__prefs__header-save:active {
-    background: var(--color-text-light);
+    background: #373430;
     box-shadow: none;
 }
 
@@ -101,4 +108,16 @@ label {
 
 .shopify-pc__prefs__option label span path {
     fill: var(--color-text);
+}
+
+.shopify-pc__prefs__option label span{
+    background-color: transparent !important;
+}
+
+.shopify-pc__prefs__option:first-child{
+    border-top: 1px solid var(--color-text) !important;
+}
+
+.shopify-pc__prefs__scrollable h3, .shopify-pc__prefs__scrollable label{
+    font-weight: 500 !important;
 }
