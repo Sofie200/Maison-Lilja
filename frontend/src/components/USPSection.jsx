@@ -1,4 +1,5 @@
 import "./USPSection.css";
+import Button from "./ui/Button"
 
 const USPSection = () => {
 
@@ -42,6 +43,7 @@ const USPSection = () => {
                 </div>
 
             </div>
+            <Button />
         </section>
     );
 }

@@ -62,7 +62,7 @@ export default function CoursesSection() {
                                 <p className="meta">{course.meta}</p>
                                 <h2>{course.title}</h2>
                                 <p>{course.description}</p>
-                                <Button icon="arrow" size="sm" to={`/kurser/${course.id}`} color={`${course.accent}`}>Boka kursen</Button>
+                                <Button icon="arrow_forward" size="sm" to={`/kurser/${course.id}`} color={`${course.accent}`}>Boka kursen</Button>
                             </div>
                         </article>
                     ))}

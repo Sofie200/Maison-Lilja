@@ -1,49 +1,29 @@
 import "./Button.css";
 
 // Semantiska namn → faktiska Material Symbols-ikonnamn.
-// Lägg till fler här när ni behöver fler ikon-varianter.
-const ICONS = {
-    plus: "add",
-    arrow: "arrow_forward",
-};
-
-// Rimlig standardplacering per ikon (plus brukar stå före text, pil efter) —
-// kan alltid overridas via iconPosition-prop om du behöver något annat.
-const DEFAULT_ICON_POSITION = {
-    plus: "start",
-    arrow: "end",
-};
+//plus: "add"
+//arrow: "arrow_forward"
 
 const Button = ({
-    children,
-    size = "md",
+    children = "Läs mer",
+    size = "lg",
     color = "default",
     loading = false,
-    icon,
-    iconPosition,
+    icon = "arrow_forward",
     onClick,
     to,
     ...rest
 }) => {
-
-    const position = iconPosition ?? DEFAULT_ICON_POSITION[icon] ?? "end";
 
     const content = (
         <>
 
             <span className="btn-label">{children}</span>
 
-            {icon && position === "start" && (
-                <span className="material-symbols-rounded btn-icon" aria-hidden="true">
-                    {ICONS[icon]}
-                </span>
-            )}
+            <span className="material-symbols-rounded btn-icon" aria-hidden="true">
+                {icon}
+            </span>
 
-            {icon && position === "end" && (
-                <span className="material-symbols-rounded btn-icon" aria-hidden="true">
-                    {ICONS[icon]}
-                </span>
-            )}
         </>
     );
 

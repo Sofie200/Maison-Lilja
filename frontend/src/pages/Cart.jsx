@@ -88,10 +88,7 @@ const Cart = () => {
                                                 <p className="cart-item-error fineprint">{itemError}</p>
                                             )}
                                         </div>
-
-                                        {itemError && (
-                                            <p className="cart-item-error fineprint">{itemError}</p>
-                                        )}
+                                        
                                     </div>
 
                                 </div>

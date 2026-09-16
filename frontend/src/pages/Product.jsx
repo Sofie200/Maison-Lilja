@@ -59,6 +59,8 @@ export default function Product() {
                         />
                     ) : (
                         <Button
+                            icon="add"
+                            size="sm"
                             loading={cartLoading}
                             disabled={cartLoading || !canAddToCart}
                             onClick={() => addToCart(variant.id, 1)}

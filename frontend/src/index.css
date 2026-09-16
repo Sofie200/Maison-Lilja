@@ -57,12 +57,6 @@ html {
     font-size: 16px;
 }
 
-@media screen and (max-width:600px) {
-    html {
-        font-size: 18px;
-    }
-}
-
 body {
     margin: 0;
     background: var(--color-bg);
@@ -154,6 +148,13 @@ img {
 }
 
 @media screen and (max-width: 900px) {
+    .section-standard,
+    .section-center {
+        max-width: 1200px;
+        margin: auto;
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
     h1 {
         font-size: 1.6rem;
     }
