@@ -8,8 +8,8 @@
 .footer-inner {
     padding: var(--spacing-md) var(--spacing-md) 0;
     background-image:
-        url("../main_bg_right.png"),
-        url("../main_bg_left.png");
+        url("/main_bg_right.png"),
+        url("/main_bg_left.png");
     background-position:
         bottom right,
         bottom left;
@@ -96,7 +96,7 @@ footer h3 {
 
     .footer-inner {
         background-image:
-            url("../main_bg_center.png");
+            url("/main_bg_center.png");
         background-position:
             bottom center;
         background-size:auto 220px;
