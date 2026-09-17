@@ -1,9 +1,9 @@
-import "./HeroFadeReverse.css";
+import "./HeroPrivateLabel.css";
 
-const HeroFadeReverse = () => {
+const HeroPrivateLabel = () => {
 
     return (
-        <div className="hero-fade-reverse">
+        <div className="hero-private-label">
 
             <div className="content">
                 <div>
@@ -22,4 +22,4 @@ const HeroFadeReverse = () => {
     );
 }
 
-export default HeroFadeReverse
+export default HeroPrivateLabel

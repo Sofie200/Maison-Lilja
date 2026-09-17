@@ -1,22 +1,22 @@
-.hero-fade-reverse {
+.hero-private-label {
     width: 100%;
     display: flex;
     flex-direction: row-reverse;
     align-items: stretch;
-    background: var(--color-bg-secondary);
+    background: var(--pastel-ivory);
     color: var(--color-text);
     height: 500px;
     overflow: hidden;
 }
 
-.hero-fade-reverse .image-wrapper {
-    width: 50%;
+.hero-private-label .image-wrapper {
+    width: 45%;
     height: 100%;
     overflow: hidden;
     position: relative;
 }
 
-.hero-fade-reverse .image {
+.hero-private-label .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -25,32 +25,31 @@
     mask-image: linear-gradient(to left, transparent 0%, black 25%);
 }
 
-.hero-fade-reverse .content {
-    width: 50%;
-    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-xl) 0;
+.hero-private-label .content {
+    width: 55%;
+    padding: var(--spacing-xl) var(--spacing-xl) var(--spacing-xl) var(--spacing-md);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.hero-fade-reverse .content div {
+.hero-private-label .content div {
     width: 100%;
     max-width: 750px;
     text-align: left;
     margin: auto;
 }
 
-.hero-fade-reverse .content h1{
+.hero-private-label .content h1{
     font-size: 3.5rem;
-    font-style: italic;
     margin: 0 0 30px;
 }
 
-.hero-fade-reverse .content p {
+.hero-private-label .content p {
     font-size: 1.2rem;
-    margin: 0 0 40px;
+    margin: 0 0 30px;
 }
 
-.hero-fade-reverse .content .cta {
+.hero-private-label .content .cta {
     display: inline-block;
     background: var(--color-text);
     color: var(--color-bg);
@@ -64,28 +63,47 @@
     /* viktigt: gör den tydligt placerad */
 }
 
-.hero-fade-reverse .content .cta:hover {
+.hero-private-label .content .cta:hover {
     background: var(--color-text-light);
     transform: translateY(-2px);
 }
-@media screen and (max-width: 800px) {
-    .hero-fade-reverse {
-        display: block;
+
+@media screen and (max-width: 1200px) {
+
+    .hero-private-label .content h1 {
+        font-size: 3rem;
+    }
+
+}
+@media screen and (max-width: 900px) {
+    .hero-private-label {
+        flex-direction: column-reverse;
         height: auto;
     }
 
-    .hero-fade-reverse .image-wrapper {
+    .hero-private-label .image-wrapper {
         width: 100%;
-        height: 320px;
+        max-height: 400px;
     }
 
-    .hero-fade-reverse .content {
+    .hero-private-label .image {
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .hero-private-label .content {
         width: 100%;
         text-align: center;
         padding: var(--spacing-lg);
     }
 
-    .hero-fade-reverse .content h1{
+    .hero-private-label .content h1{
         font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .hero-private-label .content h1 {
+        font-size: 2rem;
     }
 }

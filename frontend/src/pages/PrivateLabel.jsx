@@ -1,5 +1,5 @@
-import HeroFadeReverse from "../components/HeroFadeReverse";
+import HeroPrivateLabel from "../components/HeroPrivateLabel";
 
 export default function PrivateLabel() {
-    return <><HeroFadeReverse /></>;
+    return <><HeroPrivateLabel /></>;
 }
