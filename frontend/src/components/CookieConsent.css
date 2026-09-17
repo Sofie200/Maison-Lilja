@@ -39,9 +39,15 @@ label {
     color: var(--color-text) !important;
 }
 
-.shopify-pc__banner__btns{
-    gap:10px
+.shopify-pc__banner__btns {
+    gap: 20px;
+    padding-top:20px;
 }
+
+.shopify-pc__prefs__header-actions{
+    gap:20px
+}
+
 
 #shopify-pc__banner__btn-accept,
 #shopify-pc__banner__btn-decline,
@@ -50,9 +56,10 @@ label {
 #shopify-pc__prefs__header-save
 {
     font-family: var(--font-serif);
-    font-size: 1rem;
-    text-transform: capitalize !important;
-    font-weight: 500;
+    font-size: 0.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 500 !important;
     border-radius: 0;
     border: 2px solid var(--color-bg);
     outline: 5px solid var(--color-text);
@@ -61,12 +68,12 @@ label {
     display: inline-block;
     text-decoration: none;
 
-    padding: 10px 20px;
-    font-size: 1.1rem;
+    padding: 12px 25px !important;
 
     transition: background 0.3s ease, color 0.3s ease;
     background: var(--color-text);
     color: var(--color-bg);
+    margin: 0;
 }
 
 #shopify-pc__banner__btn-accept:hover,
@@ -120,4 +127,10 @@ label {
 
 .shopify-pc__prefs__scrollable h3, .shopify-pc__prefs__scrollable label{
     font-weight: 500 !important;
+}
+
+@media only screen and (max-width: 1280px) {
+    .shopify-pc__banner__dialog button {
+        margin: 0 !important;
+    }
 }
