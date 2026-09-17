@@ -1,9 +1,9 @@
-import "./HeroFade.css";
+import "./HeroGifts.css";
 
 const HeroFade = () => {
 
     return (
-        <div className="hero-fade">
+        <div className="hero-gifts">
 
             <div className="image-wrapper">
                 <img src="/gifts.jpg" className="image" />

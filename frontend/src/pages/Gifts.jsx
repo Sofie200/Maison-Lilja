@@ -1,7 +1,7 @@
-import HeroFade from "../components/HeroFade";
+import HeroGifts from "../components/HeroGifts";
 
 export default function Gifts() {
     return <>
-        <HeroFade />
+        <HeroGifts />
     </>
 }
