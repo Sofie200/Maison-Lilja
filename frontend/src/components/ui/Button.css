@@ -68,9 +68,16 @@
     font-size: 0.75rem;
 }
 
+.btn-md {
+    padding: 8px 12px 8px 18px;
+    font-size: 0.75rem;
+    border-width: 1px !important;
+}
+
 .btn-sm {
     padding: 6px 9px 6px 13px;
     font-size: 0.75rem;
+    border-width: 1px !important;
 }
 
 /* Inverted */
