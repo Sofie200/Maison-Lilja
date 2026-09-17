@@ -50,7 +50,7 @@
 .out-of-stock .price-current,
 .out-of-stock .price-discounted,
 .out-of-stock .price-original {
-    opacity: 0.7;
+    opacity: 0.5;
 }
 
 .product-card .stock-badge {
@@ -70,8 +70,8 @@
     top: -5%;
     left: -5%;
     box-shadow: var(--shadow-medium);
-    backdrop-filter: blur(3px);
-    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
     height: 110%;
     width: 110%;
     display: flex;
