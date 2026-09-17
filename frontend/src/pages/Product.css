@@ -1,7 +1,8 @@
 .product-page {
     display: flex;
-    gap: var(--spacing-lg);
+    gap: var(--spacing-xl);
     align-items: flex-start;
+    padding-bottom: var(--spacing-xl);
 }
 
 .product-page .product-info {
@@ -31,6 +32,14 @@
 
 @media screen and (max-width: 900px) {
     .product-page {
+        gap: var(--spacing-lg);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .product-page {
         display: block;
+        padding-left: var(--spacing-lg);
+        padding-right: var(--spacing-lg);
     }
 }
