@@ -8,7 +8,7 @@ const Header = () => {
 
             <div className="header-top">
                 <div className="header-logo">
-                    <a href="/"><img src="../../logo.png" alt="Logo" /></a>
+                    <a href="/"><img src="/logo.png" alt="Logo" /></a>
                 </div>
 
                 <div className="header-icons">

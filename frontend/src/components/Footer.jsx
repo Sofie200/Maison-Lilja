@@ -10,7 +10,7 @@ const Footer = () => {
 
                     {/* Brand */}
                     <div className="footer-brand">
-                        <h3><img src="../../logo_symbol.png" alt="Logo" /></h3>
+                        <h3><img src="/logo_symbol.png" alt="Logo" /></h3>
                         <a href="/about">Om oss</a><br />
                         <a href="/contact">Kontakt</a><br />
                         <a
