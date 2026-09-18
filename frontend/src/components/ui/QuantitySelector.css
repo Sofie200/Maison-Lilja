@@ -15,6 +15,9 @@
     --qty-btn-size: 44px;
     --qty-icon-size: 1.6rem;
     gap: 12px;
+    background-color: var(--color-bg);
+    border: var(--box-border);
+    outline: var(--box-outline);
 }
 
 .qty-btn {
@@ -29,6 +32,10 @@
     border-radius: var(--radius-lg);
 }
 
+.qty-controls--lg .qty-btn {
+    background-color: var(--color-bg);
+}
+
 .qty-btn .material-symbols-rounded {
     width: 100%;
     height: 100%;
@@ -39,6 +46,10 @@
     font-size: var(--qty-icon-size);
     line-height: var(--qty-btn-size);
     font-weight: 400;
+}
+
+.qty-controls--lg .qty-btn .material-symbols-rounded {
+    background-color: var(--color-bg);
 }
 
 .qty-btn:first-of-type .material-symbols-rounded {
@@ -54,6 +65,10 @@
         color: var(--color-text);
         background: var(--color-bg-secondary);
         font-weight: 600;
+    }
+
+    .qty-controls--lg .qty-btn .material-symbols-rounded:hover {
+        background: var(--color-bg-secondary);
     }
 }
 
