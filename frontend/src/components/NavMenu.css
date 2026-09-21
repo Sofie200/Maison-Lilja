@@ -71,7 +71,7 @@
     padding:var(--spacing-lg) var(--spacing-md);
     display: flex;
     flex-direction: column;
-    gap: var(--spacing-md);
+    gap: var(--spacing-sm);
 }
 
 .menu.show {
@@ -81,7 +81,7 @@
 
 .menu a {
     text-decoration: none;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     color: var(--color-text);
     /* chokladbrun */
     font-family: var(--font-serif);
@@ -160,5 +160,9 @@
         border:none;
         outline:none;
         background-image: none;
+    }
+
+    .menu a{
+        font-size: 1.1rem;
     }
 }
