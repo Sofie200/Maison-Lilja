@@ -11,7 +11,9 @@ const Footer = () => {
                     {/* Brand */}
                     <div className="footer-brand">
                         <h3><img src="/logo_symbol.png" alt="Logo" /></h3>
-                        <a href="/about">Om oss</a><br />
+                        {
+                            //<a href="/about">Om oss</a><br />
+                        }
                         <a href="/contact">Kontakt</a><br />
                         <a
                             href="https://instagram.com/maisonlilja"
@@ -43,7 +45,9 @@ const Footer = () => {
                     {/* Info / Policies */}
                     <div className="footer-info">
                         <h3>Information</h3>
-                        <a href="/faq">Vanliga frågor</a><br />
+                        {
+                            //<a href="/faq">Vanliga frågor</a><br />
+                        }
                         <a href="/integritetspolicy">Integritetspolicy</a><br />
                         <a href="/kopvillkor">Köpvillkor</a><br />
                         <a href="/returer">Returer & reklamation</a>
@@ -53,7 +57,7 @@ const Footer = () => {
                 </div>
 
                 <div className="footer-bottom">
-                    © {new Date().getFullYear()} Maison Lilja — Alla rättigheter förbehållna.
+                    © {new Date().getFullYear()} Maison Lilja - Alla rättigheter förbehållna.
                 </div>
 
             </section>

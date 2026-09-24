@@ -2,8 +2,8 @@ import "./Loader.css";
 
 const Loader = () => {
 	return (
-		<div class="loader-wrapper">
-			<div class="lds-ellipsis">
+		<div className="loader-wrapper">
+			<div className="lds-ellipsis">
 				<div></div>
 				<div></div>
 				<div></div>

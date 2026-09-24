@@ -1,0 +1,75 @@
+.product-specs {
+    margin-top: 2rem;
+    border-top: 1px solid currentColor;
+    border-bottom: 1px solid currentColor;
+    border-color: color-mix(in srgb, currentColor 20%, transparent);
+}
+
+.product-specs summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    cursor: pointer;
+    list-style: none;
+    font-weight: 500;
+}
+
+/* Dölj standardpilen (Safari) */
+.product-specs summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Eget plus/minus-tecken */
+.product-specs summary::after {
+    content: "+";
+    font-size: 1.25rem;
+    line-height: 1;
+    transition: transform 0.2s ease;
+}
+
+.product-specs[open] summary::after {
+    transform: rotate(45deg);
+}
+
+.product-specs summary:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 4px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .product-specs summary:hover {
+        opacity: 0.7;
+    }
+}
+
+.product-specs__table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+}
+
+.product-specs__table th,
+.product-specs__table td {
+    padding: 0.625rem 0;
+    text-align: left;
+    vertical-align: top;
+    border-top: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.product-specs__table th {
+    width: 35%;
+    padding-right: 1rem;
+    font-weight: 500;
+}
+
+/* Behåll radbrytningar från flerradiga textfält i Shopify */
+.product-specs__table td.is-multiline {
+    white-space: pre-line;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .product-specs summary::after {
+        transition: none;
+    }
+}

@@ -1,4 +1,5 @@
 import "./HeroGifts.css";
+import Button from "./ui/Button";
 
 const HeroFade = () => {
 
@@ -18,6 +19,7 @@ const HeroFade = () => {
                     <p className="text">
                         Perfekt som tackgåva, julpresent eller som en varm gest i vardagen - choklad är alltid rätt och alltid uppskattat.
                     </p>
+                    <div><Button children="Kontakta oss" to="/contact" icon="arrow_forward" /></div>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import "./HeroPrivateLabel.css";
+import Button from "./ui/Button";
 
 const HeroPrivateLabel = () => {
 
@@ -11,6 +12,7 @@ const HeroPrivateLabel = () => {
                     <p className="text">
                         Ett urval av våra produkter finns tillgängliga som private label — vi tar hand om tillverkning och kvalitet, ni sätter ert eget varumärke på resultatet. Perfekt för företag som vill erbjuda produkter under eget namn utan att bygga upp produktion från grunden.
                     </p>
+                    <div><Button children="Kontakta oss" to="/contact" icon="arrow_forward" /></div>
                 </div>
             </div>
 

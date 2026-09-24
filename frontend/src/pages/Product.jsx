@@ -9,6 +9,7 @@ import ImageGallery from "../components/ui/ImageGallery";
 import Loader from "../components/ui/Loader";
 import ErrorMessage from "../components/ui/ErrorMessage";
 import Price from "../components/ui/Price";
+import ProductSpecs from "../components/Productspecs";
 
 export default function Product() {
 
@@ -77,6 +78,8 @@ export default function Product() {
                 {inStock && !hasUnlimitedStock && remainingStock <= 0 && (
                     <ErrorMessage message={"Du har max antal av denna vara i varukorgen"} />
                 )}
+
+                <ProductSpecs product={product} variant={variant} />
 
             </div>
         </section>

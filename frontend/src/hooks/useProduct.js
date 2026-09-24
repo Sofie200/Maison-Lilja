@@ -21,31 +21,49 @@ export function useProduct(id) {
                     headers: client.getPublicTokenHeaders(),
                     body: JSON.stringify({
                         query: `
-              query ProductQuery($id: ID!) {
-                product(id: $id) {
-                  id
-                  title
-                  descriptionHtml
-                  availableForSale
-                  images(first: 5) { nodes { url } }
-                  variants(first: 5) {
-                    nodes {
-                        id
-                        price { amount }
-                        compareAtPrice { amount }
-                        image { url }
-                        availableForSale
-                        quantityAvailable
-                        currentlyNotInStock
-                        selectedOptions {
-                            name
-                            value
+                            query ProductQuery($id: ID!) @inContext(language: SV) {
+                                product(id: $id) {
+                                    id
+                                    title
+                                    descriptionHtml
+                                    availableForSale
+                                    images(first: 5) { nodes { url } }
+
+                                    antal: metafield(namespace: "custom", key: "antal") { value }
+                                    forvaring: metafield(namespace: "custom", key: "forvaring") { value }
+                                    ingredienser: metafield(namespace: "custom", key: "ingredienser") { value }
+                                    nettovolym: metafield(namespace: "custom", key: "nettovolym") { value }
+                                    nettovikt: metafield(namespace: "custom", key: "nettovikt") { value }
+                                    forpackning: metafield(namespace: "custom", key: "forpackning") { value }
+                                    allergener: metafield(namespace: "shopify", key: "allergen-information") {
+                                        references(first: 20) {
+                                    nodes {
+                                        ...on Metaobject {
+                                                    label: field(key: "label") { value }
+                                        }
+                                    }
+                                    }
+                                }
+
+                                variants(first: 5) {
+                                    nodes {
+                                    id
+                                    price { amount }
+                                    compareAtPrice { amount }
+                                    image { url }
+                                    availableForSale
+                                    quantityAvailable
+                                    currentlyNotInStock
+                                    weight
+                                    weightUnit
+                                    selectedOptions {
+                                    name
+                                        value
+                                }
+                            }
                         }
                     }
-                  }
-
                 }
-              }
             `,
                         variables: { id: gid }
                     })

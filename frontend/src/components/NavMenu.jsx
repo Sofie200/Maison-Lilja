@@ -44,11 +44,16 @@ const NavMenu = () => {
                     <ul>
                         <li><a href="/">Hem</a></li>
                         <li><a href="/shop">Handla nu</a></li>
-                        <li><a href="/seasonal">Säsong</a></li>
+                        <li><a href="/gifts">Företagsgåvor</a></li>
+                        <li><a href="/private-label">Private label</a></li>
+                        <li><a href="/contact">Kontakt</a></li>
+                        {/*
+                        <li><a href="#">Bli återförsäljare</a></li>
                         <li><a href="/gifts">Företagsgåvor</a></li>
                         <li><a href="/private-label">Private label</a></li>
                         <li><a href="/courses">Kurser</a></li>
                         <li><a href="/tastings">Chokladprovningar</a></li>
+                        */}
                     </ul>
                 </div>
             </div>

@@ -12,10 +12,10 @@ const Header = () => {
                 </div>
 
                 <div className="header-icons">
-                    <a href="/search">
+                    {/*<a href="/search">
                         <span className="material-symbols-rounded">search</span>
                     </a>
-                    {/*<a href="/profile">
+                    <a href="/profile">
                         <span className="material-symbols-rounded">person</span>
                     </a>*/}
                     <CartIcon />
