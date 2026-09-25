@@ -70,8 +70,8 @@
     top: -5%;
     left: -5%;
     box-shadow: var(--shadow-medium);
-    backdrop-filter: blur(2px);
     -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
     height: 110%;
     width: 110%;
     display: flex;
