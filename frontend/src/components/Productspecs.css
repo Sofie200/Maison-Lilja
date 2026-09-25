@@ -1,18 +1,17 @@
 .product-specs {
     margin-top: 2rem;
-    border-top: 1px solid currentColor;
-    border-bottom: 1px solid currentColor;
-    border-color: color-mix(in srgb, currentColor 20%, transparent);
+    
 }
 
 .product-specs summary {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
     cursor: pointer;
     list-style: none;
     font-weight: 500;
+    border-bottom: var(--box-border);
 }
 
 /* Dölj standardpilen (Safari) */
@@ -46,15 +45,15 @@
 .product-specs__table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 1rem;
+    margin-top: 0.25rem;
 }
 
 .product-specs__table th,
 .product-specs__table td {
-    padding: 0.625rem 0;
+    padding: 0.5rem 0;
     text-align: left;
     vertical-align: top;
-    border-top: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+    border-bottom: 1px solid color-mix(in srgb, var(--accent-dusty-rose) 50%, transparent);
 }
 
 .product-specs__table th {
@@ -66,6 +65,42 @@
 /* Behåll radbrytningar från flerradiga textfält i Shopify */
 .product-specs__table td.is-multiline {
     white-space: pre-line;
+}
+
+/* Fade-in när tabellen visas, fungerar i alla moderna webbläsare */
+.product-specs[open] .product-specs__table {
+    animation: specs-reveal 0.3s ease-out;
+}
+
+@keyframes specs-reveal {
+    from {
+        opacity: 0;
+        transform: translateY(-0.5rem);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* Mjuk höjd vid öppning och stängning där webbläsaren stödjer det */
+@supports (interpolate-size: allow-keywords) and selector(::details-content) {
+    .product-specs {
+        interpolate-size: allow-keywords;
+    }
+
+    .product-specs::details-content {
+        block-size: 0;
+        overflow: hidden;
+        transition:
+            block-size 0.35s ease,
+            content-visibility 0.35s allow-discrete;
+    }
+
+    .product-specs[open]::details-content {
+        block-size: auto;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
