@@ -1,21 +1,45 @@
 import Button from "./ui/Button";
+import { useHeroCover } from "../hooks/useHeroCover";
 import "./Hero.css";
 
+const COVER_COLLECTION = "frontpage";
+
 const Hero = () => {
+    const { cover } = useHeroCover(COVER_COLLECTION);
+
+    // Tom platshållare med samma yta, så att sidan inte hoppar när datan kommer
+    if (!cover) return <div className="hero is-loading" aria-hidden="true" />;
+
+    const isLight = cover.theme === "light";
 
     return (
-        <div className="hero">
+        <div
+            className="hero"
+            data-theme={cover.theme}
+            style={cover.backgroundColor ? { "--hero-bg": "var(--" + cover.backgroundColor + ")" } : undefined}
+        >
 
-            <div className="image-wrapper">
-                <img src="/kalender.jpg" className="image" />
-            </div>
+            {cover.imageUrl && (
+                <div className="image-wrapper">
+                    <img src={cover.imageUrl} alt={cover.imageAlt} className="image" />
+                </div>
+            )}
 
             <div className="content">
-                <h1 className="title">I begränsad upplaga: Chokladkalender 2026<br /></h1>
-                <p className="text">
-                    Unna dig <i>En Magisk December</i>.<br />Handgjord i vår chokladateljé i Malmö - 24 exklusiva praliner.
-                </p>
-                <Button icon="arrow_forward" children="Beställ nu" color="inverted" size="lg" to="/shop/product/10613076656394" />
+                <h1 className="title">{cover.title}</h1>
+
+                {cover.text && (
+                    <p className="text" dangerouslySetInnerHTML={{ __html: cover.text }} />
+                )}
+
+                <Button
+                    icon="arrow_forward"
+                    color={isLight ? undefined : "inverted"}
+                    size="lg"
+                    to={`/shop/product/${cover.productId}`}
+                >
+                    Beställ nu
+                </Button>
             </div>
         </div>
     );

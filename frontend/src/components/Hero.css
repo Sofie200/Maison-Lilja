@@ -1,10 +1,15 @@
 .hero {
     display: flex;
     align-items: stretch;
-    background: var(--accent-dark-brown);
-    color: var(--color-bg);
+    --hero-fg: var(--color-bg);
+    background: var(--hero-bg, var(--accent-dark-brown));
+    color: var(--hero-fg);
     height: 600px;
     overflow: hidden;
+}
+
+.hero[data-theme="light"] {
+    --hero-fg: var(--color-text);
 }
 
 .hero .image-wrapper {
