@@ -1,19 +1,5 @@
 import "./ProductSpecs.css";
 
-const WEIGHT_UNITS = {
-    GRAMS: "g",
-    KILOGRAMS: "kg",
-    OUNCES: "oz",
-    POUNDS: "lb",
-};
-
-const numberFormat = new Intl.NumberFormat("sv-SE", { maximumFractionDigits: 2 });
-
-function formatWeight(weight, unit) {
-    if (!weight) return null; // 0 eller null = inte ifyllt i Shopify
-    return `${numberFormat.format(weight)} ${WEIGHT_UNITS[unit] ?? ""}`.trim();
-}
-
 export default function ProductSpecs({ product, variant }) {
     const allergens = product.allergener?.references?.nodes
         ?.map((node) => node.label?.value)

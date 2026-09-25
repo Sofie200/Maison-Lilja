@@ -1,12 +1,42 @@
 import { useEffect, useState } from "react";
 import { client } from "../shopify/client";
 
+// Produkter med den här taggen visas inte i butiksvyn
+const EXCLUDED_TAGS = ["Kurs", "Chokladprovning"];
+
+const EXCLUDED_QUERY = EXCLUDED_TAGS
+    .map((tag) => `tag_not:"${tag}"`)
+    .join(" AND ");
+
+const PRODUCTS_QUERY = `
+  query ProductsQuery($limit: Int!, $query: String) @inContext(language: SV) {
+    products(first: $limit, query: $query) {
+      nodes {
+        id
+        title
+        images(first: 1) { nodes { url altText } }
+        variants(first: 1) {
+          nodes {
+            price { amount }
+            compareAtPrice { amount }
+            availableForSale
+            quantityAvailable
+            currentlyNotInStock
+          }
+        }
+      }
+    }
+  }
+`;
+
 export function useProducts(limit = 10) {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     useEffect(() => {
+        let cancelled = false;
+
         async function load() {
             setLoading(true);
             setError(null);
@@ -16,38 +46,27 @@ export function useProducts(limit = 10) {
                     method: "POST",
                     headers: client.getPublicTokenHeaders(),
                     body: JSON.stringify({
-                        query: `
-              query ProductsQuery($limit: Int!) {
-                products(first: $limit) {
-                  nodes {
-                    id
-                    title
-                    images(first: 1) { nodes { url } }
-                    variants(first: 1) {
-                      nodes {
-                        price { amount }
-                        compareAtPrice { amount }
-                        availableForSale
-                        quantityAvailable
-                        currentlyNotInStock
-                      }
-                    }
-                  }
-                }
-              }
-            `,
-                        variables: { limit }
-                    })
+                        query: PRODUCTS_QUERY,
+                        variables: {
+                            limit,
+                            query: EXCLUDED_QUERY,
+                        },
+                    }),
                 });
 
                 const data = await response.json();
 
-                if (!data.data || !data.data.products) {
+                if (data.errors) {
+                    console.error("❌ GraphQL errors:", data.errors);
+                    throw new Error("Produkter kunde inte hämtas.");
+                }
+
+                if (!data.data?.products) {
                     throw new Error("Produkter kunde inte hämtas.");
                 }
 
                 const productsWithStock = data.data.products.nodes.map((product) => {
-                    const variant = product.variants.nodes[0];
+                    const variant = product.variants?.nodes?.[0];
                     const price = variant?.price?.amount ? Number(variant.price.amount) : null;
                     const compareAtPrice = variant?.compareAtPrice?.amount
                         ? Number(variant.compareAtPrice.amount)
@@ -59,20 +78,23 @@ export function useProducts(limit = 10) {
                         quantityAvailable: variant?.quantityAvailable ?? null,
                         price,
                         compareAtPrice,
-                        onSale: compareAtPrice !== null && compareAtPrice > price,
+                        onSale: compareAtPrice !== null && price !== null && compareAtPrice > price,
                     };
                 });
 
-                setProducts(productsWithStock);
+                if (!cancelled) setProducts(productsWithStock);
 
             } catch (err) {
-                setError(err.message || "Ett oväntat fel inträffade.");
+                console.error("❌ useProducts crashed:", err);
+                if (!cancelled) setError(err.message || "Ett oväntat fel inträffade.");
             } finally {
-                setLoading(false);
+                if (!cancelled) setLoading(false);
             }
         }
 
         load();
+
+        return () => { cancelled = true; };
     }, [limit]);
 
     return { products, loading, error };
