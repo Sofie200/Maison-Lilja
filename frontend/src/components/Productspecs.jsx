@@ -1,4 +1,4 @@
-import "./ProductSpecs.css";
+import "./Productspecs.css";
 
 export default function ProductSpecs({ product, variant }) {
     const allergens = product.allergener?.references?.nodes
