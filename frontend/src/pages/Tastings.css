@@ -21,7 +21,14 @@
     z-index: -1;
     -webkit-backdrop-filter: blur(3px);
     backdrop-filter: blur(3px);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-    padding: 0 var(--spacing-lg);
+
+    mask-image:
+        linear-gradient(to right, transparent, black 10%, black 90%, transparent),
+        linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    mask-composite: intersect;
+
+    -webkit-mask-image:
+        linear-gradient(to right, transparent, black 10%, black 90%, transparent),
+        linear-gradient(to bottom, transparent, black 10%, black 90%, transparent);
+    -webkit-mask-composite: source-in;
 }
