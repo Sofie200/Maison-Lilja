@@ -1,10 +1,10 @@
 .bg-slate-dark-tastings{
     background: 
         linear-gradient(rgb(28 26 24 / 0.6), rgb(28 26 24 / 0.6)),
-        url("/pablo-merchan-montes-SCbq6uKCyMY-unsplash.jpg");
+        url("/beans.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-position: center 25%;
+    background-position: center bottom;
     
 }
 
