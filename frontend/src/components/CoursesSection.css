@@ -3,7 +3,7 @@
     grid-template-columns: repeat(3, 1fr);
     width: calc(100% + var(--spacing-lg) + var(--spacing-lg));
     margin-left: calc(0px - var(--spacing-lg));
-    padding: var(--spacing-md) 0;
+    padding: var(--spacing-md) 0 var(--spacing-xl);
 }
 
 .course {

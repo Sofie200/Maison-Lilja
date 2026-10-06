@@ -1,0 +1,27 @@
+.bg-slate-dark-tastings{
+    background: 
+        linear-gradient(rgb(28 26 24 / 0.6), rgb(28 26 24 / 0.6)),
+        url("/pablo-merchan-montes-SCbq6uKCyMY-unsplash.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center 25%;
+    
+}
+
+.section-tastings {
+    max-width: 800px;
+    position: relative;
+    isolation: isolate;
+}
+
+.section-tastings::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+    padding: 0 var(--spacing-lg);
+}

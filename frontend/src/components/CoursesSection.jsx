@@ -3,33 +3,33 @@ import "./CoursesSection.css";
 
 const COURSES = [
     {
-        id: "pralin",
-        title: "Pralintillverkning",
-        meta: "Grundkurs, tre timmar",
+        id: "marsipan1",
+        title: "Marsipankurs",
+        meta: "För nybörjare",
         description:
-            "Temperera choklad för blank yta och rätt knäck, fyll formar med ganache och karamell, och ta hem din egen låda pralin. Passar dig som aldrig hållit i en chokladtermometer förut.",
-        image: "/774469301_18087705608412902_556362095638142971_n.jpg",
-        imageAlt: "Handgjorda pralinger läggs upp på ett marmorbord",
+            "Lär dig grunderna i att forma och dekorera marsipan.",
+        image: "/793028504_18099047186133710_2004468186776971465_n.jpg",
+        imageAlt: "Nybörjarkurs i marsipan",
         accent: "green",
     },
     {
-        id: "marsipan",
-        title: "Marsipanfigurer",
-        meta: "Familjekurs, två timmar",
+        id: "marsipan2",
+        title: "Marsipankurs",
+        meta: "Fördjupning",
         description:
-            "Färga, kavla och forma marsipan för hand — från enkla djur till mer detaljerade figurer. En kurs för både vuxna och barn som vill jobba med händerna.",
+            "För dig som vill utveckla din teknik och prova mer avancerade former och detaljer.",
         image: "/793028504_18099047186133710_2004468186776971465_n.jpg",
-        imageAlt: "Färgglada handformade marsipanfigurer",
-        accent: "caramel",
+        imageAlt: "Fortsättningskurs i marsipan",
+        accent: "green",
     },
     {
-        id: "dessert",
-        title: "Chokladdesserter",
-        meta: "Fördjupning, fyra timmar",
+        id: "pralin",
+        title: "Pralinkurs",
+        meta: "För nybörjare",
         description:
-            "Bygg upp en flerkomponents chokladdessert från grunden: mousse, kladdig kaka, chokladsås och crunch. För dig som redan känner dig hemma i köket och vill utmana dig själv.",
-        image: "/pushpak-dsilva-2UeBOL7UD34-unsplash.jpg",
-        imageAlt: "Chokladdessert med mousse och kladdkaka på tallrik",
+            "Upptäck hantverket bakom praliner och lär dig mer om choklad, fyllningar och tillverkning.",
+        image: "/774469301_18087705608412902_556362095638142971_n.jpg",
+        imageAlt: "Pralinkurs för nybörjare",
         accent: "teal",
     },
 ];
@@ -40,9 +40,9 @@ export default function CoursesSection() {
             <section className="section-standard">
                 
                 <center>
-                    <h1>Kom in i vårt kök</h1>
+                    <h1>Kurser 2027</h1>
                     <p>
-                        Tre kurser, tre hantverk — lär dig grunderna av oss som gör det varje dag.
+                        Vill du skapa något gott med egna händer? Under 2027 planerar vi kurser i marsipan och pralintillverkning hos Maison Lilja.
                     </p>
                 </center>
 
@@ -62,13 +62,19 @@ export default function CoursesSection() {
                                 <p className="meta">{course.meta}</p>
                                 <h2>{course.title}</h2>
                                 <p>{course.description}</p>
-                                <div>
+                                {/*<div>
                                     <Button icon="arrow_forward" size="sm" to={`/kurser/${course.id}`} color={`${course.accent}`}>Boka kursen</Button>
-                                </div>
+                                </div>*/}
                             </div>
                         </article>
                     ))}
                 </div>
+
+                <center>
+                    <i>
+                        Datum, priser och mer information kommer längre fram.
+                    </i>
+                </center>
             </section>
         </div>
     );
