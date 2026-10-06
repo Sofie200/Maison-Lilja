@@ -1,11 +1,11 @@
 .bg-slate-dark-tastings{
+    flex: 1;
     background: 
         linear-gradient(rgb(28 26 24 / 0.6), rgb(28 26 24 / 0.6)),
         url("/beans.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center bottom;
-    
 }
 
 .section-tastings {
