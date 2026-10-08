@@ -1,0 +1,73 @@
+html {
+    scrollbar-gutter: stable;
+}
+
+html:has(.sort-select select:open) {
+    overflow: hidden;
+}
+
+.sort-select{
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+}
+
+.sort-select select {
+    appearance: none;
+    padding: 0 18px 0 0;
+    border: 0;
+    background-color: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right center;
+}
+
+.sort-select select:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+}
+
+.sort-select option {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+}
+
+.sort-select select,
+.sort-select ::picker(select) {
+    appearance: base-select;
+}
+
+.sort-select select::picker-icon,
+.sort-select select option::checkmark {
+    display: none;
+}
+
+.sort-select ::picker(select) {
+    background: var(--color-bg-secondary);
+    border: var(--box-border);
+    outline: var(--box-outline);
+    box-shadow: 10px 16px 18px rgba(74, 48, 40, 0.55);
+    margin-top: 10px;
+    position-area: block-end span-inline-start;
+}
+
+.sort-select ::picker(select) {
+    position-visibility: anchors-visible;
+}
+
+.sort-select option {
+    padding: 8px 12px;
+}
+
+.sort-select option:hover,
+.sort-select option:focus-visible {
+    background: var(--color-bg-secondary);
+}
+
+.sort-select option:checked {
+    font-weight: 600;
+}

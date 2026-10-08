@@ -9,8 +9,9 @@ const EXCLUDED_QUERY = EXCLUDED_TAGS
     .join(" AND ");
 
 const PRODUCTS_QUERY = `
-  query ProductsQuery($limit: Int!, $query: String) @inContext(language: SV) {
-    products(first: $limit, query: $query) {
+  query ProductsQuery($limit: Int!, $query: String, $sortKey: ProductSortKeys, $reverse: Boolean)
+  @inContext(language: SV) {
+    products(first: $limit, query: $query, sortKey: $sortKey, reverse: $reverse) {
       nodes {
         id
         title
@@ -29,7 +30,20 @@ const PRODUCTS_QUERY = `
   }
 `;
 
-export function useProducts(limit = 10) {
+function buildQuery({ productType, tag, inStockOnly, minPrice, maxPrice } = {}) {
+    const parts = EXCLUDED_TAGS.map((t) => `tag_not:"${t}"`);
+
+    if (productType) parts.push(`product_type:"${productType}"`);
+    if (tag) parts.push(`tag:"${tag}"`);
+    if (inStockOnly) parts.push("available_for_sale:true");
+    if (minPrice != null) parts.push(`variants.price:>=${minPrice}`);
+    if (maxPrice != null) parts.push(`variants.price:<=${maxPrice}`);
+
+    return parts.join(" AND ");
+}
+
+export function useProducts(limit = 10, filters = {}) {
+    const { productType, tag, inStockOnly, minPrice, maxPrice, sortKey, reverse } = filters;
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -49,7 +63,9 @@ export function useProducts(limit = 10) {
                         query: PRODUCTS_QUERY,
                         variables: {
                             limit,
-                            query: EXCLUDED_QUERY,
+                            query: buildQuery({ productType, tag, inStockOnly, minPrice, maxPrice }),
+                            sortKey: sortKey ?? "BEST_SELLING", // eller "PRICE", "TITLE", "CREATED_AT"
+                            reverse: reverse ?? false,
                         },
                     }),
                 });
@@ -95,7 +111,7 @@ export function useProducts(limit = 10) {
         load();
 
         return () => { cancelled = true; };
-    }, [limit]);
+    }, [limit, productType, tag, inStockOnly, minPrice, maxPrice, sortKey, reverse]);
 
     return { products, loading, error };
 }
