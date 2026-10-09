@@ -72,11 +72,11 @@ html:has(.sort-select select:open) {
     font-weight: 600;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:550px) {
     .sort-select label{
         display: none;
     }
-
+    
     .sort-select select{
         font-size: 0.8rem;
         padding-right: 14px;
