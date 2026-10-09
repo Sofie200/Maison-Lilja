@@ -53,7 +53,7 @@
     outline-offset: 2px;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width:600px) {
     .in-stock-toggle span:first-of-type {
         display: none;
     }
