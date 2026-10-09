@@ -37,6 +37,19 @@
     }
 }
 
+@media screen and (max-width: 550px) {
+    .shop-header {
+        display: flex;
+        flex-direction: column;
+        padding-top: 10px;
+        padding-bottom: 5px;
+    }
+
+    .shop-filters{
+        align-self: flex-end;
+    }
+}
+
 @media screen and (max-width: 400px) {
     .product-grid {
         grid-template-columns: repeat(1, 1fr);
