@@ -71,3 +71,16 @@ html:has(.sort-select select:open) {
 .sort-select option:checked {
     font-weight: 600;
 }
+
+@media screen and (max-width:500px) {
+    .sort-select label{
+        display: none;
+    }
+
+    .sort-select select{
+        font-size: 0.8rem;
+        padding-right: 14px;
+        background-size: 10px auto;
+    }
+        
+}

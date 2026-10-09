@@ -8,7 +8,7 @@
 }
 
 .in-stock-toggle span {
-    margin-bottom: 1px;
+    margin-bottom: 2px;
 }
 
 .in-stock-toggle input {
@@ -51,4 +51,26 @@
 .in-stock-toggle input:focus-visible {
     outline: 2px solid #AD7278;
     outline-offset: 2px;
+}
+
+@media screen and (max-width:500px) {
+    .in-stock-toggle span:first-of-type {
+        display: none;
+    }
+
+    .in-stock-toggle span:last-of-type {
+        text-transform: capitalize;
+        font-size: 0.8rem;
+    }
+
+    .in-stock-toggle input {
+        width: 12px;
+        height: 12px;
+        border-width: 1px;
+    }
+
+    .in-stock-toggle input::before {
+        width: 3px;
+        height: 6px;
+    }
 }
