@@ -1,0 +1,79 @@
+.category-drawer {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: -35px;
+}
+
+/* Panelen: höjd 0 → innehållets höjd, utan att behöva veta höjden */
+.category-drawer__panel {
+    display: grid;
+    grid-template-rows: 0fr;
+    width: 100%;
+    background: var(--color-bg-secondary);
+    transition: grid-template-rows 0.3s ease;
+    justify-content: center;
+    z-index: 400;
+}
+
+.category-drawer.is-open .category-drawer__panel {
+    grid-template-rows: 1fr;
+}
+
+.category-drawer__inner {
+    overflow: hidden;
+    min-height: 0;
+}
+
+.category-drawer__inner>* {
+    padding: 30px 20px;
+}
+
+/* Fliken som sticker ut under panelen */
+.category-drawer__tab {
+    height: 35px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0 var(--spacing-md);
+    border:0;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
+    font: inherit;
+    cursor: pointer;
+    margin-top: -1px;
+    box-shadow: 0 2px 6px rgba(74, 48, 40, 0.15);;
+    z-index: 300;
+}
+
+/* Liten pil som vänds när menyn är öppen */
+.category-drawer__tab::after {
+    content: "";
+    width: 6px;
+    height: 6px;
+    border: solid currentColor;
+    border-width: 0 2px 2px 0;
+    rotate: 45deg;
+    translate: 0 -2px;
+    transition: rotate 0.3s, translate 0.3s;
+}
+
+.category-drawer.is-open .category-drawer__tab::after {
+    rotate: -135deg;
+    translate: 0 2px;
+}
+
+.category-drawer__tab:focus-visible {
+    outline: 2px solid #AD7278;
+    outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .category-drawer__panel,
+    .category-drawer__tab::after {
+        transition: none;
+    }
+}
