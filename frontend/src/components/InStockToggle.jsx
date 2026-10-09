@@ -8,7 +8,7 @@ export default function InStockToggle({ checked, onChange }) {
                 checked={checked}
                 onChange={(e) => onChange(e.target.checked)}
             />
-            Produkter i lager
+            <span>Produkter i lager</span>
         </label>
     );
 }
