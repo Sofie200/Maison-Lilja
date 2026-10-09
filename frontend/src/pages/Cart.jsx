@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { useCart } from "../contexts/CartContext";
 import Price from "../components/ui/Price";
 import Button from "../components/ui/Button";
@@ -8,6 +9,10 @@ import "./Cart.css";
 
 const Cart = () => {
     const { cart, checkoutUrl, updateQuantity, removeFromCart, loading, error } = useCart();
+
+    useEffect(() => {
+        document.title = `Varukorg | Maison Lilja`;
+    }, []);
 
     if (loading && cart.length === 0) {
         return (

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useShopInfo } from "../hooks/useShopInfo";
 import ErrorMessage from "../components/ui/ErrorMessage";
 import "./Contact.css";
@@ -25,6 +25,10 @@ export default function Contact() {
 
     const [form, setForm] = useState({ name: "", email: "", message: "" });
     const [status, setStatus] = useState("idle"); // idle | sending | success | error
+
+    useEffect(() => {
+        document.title = `Kontakt | Maison Lilja`;
+    }, []);
 
     function handleChange(e) {
         const { name, value } = e.target;

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Shop.css";
 import ProductCard from "../components/ProductCard";
 import Loader from "../components/ui/Loader";
@@ -23,6 +23,10 @@ export default function Shop() {
         inStockOnly,
         productType: category ?? undefined,
     });
+
+    useEffect(() => {
+        document.title = `${category ?? "Alla produkter"} | Maison Lilja`;
+    }, [category]);
 
     if (loading) return <section className="section-center"><Loader /></section>;
     if (error == false) return <section className="section-center"><ErrorMessage message={error} /></section>;

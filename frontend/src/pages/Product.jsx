@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useProduct } from "../hooks/useProduct";
 import { useCart } from "../contexts/CartContext";
@@ -12,10 +13,13 @@ import Price from "../components/ui/Price";
 import ProductSpecs from "../components/Productspecs";
 
 export default function Product() {
-
     const { id } = useParams();
     const { product, loading, error } = useProduct(id);
     const { cart, addToCart, updateQuantity, loading: cartLoading } = useCart();
+
+    useEffect(() => {
+        if (product?.title) document.title = `${product.title} | Maison Lilja`;
+    }, [product?.title]);
 
     if (loading) return <section className="section-center"><Loader /></section>;
     if (error) return <section className="section-center"><ErrorMessage message={error} /></section>;

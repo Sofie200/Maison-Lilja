@@ -17,6 +17,8 @@ export default function Policy({ policyType }) {
 
     useEffect(() => {
         let cancelled = false;
+        setPolicy(null);
+        setError(null);
 
         getShopPolicy(policyType)
             .then((data) => { if (!cancelled) setPolicy(data); })
@@ -25,10 +27,14 @@ export default function Policy({ policyType }) {
         return () => { cancelled = true; };
     }, [policyType]);
 
+    const title = SWEDISH_TITLES[policyType] ?? policy?.title;
+
+    useEffect(() => {
+        if (title) document.title = `${title} | Maison Lilja`;
+    }, [title]);
+
     if (error) return <section className="section-center"><ErrorMessage message={error} /></section>;
     if (!policy) return <section className="section-center"><Loader /></section>;
-
-    const title = SWEDISH_TITLES[policyType] ?? policy.title;
 
     return (
         <section className="section-standard section-policy">

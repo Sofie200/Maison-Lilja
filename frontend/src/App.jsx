@@ -19,6 +19,7 @@ import About from "./pages/About";
 import Faq from "./pages/Faq";*/
 
 export default function App() {
+	
 	return (
 		<BrowserRouter>
 			<CartProvider>

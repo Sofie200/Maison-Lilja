@@ -94,7 +94,8 @@
     position: relative;
 }
 
-.menu a:hover {
+.menu a:hover,
+.menu a[aria-current="page"] {
     transform: translateY(-3px);
 }
 
@@ -113,7 +114,8 @@
         opacity 0.2s ease-out;
 }
 
-.menu a:hover::after {
+.menu a:hover::after,
+.menu a[aria-current="page"]::after {
     transform: translateY(14px);
     opacity: 1;
 }

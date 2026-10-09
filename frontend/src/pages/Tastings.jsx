@@ -1,6 +1,12 @@
+import { useEffect } from "react";
 import "./Tastings.css";
 
 export default function Tastings() {
+
+    useEffect(() => {
+        document.title = `Chokladprovningar | Maison Lilja`;
+    }, []);
+
     return (
         <div className="bg-slate-dark bg-slate-dark-tastings">
             <section className="section-standard section-tastings">

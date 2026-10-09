@@ -1,10 +1,22 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useId } from "react";
+import { NavLink } from "react-router-dom";
 import "./NavMenu.css";
+
+const LINKS = [
+    { to: "/", label: "Hem" },
+    { to: "/shop", label: "Handla nu" },
+    { to: "/gifts", label: "Företagsgåvor" },
+    { to: "/private-label", label: "Private label" },
+    { to: "/courses", label: "Kurser" },
+    { to: "/tastings", label: "Chokladprovningar" },
+    { to: "/contact", label: "Kontakt" },
+];
 
 const NavMenu = () => {
     const [open, setOpen] = useState(false);
     const menuRef = useRef(null);
     const hamburgerRef = useRef(null);
+    const menuId = useId();
 
     useEffect(() => {
         const handleClickOutside = (e) => {
@@ -19,39 +31,34 @@ const NavMenu = () => {
         };
 
         document.addEventListener("mousedown", handleClickOutside);
-        return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
-        };
+        return () => document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     return (
         <nav>
-            {/* Hamburger button */}
             <button
                 ref={hamburgerRef}
                 className={`hamburger ${open ? "open" : ""}`}
                 onClick={() => setOpen(!open)}
                 aria-label="Meny"
+                aria-expanded={open}
+                aria-controls={menuId}
             >
                 <span></span>
                 <span></span>
                 <span></span>
             </button>
 
-            {/* Menu */}
-            <div ref={menuRef} className={`menu ${open ? "show" : ""}`}>
+            <div ref={menuRef} id={menuId} className={`menu ${open ? "show" : ""}`}>
                 <div className="menu-inner">
                     <ul>
-                        <li><a href="/">Hem</a></li>
-                        <li><a href="/shop">Handla nu</a></li>
-                        <li><a href="/gifts">Företagsgåvor</a></li>
-                        <li><a href="/private-label">Private label</a></li>
-                        <li><a href="/courses">Kurser</a></li>
-                        <li><a href="/tastings">Chokladprovningar</a></li>
-                        <li><a href="/contact">Kontakt</a></li>
-                        {/*
-                        <li><a href="#">Bli återförsäljare</a></li>                        
-                        */}
+                        {LINKS.map(({ to, label }) => (
+                            <li key={to}>
+                                <NavLink to={to} end={to === "/"} onClick={() => setOpen(false)}>
+                                    {label}
+                                </NavLink>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
