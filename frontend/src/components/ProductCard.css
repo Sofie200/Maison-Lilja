@@ -96,7 +96,14 @@
 
 @media screen and (max-width: 400px) {
 
-    .product-card .image-wrapper {
-        aspect-ratio: 4 / 3;
+    .product-card .info {
+        padding: var(--spacing-sm);
+    }
+
+    .product-card .stock-badge.out {
+        top: -7%;
+        left: -7%;
+        height: 114%;
+        width: 114%;
     }
 }

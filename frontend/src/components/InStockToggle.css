@@ -54,14 +54,19 @@
 }
 
 @media screen and (max-width:600px) {
-    .in-stock-toggle span:first-of-type {
+
+    .in-stock-toggle span{
+        font-size: 0.8rem;
+    }
+
+    /*.in-stock-toggle span:first-of-type {
         display: none;
     }
 
-    .in-stock-toggle span:last-of-type {
+        .in-stock-toggle span:last-of-type {
         text-transform: capitalize;
         font-size: 0.8rem;
-    }
+    }*/
 
     .in-stock-toggle input {
         width: 12px;

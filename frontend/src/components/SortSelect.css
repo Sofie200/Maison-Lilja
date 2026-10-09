@@ -78,8 +78,12 @@ html:has(.sort-select select:open) {
 }
 
 @media screen and (max-width:550px) {
-    .sort-select label{
+    /*.sort-select label{
         display: none;
+    }*/
+
+    .sort-select label{
+        font-size: 0.8rem;
     }
     
     .sort-select select{
