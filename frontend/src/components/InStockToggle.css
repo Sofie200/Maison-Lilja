@@ -8,7 +8,7 @@
 }
 
 .in-stock-toggle span {
-    margin-bottom: 2px;
+    line-height: 1.2rem;
 }
 
 .in-stock-toggle input {
