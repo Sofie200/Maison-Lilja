@@ -40,8 +40,19 @@
 @media screen and (max-width: 550px) {
     .shop-header {
         flex-direction: column;
-        padding-top: 10px;
         padding-bottom: 5px;
+    }
+
+    .shop-filters {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .category-drawer__tab{
+        margin-left: auto;
+        margin-right: var(--spacing-md);
     }
 }
 
