@@ -10,9 +10,12 @@ html:has(.sort-select select:open) {
     display: flex;
     flex-direction: row;
     gap: 5px;
+    align-items: center;
 }
 
 .sort-select select {
+    height: auto;
+    min-height: auto;
     appearance: none;
     margin: 0;
     line-height: 1.2rem;
