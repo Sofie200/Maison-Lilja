@@ -13,7 +13,13 @@
 .shop-header{
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: baseline;
+}
+
+.shop-filters{
+    display: flex;
+    flex-direction: row;
+    gap:var(--spacing-sm);
 }
 
 @media screen and (max-width: 1023px) {

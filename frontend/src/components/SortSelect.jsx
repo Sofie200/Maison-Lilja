@@ -10,7 +10,7 @@ export const SORT_OPTIONS = [
 export default function SortSelect({ value, onChange }) {
     return (
         <div className="sort-select">
-            <label htmlFor="sort">Sortera</label>
+            <label htmlFor="sort">Sortera på:</label>
             <select id="sort" value={value} onChange={(e) => onChange(e.target.value)}>
                 {SORT_OPTIONS.map((option) => (
                     <option key={option.id} value={option.id}>

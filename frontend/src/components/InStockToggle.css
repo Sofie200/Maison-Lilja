@@ -1,0 +1,50 @@
+.in-stock-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    border-right: var(--box-border);
+    padding-right: var(--spacing-sm);
+}
+
+.in-stock-toggle input {
+    appearance: none;
+    display: grid;
+    place-content: center;
+    width: 16px;
+    height: 16px;
+    margin: 0;
+    border: var(--box-border);
+    background: transparent;
+    cursor: pointer;
+    transition: background-color 0.15s;
+    margin-bottom: 2px;
+}
+
+/* Bocken, ritad som en roterad hörnlinje */
+.in-stock-toggle input::before {
+    content: "";
+    width: 3px;
+    height: 8px;
+    border: solid var(--color-text);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transform-origin: center;
+    translate: 0 -1px;
+    transition: transform 0.15s ease-out;
+}
+
+/* Ikryssad */
+.in-stock-toggle input:checked {
+    background-color: var(--color-bg-secondary);
+}
+
+.in-stock-toggle input:checked::before {
+    transform: rotate(45deg) scale(1);
+}
+
+/* Tangentbordsfokus */
+.in-stock-toggle input:focus-visible {
+    outline: 2px solid #AD7278;
+    outline-offset: 2px;
+}

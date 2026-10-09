@@ -9,7 +9,7 @@ html:has(.sort-select select:open) {
 .sort-select{
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: 5px;
 }
 
 .sort-select select {

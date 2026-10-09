@@ -1,12 +1,7 @@
 import { useEffect, useState } from "react";
 import { client } from "../shopify/client";
 
-// Produkter med den här taggen visas inte i butiksvyn
 const EXCLUDED_TAGS = ["Kurs", "Chokladprovning"];
-
-const EXCLUDED_QUERY = EXCLUDED_TAGS
-    .map((tag) => `tag_not:"${tag}"`)
-    .join(" AND ");
 
 const PRODUCTS_QUERY = `
   query ProductsQuery($limit: Int!, $query: String, $sortKey: ProductSortKeys, $reverse: Boolean)
