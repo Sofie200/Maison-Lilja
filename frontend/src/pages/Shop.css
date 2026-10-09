@@ -20,7 +20,7 @@
     display: flex;
     flex-direction: row;
     gap:var(--spacing-sm);
-    align-items: baseline;
+    align-items: center;
 }
 
 @media screen and (max-width: 1023px) {
