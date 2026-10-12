@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useShopInfo } from "../hooks/useShopInfo";
 import ErrorMessage from "../components/ui/ErrorMessage";
+import Loader from "../components/ui/Loader";
 import "./Contact.css";
 
 // Flerradiga adresser blir en rad: "Gata 1\nMalmö" → "Gata 1, Malmö"
@@ -21,7 +22,7 @@ function toTelHref(telefon) {
 }
 
 export default function Contact() {
-    const { shopInfo, error: shopError } = useShopInfo();
+    const { shopInfo, loading: shopLoading, error: shopError } = useShopInfo();
 
     const [form, setForm] = useState({ name: "", email: "", message: "" });
     const [status, setStatus] = useState("idle"); // idle | sending | success | error
@@ -102,31 +103,37 @@ export default function Contact() {
                         Hör av dig om du har frågor om beställningar, kurser eller provningar.
                     </p>
 
-                    {shopError && <ErrorMessage message={shopError} />}
+                    {shopLoading ? (
+                        <Loader />
+                    ) : shopError ? (
+                        <ErrorMessage message={shopError} />
+                    ) : (
 
-                    {contactRows.length > 0 && (
-                        <ul className="contact-details">
-                            {contactRows.map((row) => (
-                                <li key={row.label}>
-                                    <span className="material-symbols-rounded" aria-hidden="true">
-                                        {row.icon}
-                                    </span>
-                                    <div>
-                                        <span className="meta">{row.label}</span>
-                                        <a
-                                            href={row.href}
-                                            className="contact-value"
-                                            {...(row.external && {
-                                                target: "_blank",
-                                                rel: "noopener noreferrer",
-                                            })}
-                                        >
-                                            {row.value}
-                                        </a>
-                                    </div>
-                                </li>
-                            ))}
-                        </ul>
+                        contactRows.length > 0 && (
+                            <ul className="contact-details">
+                                {contactRows.map((row) => (
+                                    <li key={row.label}>
+                                        <span className="material-symbols-rounded" aria-hidden="true">
+                                            {row.icon}
+                                        </span>
+                                        <div>
+                                            <span className="meta">{row.label}</span>
+                                            <a
+                                                href={row.href}
+                                                className="contact-value"
+                                                {...(row.external && {
+                                                    target: "_blank",
+                                                    rel: "noopener noreferrer",
+                                                })}
+                                            >
+                                                {row.value}
+                                            </a>
+                                        </div>
+                                    </li>
+                                ))}
+                            </ul>
+                        )
+
                     )}
                 </div>
             </div>

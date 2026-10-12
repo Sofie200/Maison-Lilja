@@ -1,11 +1,16 @@
 import "./HeroPrivateLabel.css";
 import Button from "./ui/Button";
 import { usePage } from "../hooks/usePage";
+import Loader from "./ui/Loader";
 
 const PAGE_HANDLE = "private-label";
 
 const HeroPrivateLabel = () => {
-    const { page } = usePage(PAGE_HANDLE);
+    const { page, loading } = usePage(PAGE_HANDLE);
+
+    if (loading) return (
+        <Loader />
+    );
 
     return (
         <div className="hero-private-label">

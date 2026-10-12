@@ -1,6 +1,7 @@
 import Button from "./ui/Button";
 import { useHeroCover } from "../hooks/useHeroCover";
 import "./Hero.css";
+import Loader from "./ui/Loader";
 
 const COVER_COLLECTION = "frontpage";
 
@@ -8,7 +9,9 @@ const Hero = () => {
     const { cover } = useHeroCover(COVER_COLLECTION);
 
     // Tom platshållare med samma yta, så att sidan inte hoppar när datan kommer
-    if (!cover) return <div className="hero is-loading" aria-hidden="true" />;
+    if (!cover) return (<div className="hero is-loading" aria-hidden="true">
+        <Loader />
+    </div>);
 
     const isLight = cover.theme === "light";
 

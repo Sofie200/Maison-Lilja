@@ -1,11 +1,16 @@
 import "./HeroGifts.css";
 import Button from "./ui/Button";
 import { usePage } from "../hooks/usePage";
+import Loader from "./ui/Loader";
 
 const PAGE_HANDLE = "foretagsgavor";
 
 const HeroGifts = () => {
-    const { page } = usePage(PAGE_HANDLE);
+    const { page, loading } = usePage(PAGE_HANDLE);
+
+    if (loading) return (
+        <Loader />
+    );
 
     return (
         <div className="hero-gifts">
