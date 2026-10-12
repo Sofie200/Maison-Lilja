@@ -112,9 +112,9 @@
 /* Colors */
 .btn-default {
     background-color: var(--color-text);
-    border: 2px solid var(--color-bg);
+    border: 2px solid var(--color-bg-highlight);
     outline: 5px solid var(--color-text);
-    color: var(--color-bg);
+    color: var(--color-bg-highlight);
 }
 
 .btn-default .btn-icon {
