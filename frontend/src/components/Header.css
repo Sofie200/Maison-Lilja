@@ -40,12 +40,12 @@ header {
     cursor: pointer;
 }
 
-header a {
-    color: var(--color-text-light);
+header .material-symbols-rounded {
+    color: var(--color-text);
 }
 
-header a:hover {
-    color: var(--color-text);
+header .material-symbols-rounded:hover {
+    color: var(--color-text-light);
 }
 
 /* NavMenu under logon */

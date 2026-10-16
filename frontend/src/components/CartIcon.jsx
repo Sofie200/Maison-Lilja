@@ -11,11 +11,9 @@ export default function CartIcon() {
 
             <a href="/shop/cart">
                 <span className="material-symbols-rounded">shopping_bag</span>
-                <span className="cart-badge">{count}</span>
-                {//count > 0 && (
-                    //<span className="cart-badge">{count}</span>  
-                //)
-                }
+                {count > 0 && (
+                    <span className="cart-badge">{count}</span>
+                )}
             </a>
         </div>
     );
