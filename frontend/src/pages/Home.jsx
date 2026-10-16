@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Hero from "../components/Hero";
+import CoverCarousel from "../components/CoverCarousel";
 import USPSection from "../components/USPSection";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
     
     return <>
         <Hero />
+        <CoverCarousel handle="frontpage-produktkarusell" />
         <USPSection />
     </>;
 }

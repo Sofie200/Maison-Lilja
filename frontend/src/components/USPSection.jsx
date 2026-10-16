@@ -7,7 +7,7 @@ const USPSection = () => {
 
         <section className="section-standard">
             <center>
-                <h1>Handgjort i vår chokladateljé i Malmö</h1>
+                <h2 className="carousel-header">Handgjort i vår chokladateljé i Malmö</h2>
             </center>
 
             <div className="usp-grid">

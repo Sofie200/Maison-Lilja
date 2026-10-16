@@ -1,0 +1,195 @@
+.cover-carousel {
+    --carousel-gap: 1rem;
+    --carousel-bg: var(--color-bg-highlight);
+}
+
+.carousel-header {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+/* --- Knappar + spår --- */
+
+.cover-carousel__controls {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 1.5rem 0 0.5rem;
+}
+
+/* Knapparna hänger utanför sektionen bara där det finns plats */
+@media (min-width: 1280px) {
+    .cover-carousel__controls {
+        margin-inline: -4rem;
+    }
+}
+
+.cover-carousel__controls button {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    background: var(--color-text);
+    color: var(--color-bg-highlight);
+    border: 0;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-carousel__controls button:hover {
+    background: #373430;
+}
+
+.cover-carousel__track {
+    flex: 1;
+    min-width: 0; /* låt spåret krympa istället för att trycka ut knapparna */
+    display: flex;
+    gap: var(--carousel-gap);
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    list-style: none;
+    padding: 0;
+    margin: 0 -1rem;
+}
+
+.cover-carousel__track::-webkit-scrollbar {
+    display: none;
+}
+
+/* --- Kort --- */
+
+/* Två per vy: halva bredden minus halva gapet */
+.cover-carousel__item {
+    flex: 0 0 calc(50% - var(--carousel-gap) / 2);
+    scroll-snap-align: start;
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.cover-carousel__card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    height: 100%;
+    background: var(--carousel-bg);
+    color: inherit;
+    text-decoration: none;
+}
+
+.cover-carousel__card img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    display: block;
+    box-shadow: var(--shadow-softer);
+}
+
+.cover-carousel__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.5rem;
+}
+
+.cover-carousel__text h3 {
+    margin: 0;
+}
+
+/* Korta ner långa beskrivningar till fyra rader */
+.cover-carousel__text p {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cover-carousel__price {
+    font-weight: 600;
+}
+
+
+@media (max-width: 1024px) {
+    .cover-carousel__card {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+                                        .cover-carousel__text {
+                                            display: flex;
+                                            flex-direction: column;
+                                            justify-content: center;
+                                            gap: 0.75rem;
+                                            padding: 0;
+                                        }
+}
+
+@media (max-width: 768px) {
+    .cover-carousel__card {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        gap: 0rem;
+    }
+
+        .cover-carousel__item {
+            flex-basis: 100%;
+            margin-bottom: 0;
+        }
+
+                .cover-carousel__text {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    gap: 0.75rem;
+                    padding: 1.5rem;
+                }
+}
+
+/* --- Mobil: bild över text, knappar under --- */
+
+@media (max-width: 600px) {
+    .carousel-header {
+        font-size: 1.8rem;
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .cover-carousel__controls {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+    }
+
+    /* Spåret först och på egen rad; +2rem kompenserar de negativa marginalerna */
+    .cover-carousel__track {
+        order: -1;
+        flex: 0 0 calc(100% + 2rem);
+    }
+
+    .cover-carousel__card {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 1rem;
+    }
+
+    .cover-carousel__item {
+        flex-basis: 100%;
+        margin-bottom: 0;
+    }
+
+    .cover-carousel__card img {
+        height: auto;
+        aspect-ratio: 4 / 3;
+    }
+
+        .cover-carousel__text {
+            padding: 0;
+        }
+
+    .cover-carousel__text p {
+        -webkit-line-clamp: 3;
+    }
+}
