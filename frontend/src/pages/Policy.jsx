@@ -6,9 +6,9 @@ import ErrorMessage from "../components/ui/ErrorMessage";
 
 const SWEDISH_TITLES = {
     privacyPolicy: "Integritetspolicy",
-    termsOfService: "Köpvillkor",
+    termsOfService: "Köp & leveransvillkor",
     refundPolicy: "Returer & reklamation",
-    shippingPolicy: "Fraktpolicy",
+    shippingPolicy: "Fraktinformation",
 };
 
 export default function Policy({ policyType }) {

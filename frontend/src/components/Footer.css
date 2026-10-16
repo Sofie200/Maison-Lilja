@@ -62,14 +62,16 @@ footer h3 {
 }
 
 .social-link {
+    display: flex !important;
     color: var(--color-text-light);
     transition: color 0.2s ease;
+    align-items: center;
+    gap: 4px;
+    margin-top: -2px;
 }
 
 .social-link svg {
-    vertical-align: middle;
-    margin-bottom: 6px;
-    margin-left: 4px;
+    margin-top: 5px;
 }
 
 @media (hover: hover) and (pointer: fine) {

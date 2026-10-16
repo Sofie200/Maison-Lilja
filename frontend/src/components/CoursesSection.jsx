@@ -18,7 +18,7 @@ const COURSES = [
         meta: "Fördjupning",
         description:
             "För dig som vill utveckla din teknik och prova mer avancerade former och detaljer.",
-        image: "/793028504_18099047186133710_2004468186776971465_n.jpg",
+        image: "/kurser_2.png",
         imageAlt: "Fortsättningskurs i marsipan",
         accent: "green",
     },

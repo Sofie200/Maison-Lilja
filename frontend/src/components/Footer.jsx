@@ -1,7 +1,9 @@
 import "./Footer.css";
 import Button from "./ui/Button";
+import { InstagramIcon } from "./ui/InstagramIcon";
 
 const Footer = () => {
+    
     return (
         <footer className="footer">
             <section className="footer-inner">
@@ -23,21 +25,7 @@ const Footer = () => {
                             aria-label="Följ oss på Instagram"
                         >
                             <span>Följ oss</span>
-                            <svg
-                                viewBox="0 0 24 24"
-                                width="20"
-                                height="20"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="2"
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                aria-hidden="true"
-                            >
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                                <line x1="17.5" y1="6.5" x2="17.5" y2="6.5" />
-                            </svg>
+                            <span><InstagramIcon /></span>
                         </a>
                     </div>
 
@@ -48,9 +36,10 @@ const Footer = () => {
                         {
                             //<a href="/faq">Vanliga frågor</a><br />
                         }
-                        <a href="/integritetspolicy">Integritetspolicy</a><br />
-                        <a href="/kopvillkor">Köpvillkor</a><br />
+                        <a href="/shipping">Fraktinformation</a>
+                        <a href="/kopvillkor">Köp & leveransvillkor</a><br />
                         <a href="/returer">Returer & reklamation</a>
+                        <a href="/integritetspolicy">Integritetspolicy</a><br />
                     </div>
 
 

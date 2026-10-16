@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useShopInfo } from "../hooks/useShopInfo";
 import ErrorMessage from "../components/ui/ErrorMessage";
 import Loader from "../components/ui/Loader";
+import { InstagramIcon } from "../components/ui/InstagramIcon";
 import "./Contact.css";
 
 // Flerradiga adresser blir en rad: "Gata 1\nMalmö" → "Gata 1, Malmö"
@@ -71,17 +72,18 @@ export default function Contact() {
             href: toMapsUrl(besoksadress),
             external: true,
         },
-        shopInfo?.telefon && {
-            icon: "call",
-            label: "Telefon",
-            value: shopInfo.telefon,
-            href: toTelHref(shopInfo.telefon),
-        },
         shopInfo?.email && {
             icon: "mail",
             label: "E-post",
             value: shopInfo.email,
             href: `mailto:${shopInfo.email}`,
+        },
+        shopInfo?.instagram && {
+            icon: <InstagramIcon />,
+            label: "Instagram",
+            value: shopInfo.instagram,
+            href: `https://www.instagram.com/${shopInfo.instagram}`,
+            external: true,
         },
     ].filter(Boolean);
 

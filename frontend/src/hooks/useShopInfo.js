@@ -8,6 +8,7 @@ const SHOP_INFO_QUERY = `
       besoksadress: metafield(namespace: "custom", key: "besoksadress") { value }
       telefon: metafield(namespace: "custom", key: "telefon") { value }
       email: metafield(namespace: "custom", key: "email") { value }
+      instagram: metafield(namespace: "custom", key: "instagram") { value }
     }
   }
 `;
@@ -46,6 +47,7 @@ export function useShopInfo() {
                         besoksadress: shop.besoksadress?.value ?? null,
                         telefon: shop.telefon?.value ?? null,
                         email: shop.email?.value ?? null,
+                        instagram: shop.instagram?.value ?? null,
                     });
                 }
 

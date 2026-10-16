@@ -42,6 +42,7 @@ export default function App() {
 							<Route path="/integritetspolicy" element={<Policy policyType="privacyPolicy" />} />
 							<Route path="/kopvillkor" element={<Policy policyType="termsOfService" />} />
 							<Route path="/returer" element={<Policy policyType="refundPolicy" />} />
+							<Route path="/shipping" element={<Policy policyType="shippingPolicy" />} />
 
 							{/*
 							<Route path="/about" element={<About />} />
