@@ -52,7 +52,7 @@
     border: var(--box-border);
     outline: 0;
     border-radius: 0;
-    background: var(--color-bg, #fff);
+    background: var(--color-bg-highlight, #fff);
     font: inherit;
 }
 

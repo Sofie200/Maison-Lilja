@@ -6,12 +6,16 @@ html:has(.sort-select select:open) {
     overflow: hidden;
 }
 
-.sort-select{
+.sort-select {
     display: flex;
     flex-direction: row;
     gap: 5px;
     align-items: center;
+    /* Varje sort-select får ett eget ankare, så att flera på samma sida inte krockar */
+    anchor-scope: --sort-select;
 }
+
+/* --- Själva selecten --- */
 
 .sort-select select {
     height: auto;
@@ -25,6 +29,7 @@ html:has(.sort-select select:open) {
     color: inherit;
     font: inherit;
     cursor: pointer;
+    anchor-name: --sort-select;
 
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -36,11 +41,7 @@ html:has(.sort-select select:open) {
     outline-offset: 2px;
 }
 
-.sort-select option {
-    background-color: var(--color-bg);
-    color: var(--color-text);
-}
-
+/* Anpassningsbar select där det stöds */
 .sort-select select,
 .sort-select ::picker(select) {
     appearance: base-select;
@@ -51,21 +52,63 @@ html:has(.sort-select select:open) {
     display: none;
 }
 
+/* --- Listan --- */
+
+/* Stängd: ihopvikt uppifrån och lite uppflyttad */
 .sort-select ::picker(select) {
     background: var(--color-bg-secondary);
     border: var(--box-border);
-    outline: var(--box-outline);
-    box-shadow: 10px 16px 18px rgba(74, 48, 40, 0.55);
-    margin-top: 10px;
-    position-area: block-end span-inline-start;
+    box-shadow: var(--shadow-softer);
+
+    /* Högerkanten linjerad med selecten */
+    position-anchor: --sort-select;
+    position-area: none;
+    inset: auto;
+    top: anchor(--sort-select bottom);
+    right: anchor(--sort-select right);
+    margin: 5px 0 0 0;
+    position-try-fallbacks: none;
+
+    opacity: 0;
+    transform: translateY(-6px);
+    /* Negativa värden på sidorna och nedåt så att skuggan inte klipps */
+    clip-path: inset(0 -40px 100% -40px);
+    transition:
+        opacity 0.2s ease,
+        transform 0.25s ease,
+        clip-path 0.25s ease,
+        overlay 0.25s allow-discrete,
+        display 0.25s allow-discrete;
 }
 
-.sort-select ::picker(select) {
-    position-visibility: anchors-visible;
+/* Öppen: helt synlig */
+.sort-select select:open::picker(select) {
+    opacity: 1;
+    transform: translateY(0);
+    clip-path: inset(0 -40px -40px -40px);
 }
+
+/* Startläget i samma ögonblick som den öppnas, så att den har något att glida från */
+@starting-style {
+    .sort-select select:open::picker(select) {
+        opacity: 0;
+        transform: translateY(-6px);
+        clip-path: inset(0 -40px 100% -40px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .sort-select ::picker(select) {
+        transition: none;
+    }
+}
+
+/* --- Alternativen --- */
 
 .sort-select option {
     padding: 8px 12px;
+    background-color: var(--color-bg-highlight);
+    color: var(--color-text);
 }
 
 .sort-select option:hover,
@@ -77,19 +120,16 @@ html:has(.sort-select select:open) {
     font-weight: 600;
 }
 
-@media screen and (max-width:550px) {
-    .sort-select label{
+/* --- Mobil --- */
+
+@media screen and (max-width: 550px) {
+    .sort-select label {
         display: none;
     }
 
-    .sort-select label{
-        font-size: 0.8rem;
-    }
-    
-    .sort-select select{
+    .sort-select select {
         font-size: 0.8rem;
         padding-right: 14px;
         background-size: 10px auto;
     }
-        
 }

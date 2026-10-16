@@ -9,13 +9,14 @@
     --qty-btn-size: 32px;
     --qty-icon-size: 1.3rem;
     gap: 8px;
+    outline: var(--box-border);
 }
 
 .qty-controls--lg {
     --qty-btn-size: 44px;
     --qty-icon-size: 1.6rem;
     gap: 12px;
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-highlight);
     border: var(--box-border);
     outline: var(--box-outline);
 }
@@ -49,7 +50,7 @@
 }
 
 .qty-controls--lg .qty-btn .material-symbols-rounded {
-    background-color: var(--color-bg);
+    background-color: var(--color-bg-highlight);
 }
 
 .qty-btn:first-of-type .material-symbols-rounded {
@@ -63,12 +64,12 @@
 @media (hover: hover) and (pointer: fine) {
     .qty-btn .material-symbols-rounded:hover {
         color: var(--color-text);
-        background: var(--color-bg-secondary);
+        background: var(--color-bg);
         font-weight: 600;
     }
 
     .qty-controls--lg .qty-btn .material-symbols-rounded:hover {
-        background: var(--color-bg-secondary);
+        background: var(--color-bg);
     }
 }
 

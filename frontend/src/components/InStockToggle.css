@@ -19,7 +19,7 @@
     height: 16px;
     margin: 0;
     border: var(--box-border);
-    background: transparent;
+    background-color: var(--color-bg-highlight);
     cursor: pointer;
     transition: background-color 0.15s;
     margin-bottom: 2px;
@@ -40,7 +40,7 @@
 
 /* Ikryssad */
 .in-stock-toggle input:checked {
-    background-color: var(--color-bg-secondary);
+    background-color: var(--color-bg-highlight);
 }
 
 .in-stock-toggle input:checked::before {
