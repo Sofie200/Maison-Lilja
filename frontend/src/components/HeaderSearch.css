@@ -112,20 +112,22 @@
     padding: 0.75rem;
 }
 
+.header-search__panel input::-webkit-search-cancel-button,
+.header-search__panel input::-webkit-search-decoration {
+    -webkit-appearance: none;
+    appearance: none;
+}
+
 /* Mobil: fältet får hela bredden under headern */
 @media (max-width: 900px) {
-    .header-search {
-        position: static;
-    }
 
     .header-search__panel,
     .header-search.is-open .header-search__panel {
-        top: 1.4rem;
-        left: -200px;
-        right: 30px;
-        width: auto;
-        transform: none;
-        margin: 0.5rem 0 0;
         box-shadow: var(--shadow-soft);
+        
+    }
+
+    .header-search__panel input {
+        background: var(--color-bg-highlight, #fff);
     }
 }
