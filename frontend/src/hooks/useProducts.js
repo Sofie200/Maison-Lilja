@@ -37,7 +37,7 @@ function buildQuery({ productType, tag, inStockOnly, minPrice, maxPrice } = {}) 
     return parts.join(" AND ");
 }
 
-export function useProducts(limit = 10, filters = {}) {
+export function useProducts(limit = 250, filters = {}) {
     const { productType, tag, inStockOnly, minPrice, maxPrice, sortKey, reverse } = filters;
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);

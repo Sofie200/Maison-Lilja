@@ -3,7 +3,7 @@ import { useHeroCover } from "../hooks/useHeroCover";
 import "./Hero.css";
 import Loader from "./ui/Loader";
 
-const COVER_COLLECTION = "frontpage";
+const COVER_COLLECTION = "hero";
 
 const Hero = () => {
     const { cover } = useHeroCover(COVER_COLLECTION);

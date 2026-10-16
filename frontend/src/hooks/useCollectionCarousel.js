@@ -53,7 +53,7 @@ export function useCollectionCarousel(handle, first = 8) {
 
                 const collection = data.data?.collection;
                 if (!collection) {
-                    throw new Error(`Kollektionen "${handle}" hittades inte.`);
+                    throw new Error(`Kollektionen hittades inte.`);
                 }
 
                 if (!cancelled) {

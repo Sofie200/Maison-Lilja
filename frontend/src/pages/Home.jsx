@@ -11,7 +11,7 @@ export default function Home() {
     
     return <>
         <Hero />
-        <CoverCarousel handle="frontpage-produktkarusell" />
+        <CoverCarousel handle="selected-products" />
         <USPSection />
     </>;
 }

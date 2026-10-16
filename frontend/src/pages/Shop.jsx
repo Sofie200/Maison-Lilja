@@ -17,7 +17,7 @@ export default function Shop() {
     const [inStockOnly, setInStockOnly] = useState(false);
 
     const { sortKey, reverse } = SORT_OPTIONS.find((o) => o.id === sortId);
-    const { products, loading, error } = useProducts(200, {
+    const { products, loading, error } = useProducts(250, {
         sortKey,
         reverse,
         inStockOnly,
