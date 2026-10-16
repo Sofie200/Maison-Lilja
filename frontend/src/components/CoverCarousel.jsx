@@ -40,7 +40,7 @@ export default function CoverCarousel({ handle }) {
                 <h2 className="carousel-header">Utvalt hos Maison Lilja</h2>
 
                 <div className="cover-carousel__controls">
-                    <div>
+                    <div className="cover-carousel__nav cover-carousel__nav--prev">
                         <button type="button" onClick={() => scroll(-1)} aria-label="Föregående">
                             <span className="material-symbols-rounded" aria-hidden="true">arrow_back</span>
                         </button>
@@ -63,7 +63,7 @@ export default function CoverCarousel({ handle }) {
                         ))}
                     </ul>
 
-                    <div>
+                    <div className="cover-carousel__nav cover-carousel__nav--next">
                         <button type="button" onClick={() => scroll(1)} aria-label="Nästa">
                             <span className="material-symbols-rounded" aria-hidden="true">arrow_forward</span>
                         </button>

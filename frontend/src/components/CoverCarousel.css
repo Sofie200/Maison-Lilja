@@ -45,7 +45,8 @@
 
 .cover-carousel__track {
     flex: 1;
-    min-width: 0; /* låt spåret krympa istället för att trycka ut knapparna */
+    min-width: 0;
+    /* låt spåret krympa istället för att trycka ut knapparna */
     display: flex;
     gap: var(--carousel-gap);
     overflow-x: auto;
@@ -120,13 +121,13 @@
         gap: 1rem;
     }
 
-                                        .cover-carousel__text {
-                                            display: flex;
-                                            flex-direction: column;
-                                            justify-content: center;
-                                            gap: 0.75rem;
-                                            padding: 0;
-                                        }
+    .cover-carousel__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 0;
+    }
 }
 
 @media (max-width: 768px) {
@@ -135,34 +136,56 @@
         gap: 0rem;
     }
 
-        .cover-carousel__item {
-            flex-basis: 100%;
-            margin-bottom: 0;
-        }
+    .cover-carousel__item {
+        flex-basis: 100%;
+        margin-bottom: 0;
+    }
 
-                .cover-carousel__text {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    gap: 0.75rem;
-                    padding: 1.5rem;
-                }
+    .cover-carousel__text {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.75rem;
+        padding: 1.5rem;
+    }
 }
 
 /* --- Mobil: bild över text, knappar under --- */
 
 @media (max-width: 600px) {
+    .cover-carousel__controls {
+        position: relative;
+        container-type: inline-size;
+        /* gör att vi kan räkna på bredden med cqi */
+        gap: 0;
+    }
+
+    .cover-carousel__nav {
+        position: absolute;
+        z-index: 1;
+        /* Bilden är 4:3 och lika bred som kontrollerna → mitten ligger på 3/8 av bredden */
+        top: calc(100cqi * 3 / 8);
+        transform: translateY(-50%);
+    }
+
+    .cover-carousel__nav--prev {
+        left: 0.75rem;
+    }
+
+    .cover-carousel__nav--next {
+        right: 0.75rem;
+    }
+
+    .cover-carousel__nav button {
+        box-shadow: var(--shadow-softer);
+    }
+
     .carousel-header {
         font-size: 1.8rem;
         text-align: center;
         margin-bottom: 0.5rem;
     }
 
-    .cover-carousel__controls {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 1rem;
-    }
 
     /* Spåret först och på egen rad; +2rem kompenserar de negativa marginalerna */
     .cover-carousel__track {
@@ -185,9 +208,9 @@
         aspect-ratio: 4 / 3;
     }
 
-        .cover-carousel__text {
-            padding: 0;
-        }
+    .cover-carousel__text {
+        padding: 0;
+    }
 
     .cover-carousel__text p {
         -webkit-line-clamp: 3;
