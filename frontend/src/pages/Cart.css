@@ -83,6 +83,7 @@
 }
 .cart-item-line-total {
     text-align: right;
+    margin-bottom: 0;
 }
 
 .remove-btn {
