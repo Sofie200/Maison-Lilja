@@ -1,3 +1,7 @@
+.menu{
+    z-index: 1000;
+}
+
 /* Hamburger button */
 .hamburger {
     width: 24px;
