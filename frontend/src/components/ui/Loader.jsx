@@ -1,8 +1,8 @@
 import "./Loader.css";
 
-const Loader = () => {
+const Loader = ({ small = false }) => {
 	return (
-		<div className="loader-wrapper">
+		<div className={`loader-wrapper${small ? " loader-sm" : ""}`}>
 			<div className="lds-ellipsis">
 				<div></div>
 				<div></div>
@@ -10,8 +10,7 @@ const Loader = () => {
 				<div></div>
 			</div>
 		</div>
+	);
+};
 
-	)
-}
-
-export default Loader
+export default Loader;

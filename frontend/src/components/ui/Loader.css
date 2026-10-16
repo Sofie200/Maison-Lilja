@@ -1,9 +1,19 @@
 .loader-wrapper {
+    --loader-size: 80px;
     width: 100%;
     text-align: center;
 }
-.lds-ellipsis {
-    color: var(--accent-sage-green);
+
+.loader-wrapper.loader-sm {
+    --loader-size: 50px;
+}
+
+.loader-sm .lds-ellipsis {
+    color: var(--accent-dusty-rose);
+}
+
+.loader-sm .lds-ellipsis div {
+    border: 0;
 }
 
 .lds-ellipsis,
@@ -14,38 +24,46 @@
 .lds-ellipsis {
     display: inline-block;
     position: relative;
-    width: 80px;
-    height: 80px;
+    width: var(--loader-size);
+    height: var(--loader-size);
+    color: var(--accent-sage-green);
 }
 
+/* Alla mått är andelar av storleken (originalet: 80px) */
 .lds-ellipsis div {
     position: absolute;
-    top: 33.33333px;
-    width: 13.33333px;
-    height: 13.33333px;
+    top: calc(var(--loader-size) * 0.4167);
+    /* 33.3px vid 80 */
+    width: calc(var(--loader-size) / 6);
+    /* 13.3px vid 80 */
+    height: calc(var(--loader-size) / 6);
     border-radius: 50%;
     background: currentColor;
-    border: var(--box-border);
+    border: 2px solid var(--color-text);
     animation-timing-function: cubic-bezier(0, 1, 1, 0);
 }
 
 .lds-ellipsis div:nth-child(1) {
-    left: 8px;
+    left: calc(var(--loader-size) * 0.1);
+    /* 8px */
     animation: lds-ellipsis1 0.6s infinite;
 }
 
 .lds-ellipsis div:nth-child(2) {
-    left: 8px;
+    left: calc(var(--loader-size) * 0.1);
+    /* 8px */
     animation: lds-ellipsis2 0.6s infinite;
 }
 
 .lds-ellipsis div:nth-child(3) {
-    left: 32px;
+    left: calc(var(--loader-size) * 0.4);
+    /* 32px */
     animation: lds-ellipsis2 0.6s infinite;
 }
 
 .lds-ellipsis div:nth-child(4) {
-    left: 56px;
+    left: calc(var(--loader-size) * 0.7);
+    /* 56px */
     animation: lds-ellipsis3 0.6s infinite;
 }
 
@@ -75,6 +93,8 @@
     }
 
     100% {
-        transform: translate(24px, 0);
+        transform: translate(calc(var(--loader-size) * 0.3), 0);
     }
+
+    /* 24px */
 }

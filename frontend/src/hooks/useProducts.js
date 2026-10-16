@@ -25,8 +25,12 @@ const PRODUCTS_QUERY = `
   }
 `;
 
-function buildQuery({ productType, tag, inStockOnly, minPrice, maxPrice } = {}) {
+function buildQuery({ search, productType, tag, inStockOnly, minPrice, maxPrice } = {}) {
     const parts = EXCLUDED_TAGS.map((t) => `tag_not:"${t}"`);
+
+    // Söktermen först. Tecken som har betydelse i Shopifys söksyntax tas bort.
+    const term = search?.trim().replace(/["\\:()]/g, " ");
+    if (term) parts.unshift(term);
 
     if (productType) parts.push(`product_type:"${productType}"`);
     if (tag) parts.push(`tag:"${tag}"`);
@@ -38,7 +42,7 @@ function buildQuery({ productType, tag, inStockOnly, minPrice, maxPrice } = {}) 
 }
 
 export function useProducts(limit = 250, filters = {}) {
-    const { productType, tag, inStockOnly, minPrice, maxPrice, sortKey, reverse } = filters;
+    const { search, productType, tag, inStockOnly, minPrice, maxPrice, sortKey, reverse } = filters;
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -58,8 +62,8 @@ export function useProducts(limit = 250, filters = {}) {
                         query: PRODUCTS_QUERY,
                         variables: {
                             limit,
-                            query: buildQuery({ productType, tag, inStockOnly, minPrice, maxPrice }),
-                            sortKey: sortKey ?? "BEST_SELLING", // eller "PRICE", "TITLE", "CREATED_AT"
+                            query: buildQuery({ search, productType, tag, inStockOnly, minPrice, maxPrice }),
+                            sortKey: sortKey ?? (search?.trim() ? "RELEVANCE" : "BEST_SELLING"),
                             reverse: reverse ?? false,
                         },
                     }),
@@ -106,7 +110,7 @@ export function useProducts(limit = 250, filters = {}) {
         load();
 
         return () => { cancelled = true; };
-    }, [limit, productType, tag, inStockOnly, minPrice, maxPrice, sortKey, reverse]);
+    }, [limit, search, productType, tag, inStockOnly, minPrice, maxPrice, sortKey, reverse]);
 
     return { products, loading, error };
 }

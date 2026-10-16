@@ -18,6 +18,7 @@ header {
     justify-content: center;
     align-items: center;
     padding-bottom: var(--spacing-md);
+    z-index: 2;
 }
 
 .header-logo img {

@@ -1,5 +1,6 @@
 import CartIcon from "./CartIcon";
 import "./Header.css";
+import HeaderSearch from "./HeaderSearch";
 import NavMenu from "./NavMenu";
 
 const Header = () => {
@@ -12,12 +13,11 @@ const Header = () => {
                 </div>
 
                 <div className="header-icons">
-                    {/*<a href="/search">
-                        <span className="material-symbols-rounded">search</span>
-                    </a>
+                    {/*
                     <a href="/profile">
                         <span className="material-symbols-rounded">person</span>
                     </a>*/}
+                    <HeaderSearch />
                     <CartIcon />
                 </div>
             </div>
