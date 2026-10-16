@@ -97,7 +97,7 @@ const Cart = () => {
                                     </div>
 
                                 </div>
-                                <div>
+                                <div className="cart-item-right">
                                     <button
                                         className="remove-btn"
                                         disabled={loading}
