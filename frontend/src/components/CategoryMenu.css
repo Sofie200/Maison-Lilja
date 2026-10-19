@@ -13,6 +13,7 @@
     font-weight: normal;
     border-radius: 999px;
     transition: background-color 0.3s ease;
+    border: 0;
 }
 
 .category-menu button:hover {
