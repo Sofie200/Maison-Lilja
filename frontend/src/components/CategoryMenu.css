@@ -6,17 +6,21 @@
 
 .category-menu button {
     padding: 6px 13px;
-    border: 0;
     background: transparent;
     color: var(--color-text);
     cursor: pointer;
     letter-spacing: 1px;
     font-weight: normal;
+    border-radius: 999px;
+    transition: background-color 0.3s ease;
+}
+
+.category-menu button:hover {
+    background-color: #E1B09E;
 }
 
 .category-menu button[aria-pressed="true"] {
     background: var(--accent-dusty-rose);
     color: var(--color-bg-highlight);
-    border-radius: 999px;
     font-weight: 500;
 }
