@@ -67,7 +67,7 @@ export default function Contact() {
     const contactRows = [
         besoksadress && {
             icon: "location_on",
-            label: "Besöksadress",
+            label: "Adress",
             value: besoksadress,
             href: toMapsUrl(besoksadress),
             external: true,
