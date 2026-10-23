@@ -32,6 +32,7 @@ export function useProduct(id) {
                                     antal: metafield(namespace: "custom", key: "antal") { value }
                                     forvaring: metafield(namespace: "custom", key: "forvaring") { value }
                                     ingredienser: metafield(namespace: "custom", key: "ingredienser") { value }
+                                    naringsvarde: metafield(namespace: "custom", key: "naringsvarde") { value }
                                     nettovolym: metafield(namespace: "custom", key: "nettovolym") { value }
                                     nettovikt: metafield(namespace: "custom", key: "nettovikt") { value }
                                     forpackning: metafield(namespace: "custom", key: "forpackning") { value }

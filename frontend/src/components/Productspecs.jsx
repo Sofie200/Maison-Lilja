@@ -11,10 +11,12 @@ export default function ProductSpecs({ product, variant }) {
         { label: "Antal", value: product.antal?.value, multiline: false },
         { label: "Nettovolym", value: product.nettovolym?.value, multiline: false },
         { label: "Nettovikt", value: product.nettovikt?.value, multiline: false },
-        { label: "Ingredienser", value: product.ingredienser?.value, multiline: true },
-        { label: "Allergener", value: allergens.join(", ") },
         { label: "Förvaring", value: product.forvaring?.value, multiline: true },
-        { label: "Förpackning", value: product.forpackning?.value, multiline: true }
+        { label: "Förpackning", value: product.forpackning?.value, multiline: true },
+        { label: "Allergener", value: allergens.join(", ") },
+        { label: "Ingredienser", value: product.ingredienser?.value, multiline: true },
+        { label: "Näringsvärde", value: product.naringsvarde?.value, multiline: true }
+        
     ].filter((row) => row.value);
 
     if (rows.length === 0) return null;
