@@ -2,7 +2,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: var(--spacing-lg);
-    padding: var(--spacing-md) 0;
+    padding-bottom: var(--spacing-lg);
 }
 
 .usp-item {

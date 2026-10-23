@@ -11,12 +11,28 @@ const QUERY = `
           handle
           title
           description
+          availableForSale
           featuredImage {
             url(transform: { maxWidth: 800 })
             altText
           }
+          images(first: 5) { nodes { url } }
           priceRange {
             minVariantPrice { amount currencyCode }
+          }
+          variants(first: 5) {
+            nodes {
+              id
+              price { amount }
+              compareAtPrice { amount }
+              image { url }
+              availableForSale
+              quantityAvailable
+              currentlyNotInStock
+              weight
+              weightUnit
+              selectedOptions { name value }
+            }
           }
         }
       }
@@ -53,25 +69,50 @@ export function useCollectionCarousel(handle, first = 8) {
 
                 const collection = data.data?.collection;
                 if (!collection) {
-                    throw new Error(`Kollektionen hittades inte.`);
+                    throw new Error("Kollektionen hittades inte.");
                 }
 
                 if (!cancelled) {
                     setTitle(collection.title);
                     setProducts(
-                        collection.products.nodes.map((p) => ({
-                            id: p.id.split("/").pop(), // gid://shopify/Product/123 → 123
-                            title: p.title,
-                            description: p.description,
-                            imageUrl: p.featuredImage?.url ?? null,
-                            imageAlt: p.featuredImage?.altText || p.title,
-                            price: p.priceRange.minVariantPrice,
-                        }))
+                        collection.products.nodes.map((p) => {
+                            // Platta ut pris/rea-info per variant, samma mönster som useProduct
+                            const variants = p.variants.nodes.map((variant) => {
+                                const price = variant.price?.amount ? Number(variant.price.amount) : null;
+                                const compareAtPrice = variant.compareAtPrice?.amount
+                                    ? Number(variant.compareAtPrice.amount)
+                                    : null;
+
+                                return {
+                                    ...variant,
+                                    price,
+                                    compareAtPrice,
+                                    onSale: compareAtPrice !== null && compareAtPrice > price,
+                                };
+                            });
+                            const firstVariant = variants[0];
+
+                            return {
+                                ...p,
+                                id: p.id.split("/").pop(), // gid://shopify/Product/123 → 123
+                                variants: { nodes: variants },
+
+                                // Same fields as before, so existing components keep working
+                                imageUrl: p.featuredImage?.url ?? null,
+                                imageAlt: p.featuredImage?.altText || p.title,
+                                price: p.priceRange.minVariantPrice,
+
+                                // Shortcuts for the card
+                                currentPrice: firstVariant?.price ?? null,
+                                compareAtPrice: firstVariant?.compareAtPrice ?? null,
+                                onSale: variants.some((v) => v.onSale),
+                            };
+                        })
                     );
                 }
             } catch (err) {
                 console.error("❌ useCollectionCarousel crashed:", err);
-                if (!cancelled) setError(err.message);
+                if (!cancelled) setError("Produkterna kunde inte hämtas. Försök igen om en liten stund.");
             } finally {
                 if (!cancelled) setLoading(false);
             }

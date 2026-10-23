@@ -1,12 +1,7 @@
 .cover-carousel {
     --carousel-gap: 1rem;
     --carousel-bg: var(--color-bg-highlight);
-}
-
-.carousel-header {
-    font-size: 2.2rem;
-    text-align: center;
-    margin-bottom: 1rem;
+    padding: calc(var(--spacing-xl) + var(--spacing-sm)) 0;
 }
 
 /* --- Knappar + spår --- */
@@ -25,12 +20,12 @@
     }
 }
 
-.cover-carousel__controls button {
+.cover-carousel__nav button {
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 50%;
-    background: var(--color-text);
-    color: var(--color-bg-highlight);
+    background: var(--color-bg-secondary);
+    color: var(--color-text);
     border: 0;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -39,8 +34,8 @@
     justify-content: center;
 }
 
-.cover-carousel__controls button:hover {
-    background: #373430;
+.cover-carousel__nav button:hover {
+    background:var(--color-bg);
 }
 
 .cover-carousel__track {
@@ -98,6 +93,8 @@
 }
 
 .cover-carousel__text h3 {
+    font-weight: 500;
+    font-size: 1.5rem;
     margin: 0;
 }
 
@@ -180,7 +177,7 @@
         box-shadow: var(--shadow-softer);
     }
 
-    .carousel-header {
+    .cover-title {
         font-size: 1.8rem;
         text-align: center;
         margin-bottom: 0.5rem;
