@@ -36,10 +36,10 @@ const Footer = () => {
                         {
                             //<a href="/faq">Vanliga frågor</a><br />
                         }
-                        <a href="/shipping">Fraktinformation</a>
+                        <a href="/shipping">Fraktinformation</a><br />
                         <a href="/kopvillkor">Köp & leveransvillkor</a><br />
-                        <a href="/returer">Returer & reklamation</a>
-                        <a href="/integritetspolicy">Integritetspolicy</a><br />
+                        <a href="/returer">Returer & reklamation</a><br />
+                        <a href="/integritetspolicy">Integritetspolicy</a>
                     </div>
 
 

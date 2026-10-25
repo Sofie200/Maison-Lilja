@@ -1,7 +1,7 @@
 .cover-carousel {
     --carousel-gap: 1rem;
     --carousel-bg: var(--color-bg-highlight);
-    padding: calc(var(--spacing-xl) + var(--spacing-sm)) 0;
+    padding: calc(var(--spacing-xl) + var(--spacing-sm)) var(--spacing-md);
 }
 
 /* --- Knappar + spår --- */

@@ -104,12 +104,13 @@ footer h3 {
         background-size:auto 220px;
         background-repeat: repeat-x;
         position: relative;
+        padding: 0;
     }
 
     .footer-grid {
         max-width: 800px;
         padding: var(--spacing-lg) var(--spacing-lg) 245px;
-        gap: 20px;
+        gap: var(--spacing-lg);
     }
 
     .footer-bottom {
