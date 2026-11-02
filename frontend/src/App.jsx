@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { CartProvider } from "./contexts/CartContext";
 
+import ScrollToTop from "./components/ui/ScrollToTop";
 import CookieConsent from "./components/CookieConsent";
 import Home from "./pages/Home";
 import Shop from "./pages/Shop";
@@ -19,9 +20,9 @@ import About from "./pages/About";
 import Faq from "./pages/Faq";*/
 
 export default function App() {
-	
 	return (
 		<BrowserRouter>
+			<ScrollToTop />
 			<CartProvider>
 
 				<CookieConsent />
