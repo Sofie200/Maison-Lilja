@@ -9,32 +9,16 @@
  *
  * Vanliga besökare påverkas inte (vi returnerar undefined → requesten går vidare som vanligt).
  *
- * OBS: Håll ROUTE_TITLES i synk med document.title i src/pages/*.jsx.
+ * Titlarna finns i server/site.js (delas med api/sitemap.js).
  */
 
-const SITE_NAME = "Maison Lilja";
-const API_VERSION = "2026-04";
-
-const ROUTE_TITLES = {
-    "/": SITE_NAME,
-    "/shop": "Alla produkter",
-    "/shop/cart": "Varukorg",
-    "/gifts": "Företagsgåvor",
-    "/private-label": "Private Label",
-    "/courses": "Kurser",
-    "/tastings": "Chokladprovningar",
-    "/contact": "Kontakt",
-    "/integritetspolicy": "Integritetspolicy",
-    "/kopvillkor": "Köp & leveransvillkor",
-    "/returer": "Returer & reklamation",
-    "/shipping": "Fraktinformation",
-};
+import { SITE_NAME, SITE_URL, ROUTE_TITLES, shopifyQuery } from "./server/site.js";
 
 const CRAWLER_UA = /facebookexternalhit|facebot|twitterbot|linkedinbot|slackbot|discordbot|whatsapp|telegrambot|pinterest|redditbot|applebot|skypeuripreview|embedly|vkshare|googlebot|bingbot|snapchat|mastodon|bluesky|iframely|opengraph/i;
 
-// Kör inte på filer (allt med en punkt i sökvägen, t.ex. /index.html, /assets/x.js, /og-image.jpg)
+// Kör inte på /api/ eller filer (allt med en punkt i sökvägen, t.ex. /index.html, /assets/x.js, /og-image.jpg)
 export const config = {
-    matcher: ["/((?!.*\\.).*)"],
+    matcher: ["/((?!api/|.*\\.).*)"],
 };
 
 export default async function middleware(request) {
@@ -54,7 +38,7 @@ export default async function middleware(request) {
 
         const out = html.replace(
             /<!-- seo:start[\s\S]*?<!-- seo:end -->/,
-            renderTags({ ...meta, url: url.origin + url.pathname })
+            renderTags({ ...meta, url: SITE_URL + (path === "/" ? "/" : path) })
         );
 
         return new Response(out, {
@@ -102,37 +86,24 @@ async function getMeta(path, origin) {
 async function fetchProduct(id) {
     if (!/^\d+$/.test(id)) return null;
 
-    const domain = process.env.VITE_SHOP_DOMAIN;
-    const token = process.env.VITE_STOREFRONT_API_TOKEN;
-    if (!domain || !token) return null;
-
-    const res = await fetch(`https://${domain}/api/${API_VERSION}/graphql.json`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-            "X-Shopify-Storefront-Access-Token": token,
-        },
-        body: JSON.stringify({
-            query: `query OgProduct($id: ID!) @inContext(language: SV) {
-                product(id: $id) {
-                    title
-                    description
-                    featuredImage { url altText }
-                }
-            }`,
-            variables: { id: `gid://shopify/Product/${id}` },
-        }),
-    });
-
-    if (!res.ok) return null;
-    const data = await res.json();
-    return data?.data?.product ?? null;
+    const data = await shopifyQuery(
+        `query OgProduct($id: ID!) @inContext(language: SV) {
+            product(id: $id) {
+                title
+                description
+                featuredImage { url altText }
+            }
+        }`,
+        { id: `gid://shopify/Product/${id}` }
+    );
+    return data?.product ?? null;
 }
 
 function renderTags({ title, description, image, imageWidth, imageHeight, imageAlt, type, url }) {
     const t = escapeHtml(title);
     const tags = [
         `<title>${t}</title>`,
+        `<link rel="canonical" href="${escapeHtml(url)}" />`,
         `<meta property="og:type" content="${type}" />`,
         `<meta property="og:site_name" content="${SITE_NAME}" />`,
         `<meta property="og:locale" content="sv_SE" />`,

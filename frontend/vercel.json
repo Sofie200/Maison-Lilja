@@ -1,19 +1,12 @@
 {
     "rewrites": [
         {
-            "source": "/(.*)",
-            "destination": "/"
-        }
-    ],
-    "headers": [
+            "source": "/sitemap.xml",
+            "destination": "/api/sitemap"
+        },
         {
             "source": "/(.*)",
-            "headers": [
-                {
-                    "key": "X-Robots-Tag",
-                    "value": "noindex"
-                }
-            ]
+            "destination": "/"
         }
     ]
 }
