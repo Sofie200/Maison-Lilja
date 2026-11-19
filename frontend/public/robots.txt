@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /src/
 Disallow: /shop/cart
 
-Sitemap: https://maisonlilja.se/sitemap.xml
+Sitemap: https://www.maisonlilja.se/sitemap.xml

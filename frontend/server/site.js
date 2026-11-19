@@ -4,7 +4,7 @@
  */
 
 export const SITE_NAME = "Maison Lilja";
-export const SITE_URL = (process.env.SITE_URL ?? "https://maisonlilja.se").replace(/\/+$/, "");
+export const SITE_URL = (process.env.SITE_URL ?? "https://www.maisonlilja.se").replace(/\/+$/, "");
 export const API_VERSION = "2026-04";
 
 export const DEFAULT_DESCRIPTION =

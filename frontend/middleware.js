@@ -3,18 +3,16 @@
  *
  * Sidan är en SPA: titeln sätts med document.title i respektive page-komponent,
  * men Facebook, LinkedIn, Slack, iMessage m.fl. kör inte JavaScript. De ser bara
- * index.html. Därför fångar vi upp förfrågningar från sådana crawlers här och
- * skriver om blocket mellan <!-- seo:start --> och <!-- seo:end --> i index.html
- * så att og:title blir samma som sidans <title>.
+ * index.html. Därför skriver vi här om blocket mellan <!-- seo:start --> och
+ * <!-- seo:end --> i index.html för varje sidladdning, så att <title>, og:title,
+ * beskrivning m.m. stämmer med sidan redan i HTML:en som servern skickar.
  *
- * Vanliga besökare påverkas inte (vi returnerar undefined → requesten går vidare som vanligt).
+ * Okända sökvägar eller fel → undefined, dvs. vanliga index.html serveras.
  *
  * Titlar och beskrivningar finns i server/site.js (delas med api/sitemap.js).
  */
 
 import { SITE_NAME, SITE_URL, ROUTES, DEFAULT_DESCRIPTION, shopifyQuery } from "./server/site.js";
-
-const CRAWLER_UA = /facebookexternalhit|facebot|twitterbot|linkedinbot|slackbot|discordbot|whatsapp|telegrambot|pinterest|redditbot|applebot|skypeuripreview|embedly|vkshare|googlebot|bingbot|snapchat|mastodon|bluesky|iframely|opengraph/i;
 
 // Kör inte på /api/ eller filer (allt med en punkt i sökvägen, t.ex. /index.html, /assets/x.js, /og-image.jpg)
 export const config = {
@@ -22,8 +20,7 @@ export const config = {
 };
 
 export default async function middleware(request) {
-    const ua = request.headers.get("user-agent") ?? "";
-    if (!CRAWLER_UA.test(ua)) return;
+    if (request.method !== "GET" && request.method !== "HEAD") return;
 
     try {
         const url = new URL(request.url);
@@ -45,7 +42,7 @@ export default async function middleware(request) {
             status: 200,
             headers: {
                 "content-type": "text/html; charset=utf-8",
-                "cache-control": "public, max-age=0, s-maxage=600",
+                "cache-control": "public, max-age=0, must-revalidate",
             },
         });
     } catch (err) {
