@@ -9,10 +9,10 @@
  *
  * Vanliga besökare påverkas inte (vi returnerar undefined → requesten går vidare som vanligt).
  *
- * Titlarna finns i server/site.js (delas med api/sitemap.js).
+ * Titlar och beskrivningar finns i server/site.js (delas med api/sitemap.js).
  */
 
-import { SITE_NAME, SITE_URL, ROUTE_TITLES, shopifyQuery } from "./server/site.js";
+import { SITE_NAME, SITE_URL, ROUTES, DEFAULT_DESCRIPTION, shopifyQuery } from "./server/site.js";
 
 const CRAWLER_UA = /facebookexternalhit|facebot|twitterbot|linkedinbot|slackbot|discordbot|whatsapp|telegrambot|pinterest|redditbot|applebot|skypeuripreview|embedly|vkshare|googlebot|bingbot|snapchat|mastodon|bluesky|iframely|opengraph/i;
 
@@ -63,18 +63,19 @@ async function getMeta(path, origin) {
         if (!product) return null;
         return {
             title: `${product.title} | ${SITE_NAME}`,
-            description: truncate(product.description, 200),
+            description: truncate(product.description, 160) || DEFAULT_DESCRIPTION,
             image: product.featuredImage?.url ?? fallbackImage,
             imageAlt: product.featuredImage?.altText || product.title,
             type: "product",
         };
     }
 
-    const name = ROUTE_TITLES[path];
-    if (!name) return null;
+    const route = ROUTES[path];
+    if (!route) return null;
 
     return {
-        title: name === SITE_NAME ? SITE_NAME : `${name} | ${SITE_NAME}`,
+        title: route.title === SITE_NAME ? SITE_NAME : `${route.title} | ${SITE_NAME}`,
+        description: route.description ?? DEFAULT_DESCRIPTION,
         image: fallbackImage,
         imageWidth: 1200,
         imageHeight: 630,

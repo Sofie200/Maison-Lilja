@@ -1,4 +1,4 @@
-import { SITE_URL, ROUTE_TITLES, SITEMAP_EXCLUDE, shopifyQuery, numericId } from "../server/site.js";
+import { SITE_URL, ROUTES, SITEMAP_EXCLUDE, shopifyQuery, numericId } from "../server/site.js";
 
 const PRODUCTS_QUERY = `
     query SitemapProducts($cursor: String) {
@@ -32,7 +32,7 @@ function urlEntry(loc, lastmod) {
 }
 
 export async function GET() {
-    const staticUrls = Object.keys(ROUTE_TITLES)
+    const staticUrls = Object.keys(ROUTES)
         .filter((path) => !SITEMAP_EXCLUDE.includes(path))
         .map((path) => urlEntry(SITE_URL + (path === "/" ? "/" : path)));
 
